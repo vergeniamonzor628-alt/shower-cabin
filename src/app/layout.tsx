@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Индивидуальные душевые кабины | Конструктор и заказ",
-  description: "Создайте идеальную душевую кабину за 2 минуты. Мы подготовим техническое задание и чертеж для производства по вашим размерам.",
+  title: "Dwgglass | Индивидуальные душевые кабины",
+  description: "Создайте идеальную душевую кабину. Мы подготовим техническое задание и чертеж для производства по вашим размерам.",
 };
 
 export default function RootLayout({
@@ -23,8 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="ru" className={`dark ${geistSans.variable} ${geistMono.variable}`}>
+      <body className="bg-background text-foreground antialiased selection:bg-primary/30">
+        {children}
+      </body>
     </html>
   );
 }
