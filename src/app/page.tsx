@@ -51,99 +51,64 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
               <span className="text-white text-[10px] font-bold uppercase tracking-[0.2em]">Индивидуальное проектирование</span>
             </div>
+        <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10 text-center opacity-0 animate-fade-in-up">
+          
+          <div className="inline-block mb-8 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
+            Проектирование по стандартам ГОСТ
+          </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-[5.5rem] font-serif text-white leading-[1.05] mb-8 tracking-tight">
-              Архитектурный подход <br />
-              <span className="text-white/60 italic font-light">к вашей ванной.</span>
-            </h1>
+          <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-serif text-white leading-[1.1] mb-8 tracking-tight">
+            Индивидуальные душевые <br className="hidden md:block"/>
+            <span className="text-primary italic font-light">по инженерным стандартам.</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+            Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем профессиональный CAD-чертеж, с которым любой стекольный завод изготовит вашу кабину с точностью до миллиметра.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 animate-fade-in-up-delay-1">
+            <a href="#configurator" className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-medium text-sm transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(99,102,241,0.3)]">
+              Создать чертеж моей кабины
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
             
-            <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-12 font-light leading-relaxed">
-              Премиальные душевые кабины напрямую с завода. Без посредников, без наценок за бренд, с точностью посадки до миллиметра.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-              <a href="#configurator" className="bg-white hover:bg-white/90 text-background px-8 py-4 rounded-full font-medium text-sm transition-all flex items-center gap-2">
-                Спроектировать кабину
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-              
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full border-2 border-background bg-slate-200 overflow-hidden relative"><Image src="/corner_shower_neutral_1780476003860.png" alt="1" fill className="object-cover"/></div>
-                  <div className="w-10 h-10 rounded-full border-2 border-background bg-slate-300 overflow-hidden relative"><Image src="/niche_shower_neutral_1780476014823.png" alt="2" fill className="object-cover"/></div>
-                  <div className="w-10 h-10 rounded-full border-2 border-background bg-slate-400 overflow-hidden relative"><Image src="/walk_in_shower_neutral_1780476025174.png" alt="3" fill className="object-cover"/></div>
-                </div>
-                <div className="text-left">
-                  <p className="text-xs text-white/70 font-medium uppercase tracking-wider">Доступно 5 форм</p>
-                  <p className="text-[10px] text-white/40">Под любой интерьер</p>
-                </div>
+            <div className="flex items-center gap-3 text-left">
+              <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-sm text-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
               </div>
+              <p className="text-xs text-white/70 font-medium leading-tight">Готовый PDF-файл за 24 часа.<br/>Подходит для РФ.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* The Pain (Problem) */}
-      <section className="py-32 bg-[#17181c] border-t border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent blur-3xl"></div>
+      <section className="py-32 bg-background/80 relative z-10 border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in-up">
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-[1.2]">
+              Зачем переплачивать 300% <span className="italic text-white/50">салонам сантехники?</span>
+            </h2>
             
-            <div className="max-w-xl">
-              <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
-              <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-[1.2]">
-                Зачем переплачивать 300% <span className="italic text-white/50">салонам сантехники?</span>
-              </h2>
-              
-              <div className="space-y-8">
-                <p className="text-white/60 leading-relaxed text-lg font-light">
-                  Салоны не производят стекло — они просто перепродают его, закладывая маржу за бренд, логистику и аренду шоурума. Мы предлагаем другой путь — прямой доступ к промышленному стекольному производству.
-                </p>
-                
-                <ul className="space-y-5">
-                  <li className="flex gap-4">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span className="text-white/80">Никаких наценок за "премиум бренд"</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span className="text-white/80">Индивидуальный размер без доплат за нестандарт</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span className="text-white/80">Профессиональный инженерный расчет (допуски 1мм)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Price Comparison Card */}
-            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-10 backdrop-blur-sm relative">
-              <div className="absolute -top-4 -right-4 bg-primary text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">
-                Ваша выгода
-              </div>
-              <div className="space-y-10">
-                <div>
-                  <div className="flex justify-between items-end mb-2">
-                    <div className="text-white/40 text-sm font-semibold uppercase tracking-wider">В салоне</div>
-                    <div className="text-2xl font-serif text-white/30 line-through decoration-white/20">~ 150 000 ₽</div>
-                  </div>
-                  <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full bg-white/20 w-full"></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between items-end mb-2">
-                    <div className="text-primary text-sm font-semibold uppercase tracking-wider">Наш метод</div>
-                    <div className="text-5xl font-serif text-white">~ 45 000 ₽</div>
-                  </div>
-                  <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary w-1/3 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <p className="text-white/60 leading-relaxed text-lg font-light mb-12">
+              Салоны не производят стекло — они просто перепродают его, закладывая маржу за бренд, логистику и аренду шоурума. Мы предлагаем другой путь — прямой доступ к промышленному стекольному производству.
+            </p>
+            
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
+                <span className="text-white/80 font-medium">Никаких наценок за "премиум бренд"</span>
+              </li>
+              <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
+                <span className="text-white/80 font-medium">Индивидуальный размер без доплат</span>
+              </li>
+              <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
+                <span className="text-white/80 font-medium">Инженерный расчет (допуски 1мм)</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -188,7 +153,7 @@ export default function Home() {
               <div className="text-white/20 font-serif text-7xl mb-8 group-hover:text-primary/40 transition-colors">03</div>
               <h3 className="text-xl font-semibold text-white mb-4">Завод производит</h3>
               <p className="text-white/50 leading-relaxed font-light">
-                Вы отправляете чертеж на ближайший стекольный завод. Они производят стекло в точности по чертежу. Вы получаете премиум по цене производителя.
+                Вы отправляете чертеж на ближайший стекольный завод. Они производят стекло в точности по чертежу. Никаких переплат салонам.
               </p>
             </div>
 
