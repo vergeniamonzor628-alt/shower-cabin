@@ -92,32 +92,20 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex items-center pt-20 pb-20 overflow-hidden border-b border-border/40">
         
-        {/* SVG Filter for Underwater Effect */}
-        <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
-          <defs>
-            <filter id="water-ripple" x="-20%" y="-20%" width="140%" height="140%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="2" result="noise">
-                <animate attributeName="baseFrequency" values="0.005;0.008;0.005" dur="15s" repeatCount="indefinite" />
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-          </defs>
-        </svg>
-
         {/* Animated Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute inset-[-10%] w-[120%] h-[120%] opacity-80" style={{ filter: 'url(#water-ripple)' }}>
+        <div className="absolute inset-0 z-0 overflow-hidden bg-background">
+          <div className="absolute inset-0 opacity-40 animate-[pulse_10s_ease-in-out_infinite]">
              <Image 
-                src="/split_hero_cold_interior_1780448371721.png" 
+                src="/split_hero_warm_1780474151672.png" 
                 alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
                 fill 
-                className="object-cover"
+                className="object-cover scale-[1.02]"
                 priority
               />
           </div>
           {/* Glassmorphism Overlays */}
-          <div className="absolute inset-0 bg-background/50 backdrop-blur-2xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background"></div>
+          <div className="absolute inset-0 backdrop-blur-[60px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background"></div>
         </div>
 
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10 text-center">
