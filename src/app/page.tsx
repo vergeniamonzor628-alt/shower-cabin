@@ -96,7 +96,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 overflow-hidden bg-background">
           <div className="absolute inset-0 opacity-40 animate-[pulse_10s_ease-in-out_infinite]">
              <Image 
-                src="/split_hero_warm_1780474151672.png" 
+                src="/split_hero_ultra_luxury_1780474775915.png" 
                 alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
                 fill 
                 className="object-cover scale-[1.02]"
