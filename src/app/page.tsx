@@ -8,13 +8,11 @@ import {
   Ruler,
   Factory,
   CheckCircle2,
-  AlertCircle,
   Plus,
   Minus
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
-// Утилита для анимации плавного появления (Fade-up) при скролле
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -73,7 +71,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
       
-      {/* Header (Glassmorphism) */}
+      {/* Header */}
       <header className="fixed top-0 z-50 w-full bg-white/60 backdrop-blur-xl border-b border-border/40 shadow-sm">
         <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
           <div className="flex items-center gap-3">
@@ -91,115 +89,144 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-32 overflow-hidden border-b border-border/40">
-        {/* Декоративное мягкое свечение на фоне */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+      {/* Hero Section (Behind Glass Aesthetic) */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+        
+        {/* Full screen background image */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/hero_tech_bg_1780444334766.png" 
+            alt="CAD Blueprint" 
+            fill 
+            className="object-cover object-center scale-105"
+            priority
+          />
+        </div>
 
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 relative z-10 grid lg:grid-cols-12 gap-16 items-center">
+        {/* Frosted Glass Overlay */}
+        <div className="absolute inset-0 z-10 bg-white/40 backdrop-blur-2xl border-b border-white/20"></div>
+        {/* Subtle gradient overlay to ensure text readability */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-white/90 via-white/50 to-white/20"></div>
+
+        <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-20 text-center">
           
-          <div className="order-2 lg:order-1 lg:col-span-5 relative z-20">
-            <div className={`inline-flex items-center gap-2 border-b border-primary/20 pb-2 mb-8 text-[10px] uppercase tracking-[0.2em] font-bold text-primary transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              Экономия до 50 000 ₽ на ремонте
-            </div>
-            
-            <h1 className={`text-4xl sm:text-5xl xl:text-6xl font-serif font-medium tracking-tight mb-8 leading-[1.1] transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Премиум душевая напрямую <span className="italic text-primary font-light">с завода.</span>
-            </h1>
-            
-            <p className={`max-w-md text-base text-muted-foreground mb-10 font-light leading-relaxed transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем <strong>профессиональный CAD-чертеж</strong>, с которым любой стекольный завод изготовит вашу идеальную кабину за 1/3 цены.
+          <div className={`inline-flex items-center gap-2 border border-primary/20 bg-white/50 backdrop-blur-md px-6 py-2 rounded-full mb-8 text-[10px] uppercase tracking-[0.2em] font-bold text-primary transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            Экономия до 50 000 ₽ на ремонте
+          </div>
+          
+          <h1 className={`text-5xl sm:text-6xl xl:text-7xl font-serif font-medium tracking-tight mb-8 leading-[1.1] text-foreground transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Премиум душевая <br/><span className="italic font-light">напрямую с завода.</span>
+          </h1>
+          
+          <p className={`max-w-2xl mx-auto text-base sm:text-lg text-foreground/80 mb-12 font-medium leading-relaxed transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем <span className="font-bold text-primary">профессиональный CAD-чертеж</span>, с которым любой стекольный завод изготовит вашу идеальную кабину за 1/3 цены.
+          </p>
+          
+          <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <button onClick={scrollToConfigurator} className="w-full sm:w-auto rounded-full bg-primary px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 hover:shadow-primary/40 flex items-center justify-center gap-4 group">
+              Создать чертеж моей кабины
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+            <p className="text-xs text-foreground font-semibold flex items-center gap-2 bg-white/50 backdrop-blur-sm py-2 px-4 rounded-full border border-white/40">
+              <ShieldCheck size={14} className="text-primary"/> Готовый PDF-файл за 24 часа
             </p>
-            
-            <div className={`transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <button onClick={scrollToConfigurator} className="w-full sm:w-auto rounded-full bg-primary px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/20 transition-all hover:bg-foreground hover:shadow-foreground/20 hover:-translate-y-1 flex items-center justify-center gap-4 group mb-4">
-                Создать чертеж моей кабины
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <p className="text-xs text-muted-foreground font-medium flex items-center gap-2">
-                <ShieldCheck size={14} className="text-primary"/> Готовый PDF-файл за 24 часа. Подходит для РФ.
+          </div>
+        </div>
+      </section>
+
+      {/* Problem / Workspace Section */}
+      <section id="problem" className="py-32 bg-background relative overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+          
+          <div className="relative z-10 order-2 lg:order-1">
+            <Reveal>
+              <div className="inline-block text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-6">Почему чертеж необходим?</div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight mb-8">
+                Завод не примет заказ<br/><span className="italic font-light">"на пальцах"</span>
+              </h2>
+              <p className="text-muted-foreground font-light text-base leading-relaxed mb-10">
+                На производстве никто не будет слушать "мне стекло примерно метр на два". Им нужны точные координаты сверления отверстий под петли и учет технологических зазоров (2-3 мм). 
+                <br/><br/>
+                Ошибетесь на миллиметр при расчете — стекло не влезет в нишу, а каленое стекло <strong>нельзя подрезать</strong>.
               </p>
-            </div>
+
+              <div className="flex flex-col gap-6 border-l-2 border-primary/20 pl-6">
+                <div className="flex gap-4 items-start">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"><Ruler size={16}/></div>
+                  <div>
+                    <h4 className="font-serif font-medium text-lg mb-1">Абсолютная точность</h4>
+                    <p className="text-sm font-light text-muted-foreground">Мы закладываем все допуски под выбранную вами фурнитуру.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"><CheckCircle2 size={16}/></div>
+                  <div>
+                    <h4 className="font-serif font-medium text-lg mb-1">Готово для любого ЧПУ станка</h4>
+                    <p className="text-sm font-light text-muted-foreground">Форматы DWG и PDF гарантируют, что вас примет любой завод.</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </div>
 
-          <div className={`order-1 lg:order-2 lg:col-span-7 relative h-[500px] lg:h-[700px] w-full transition-all duration-1000 delay-700 ${mounted ? 'opacity-100' : 'opacity-0 blur-sm scale-[1.02]'}`}>
-            <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
+          <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
+            <Reveal className="w-full h-full">
               <Image 
-                src="/hero_tech_bg_1780444334766.png" 
-                alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
+                src="/workspace_1_1780447199052.png" 
+                alt="Architectural workspace" 
                 fill 
                 className="object-cover"
-                priority
               />
-              <div className="absolute bottom-6 right-6 bg-white/60 backdrop-blur-md px-5 py-3 rounded-xl border border-white/80 shadow-lg flex items-center gap-3">
-                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                 <span className="text-[10px] font-bold uppercase tracking-widest text-foreground">Инженерная точность</span>
-              </div>
-            </div>
+              <div className="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+            </Reveal>
           </div>
 
         </div>
       </section>
 
-      {/* Problem / Solution */}
-      <section id="problem" className="py-32 bg-white relative border-b border-border/40">
+      {/* How it works (With Workspace Close Up) */}
+      <section id="how-it-works" className="py-32 bg-white relative border-t border-border/40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           
           <Reveal>
-            <div className="mb-20 flex flex-col md:flex-row justify-between items-end gap-8 border-b border-border/40 pb-10">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight">Завод не примет заказ<br/><span className="text-primary italic font-light">"на пальцах"</span></h2>
-              <p className="text-muted-foreground max-w-sm font-light text-base leading-relaxed">
-                Решили заказать стекло напрямую и сэкономить? На производстве никто не будет слушать "мне стекло примерно метр на два".
-              </p>
+            <div className="text-center mb-20">
+              <h2 className="text-4xl sm:text-5xl font-serif font-medium tracking-tight mb-6">Путь к идеальной душевой</h2>
+              <p className="text-muted-foreground font-light max-w-xl mx-auto">Всего 4 простых шага отделяют вас от роскошной душевой по цене масс-маркета.</p>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-border/40">
-            {[
-              { icon: <Ruler strokeWidth={1.5} size={32}/>, title: "Ошибка в миллиметр", desc: "Заводу нужны точные координаты сверления отверстий под петли и учет технологических зазоров (2-3 мм). Ошибетесь — каленое стекло нельзя подрезать. Вы потеряете деньги." },
-              { icon: <CheckCircle2 strokeWidth={1.5} size={32}/>, title: "Решение", desc: "Доверьте расчет нашему инженеру. Вы даете габариты ниши и ссылку на петли с маркетплейса — мы выдаем профессиональную документацию." },
-              { icon: <Factory strokeWidth={1.5} size={32}/>, title: "Любое производство", desc: "С нашим чертежом в формате PDF и DWG вас с радостью примет и запустит в работу любой стекольный завод страны." }
-            ].map((srv, i) => (
-              <Reveal key={i} delay={i * 150} className="border-r border-b border-border/40 p-12 transition-all hover:bg-muted/50 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 bg-white relative z-10">
-                <div className="mb-12 text-primary bg-primary/5 w-16 h-16 rounded-2xl flex items-center justify-center">
-                  {srv.icon}
-                </div>
-                <h3 className="mb-4 text-2xl font-serif font-medium">{srv.title}</h3>
-                <p className="text-muted-foreground font-light leading-relaxed">{srv.desc}</p>
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-5 relative h-[400px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
+              <Reveal className="w-full h-full">
+                <Image 
+                  src="/workspace_2_1780447209664.png" 
+                  alt="Blueprint close-up" 
+                  fill 
+                  className="object-cover"
+                />
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* How it works */}
-      <section id="how-it-works" className="py-32 bg-background relative overflow-hidden">
-        <div className="absolute -left-40 top-40 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 relative z-10">
-          <Reveal>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight mb-20 text-center">Путь к идеальной душевой<br/>за 4 простых шага</h2>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border-t border-l border-border/40 bg-white/60 backdrop-blur-sm rounded-[2rem] shadow-xl shadow-primary/5 overflow-hidden">
-            {[
-              { num: "1", title: "Выберите форму", desc: "Угловая, в нишу, П-образная или нестандартная архитектура." },
-              { num: "2", title: "Введите габариты", desc: "Просто измерьте ширину и высоту вашей ниши обычной рулеткой." },
-              { num: "3", title: "Укажите фурнитуру", desc: "Прикрепите ссылки на петли, которые вы купили. Мы сами рассчитаем под них вырезы." },
-              { num: "4", title: "Получите чертеж", desc: "Через 24 часа готовый PDF придет вам в Telegram. Отправляйте его на завод!" }
-            ].map((step, i) => (
-              <Reveal key={i} delay={i * 100} className="border-r border-b border-border/40 p-10 lg:p-12">
-                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-serif text-2xl mb-8">{step.num}</div>
-                <h3 className="mb-4 text-xl font-serif font-medium text-foreground">{step.title}</h3>
-                <p className="text-muted-foreground font-light text-sm leading-relaxed">{step.desc}</p>
-              </Reveal>
-            ))}
+            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8">
+              {[
+                { num: "01", title: "Архитектура", desc: "Угловая, в нишу, П-образная или нестандартная. Выберите тип кабины." },
+                { num: "02", title: "Габариты", desc: "Измерьте ширину и высоту вашей ниши обычной рулеткой (мы поможем)." },
+                { num: "03", title: "Фурнитура", desc: "Прикрепите ссылки на петли, которые вы купили. Мы рассчитаем под них вырезы." },
+                { num: "04", title: "Завод", desc: "Через 24 часа отправьте наш PDF-файл на ближайший стекольный завод." }
+              ].map((step, i) => (
+                <Reveal key={i} delay={i * 100} className="bg-background rounded-2xl p-8 border border-border/50">
+                  <div className="text-4xl font-serif text-primary/20 font-light italic mb-6">{step.num}</div>
+                  <h3 className="mb-3 text-lg font-serif font-medium text-foreground">{step.title}</h3>
+                  <p className="text-muted-foreground font-light text-sm leading-relaxed">{step.desc}</p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ (Accordion) */}
-      <section id="faq" className="py-32 bg-white relative border-y border-border/40">
+      <section id="faq" className="py-32 bg-background relative border-t border-border/40">
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12">
           <Reveal>
             <h2 className="text-4xl sm:text-5xl font-serif font-medium tracking-tight mb-16 text-center">Частые сомнения</h2>
@@ -237,7 +264,7 @@ export default function Home() {
       </section>
       
       {/* Configurator Section */}
-      <section id="configurator" className="py-32 bg-background relative overflow-hidden">
+      <section id="configurator" className="py-32 bg-white relative overflow-hidden border-t border-border/40">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10">
@@ -259,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white py-20">
+      <footer className="bg-background py-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-border/40 pt-10">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded-full bg-foreground text-background flex items-center justify-center font-serif text-xs font-bold">A</div>

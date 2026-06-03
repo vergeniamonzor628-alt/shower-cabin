@@ -26,11 +26,11 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const CABIN_TYPES = [
-  { id: 'corner', name: 'Угловая кабина', img: '/corner_tech_1780444346177.png' },
-  { id: 'niche', name: 'Дверь в нишу', img: '/niche_tech_1780444356577.png' },
-  { id: 'walk_in', name: 'Свободный вход', img: '/walk_in_tech_1780444368907.png' },
-  { id: 'u_shape', name: 'П-образная', img: '/u_shaped_tech_1780444378574.png' },
-  { id: 'bath', name: 'Шторка на ванну', img: '/bath_screen_tech_1780444388152.png' }
+  { id: 'corner', name: 'Угловая кабина', img: '/corner_shower_fresh_1780443230529.png' },
+  { id: 'niche', name: 'Дверь в нишу', img: '/niche_shower_fresh_1780443241693.png' },
+  { id: 'walk_in', name: 'Свободный вход', img: '/walk_in_shower_fresh_1780443251326.png' },
+  { id: 'u_shape', name: 'П-образная', img: '/u_shaped_shower_fresh_1780443260615.png' },
+  { id: 'bath', name: 'Шторка на ванну', img: '/bath_screen_fresh_1780443270220.png' }
 ];
 
 export default function Configurator() {
