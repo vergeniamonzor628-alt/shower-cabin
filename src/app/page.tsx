@@ -232,46 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="py-24 bg-black/60 backdrop-blur-[2px] relative z-10 border-t border-border/40">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <div className="text-center mb-16">
-            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Отзывы</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Реальный опыт заказчиков</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 relative">
-              <div className="text-primary text-4xl font-serif absolute top-6 left-6 opacity-20">&quot;</div>
-              <p className="text-white/80 font-light leading-relaxed mb-6 relative z-10 pt-4">
-                Чертеж окупился в первый же день! Салон посчитал мне душевую в нишу на 85 000 рублей. Заказал чертеж за полторы, отправил файл на ближайший завод и забрал каленое стекло за 18 000 руб. Итого экономия космическая, а встало всё идеально.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/50 font-medium">АМ</div>
-                <div>
-                  <div className="text-white font-medium">Алексей М.</div>
-                  <div className="text-white/40 text-sm">Частный заказчик</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 relative">
-              <div className="text-primary text-4xl font-serif absolute top-6 left-6 opacity-20">&quot;</div>
-              <p className="text-white/80 font-light leading-relaxed mb-6 relative z-10 pt-4">
-                Быстро получил точные чертежи и инструкции по вырезам. Очень удобно, что сразу выдают DWG файл для станка ЧПУ — на производстве даже вопросов не задали, просто загрузили файл в станок. Геометрия сошлась до миллиметра.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/50 font-medium">ВК</div>
-                <div>
-                  <div className="text-white font-medium">Виктор К.</div>
-                  <div className="text-white/40 text-sm">Прораб</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Section */}
       <section className="py-24 bg-background relative z-10 border-t border-border/40">
         <div className="container mx-auto px-6 max-w-5xl">
