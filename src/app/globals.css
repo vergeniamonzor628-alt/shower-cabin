@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,38 +6,38 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #111111;
+    --background: #faf9f6; /* Мягкий молочный цвет */
+    --foreground: #2d3748; /* Глубокий графит */
     
-    --card: #ffffff;
-    --card-foreground: #111111;
+    --card: rgba(255, 255, 255, 0.7); /* Полупрозрачность для Glassmorphism */
+    --card-foreground: #2d3748;
     
     --popover: #ffffff;
-    --popover-foreground: #111111;
+    --popover-foreground: #2d3748;
     
-    --primary: #0055ff; /* Blueprint Blue */
+    --primary: #4a5d6a; /* Элегантный глубокий сине-серый (подходит к чертежам) */
     --primary-foreground: #ffffff;
     
-    --secondary: #f4f4f5;
-    --secondary-foreground: #111111;
+    --secondary: #edf2f7;
+    --secondary-foreground: #2d3748;
     
-    --muted: #f4f4f5;
-    --muted-foreground: #71717a;
+    --muted: #f4f5f0;
+    --muted-foreground: #718096;
     
-    --accent: #ff4500; /* Technical Orange */
+    --accent: #8f9e8b; /* Шалфейно-зеленый акцент */
     --accent-foreground: #ffffff;
     
-    --destructive: #ff0000;
+    --destructive: #e53e3e;
     --destructive-foreground: #ffffff;
     
-    --border: #e4e4e7;
-    --input: #e4e4e7;
-    --ring: #0055ff;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #4a5d6a;
     
-    --radius: 0rem; /* Brutalism - no rounded corners */
+    --radius: 1rem; /* Возвращаем мягкие скругления */
     
-    --font-sans: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-serif: 'Playfair Display', serif;
   }
 
   body {
@@ -51,21 +51,6 @@
   ::selection {
     background-color: var(--primary);
     color: var(--primary-foreground);
-  }
-}
-
-@layer utilities {
-  .bg-grid-pattern {
-    background-image: 
-      linear-gradient(to right, rgba(0, 85, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 85, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-  .bg-grid-pattern-lg {
-    background-image: 
-      linear-gradient(to right, rgba(0, 85, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 85, 255, 0.1) 1px, transparent 1px);
-    background-size: 100px 100px;
   }
 }
 

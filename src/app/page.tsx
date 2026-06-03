@@ -4,17 +4,17 @@ import Image from "next/image";
 import Configurator from "@/components/Configurator";
 import { 
   ArrowRight,
+  Check, 
+  Layers,
   Settings,
   FileCheck2,
   AlertCircle,
   Plus,
-  Minus,
-  Maximize,
-  Crosshair
+  Minus
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
-// Утилита для анимации плавного появления
+// Утилита для анимации плавного появления (Fade-up) при скролле
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +34,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
   return (
     <div 
       ref={ref} 
-      className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`} 
+      className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${className}`} 
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -58,180 +58,173 @@ export default function Home() {
   const faqs = [
     {
       q: "Кто несет ответственность за размеры?",
-      a: "ЕСЛИ ОШИБКА В НАШЕМ ЧЕРТЕЖЕ — МЫ БЕСПЛАТНО ПЕРЕДЕЛЫВАЕМ ДОКУМЕНТАЦИЮ И КОМПЕНСИРУЕМ ВАМ ЗАТРАТЫ. ЕСЛИ ВЫ НЕВЕРНО СНЯЛИ РАЗМЕРЫ ПОМЕЩЕНИЯ — ОТВЕТСТВЕННОСТЬ НА ВАС. ПОЖАЛУЙСТА, СЛЕДУЙТЕ НАШЕЙ ИНСТРУКЦИИ ПО ЗАМЕРАМ."
+      a: "Если ошибка в нашем чертеже — мы бесплатно переделываем чертеж и компенсируем вам затраты. Если вы неверно сняли размеры помещения — ответственность на вас. Пожалуйста, следуйте нашей инструкции по замерам."
     },
     {
-      q: "Спецификация фурнитуры?",
-      a: "ПРОИЗВОДСТВО СТЕКЛА НАЧНЕТСЯ ТОЛЬКО ПОСЛЕ ОПРЕДЕЛЕНИЯ ТИПА ПЕТЕЛЬ. РАЗНЫЕ ПЕТЛИ ТРЕБУЮТ РАЗНЫХ ВЫРЕЗОВ В МАТЕРИАЛЕ. ССЫЛКИ НА ФУРНИТУРУ МОЖНО ПРИСЛАТЬ ПОЗЖЕ НАПРЯМУЮ НАШЕМУ ИНЖЕНЕРУ."
+      q: "Как выбрать фурнитуру?",
+      a: "Производство стекла начнется только после того, как вы определитесь с петлями. Разные петли требуют разных вырезов в стекле. Вы можете прислать ссылки на фурнитуру позже напрямую нашему инженеру."
     },
     {
-      q: "Оптимизация бюджета?",
-      a: "В РОЗНИЧНОМ МАГАЗИНЕ ЗА 30 000 РУБ ВЫ ПОЛУЧИТЕ СТЕКЛО 4-6 ММ И ПЛАСТИК. ПО ЗАВОДСКОМУ ЧЕРТЕЖУ (СТЕКЛО 8 ММ) ВЫ СОБЕРЕТЕ КАБИНУ ПРЕМИУМ-КЛАССА, КОТОРАЯ В САЛОНЕ СТОИТ ОТ 80 000 РУБ."
+      q: "Сколько я реально сэкономлю?",
+      a: "В розничном магазине за 30 000 руб вы получите тонкое стекло (4-6 мм) и пластиковые ролики. За те же деньги, заказав стекло 8 мм на заводе по нашему чертежу, вы соберете кабину премиум-класса, которая в салоне стоит от 80 000 руб."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white border-x-4 border-foreground mx-auto max-w-[1600px] shadow-2xl relative">
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
       
-      {/* Global Blueprint Background Grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none z-0"></div>
-
-      {/* Header */}
-      <header className="fixed top-0 z-50 w-full max-w-[1592px] bg-background/95 backdrop-blur-sm border-b-2 border-foreground">
-        <div className="flex h-16 items-stretch justify-between">
-          
-          <div className="flex items-center gap-4 px-6 border-r-2 border-foreground bg-primary text-white">
-            <Crosshair size={24} strokeWidth={1.5} />
-            <span className="text-xl font-mono font-bold tracking-widest uppercase">DWG_GLASS</span>
+      {/* Header (Glassmorphism) */}
+      <header className="fixed top-0 z-50 w-full bg-white/60 backdrop-blur-xl border-b border-border/40 shadow-sm">
+        <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
+          <div className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white font-serif font-bold text-lg shadow-md shadow-primary/20">D</div>
+            <span className="text-xl font-serif font-semibold tracking-wider text-foreground">Dwgglass</span>
           </div>
-          
-          <div className="hidden md:flex items-center gap-8 px-6 text-xs font-mono font-bold text-foreground uppercase tracking-widest">
-            <a href="#services" className="hover:text-primary transition-colors">>> Спецификация</a>
-            <a href="#how-it-works" className="hover:text-primary transition-colors">>> Протокол</a>
-            <a href="#faq" className="hover:text-primary transition-colors">>> FAQ</a>
+          <div className="hidden md:flex items-center gap-12 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.2em]">
+            <a href="#services" className="hover:text-primary transition-colors">Инженерия</a>
+            <a href="#how-it-works" className="hover:text-primary transition-colors">Процесс</a>
+            <a href="#faq" className="hover:text-primary transition-colors">FAQ</a>
           </div>
-          
-          <button onClick={scrollToConfigurator} className="border-l-2 border-foreground bg-accent px-8 text-sm font-mono font-bold text-white uppercase tracking-widest transition-all hover:bg-foreground flex items-center gap-2">
-            [ RUN CAD ]
+          <button onClick={scrollToConfigurator} className="rounded-full bg-foreground px-8 py-3 text-[11px] font-bold text-background uppercase tracking-[0.15em] shadow-lg shadow-foreground/10 transition-all hover:bg-primary hover:shadow-primary/20 hover:-translate-y-0.5">
+            Проектировать
           </button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 border-b-2 border-foreground overflow-hidden">
-        <div className="px-6 lg:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-          
-          <div className="order-2 lg:order-1 border-2 border-foreground p-8 bg-white relative">
-            <div className="absolute -top-3 -left-3 text-foreground bg-white"><Plus size={24}/></div>
-            <div className="absolute -top-3 -right-3 text-foreground bg-white"><Plus size={24}/></div>
-            <div className="absolute -bottom-3 -left-3 text-foreground bg-white"><Plus size={24}/></div>
-            <div className="absolute -bottom-3 -right-3 text-foreground bg-white"><Plus size={24}/></div>
+      <section className="relative pt-40 pb-32 overflow-hidden border-b border-border/40">
+        {/* Декоративное мягкое свечение на фоне */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
-            <div className={`inline-block border border-foreground bg-foreground text-background px-3 py-1 text-xs font-mono font-bold uppercase tracking-widest mb-8 transition-all duration-700 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-              SYS.STATUS: ONLINE
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 relative z-10 grid lg:grid-cols-12 gap-16 items-center">
+          
+          <div className="order-2 lg:order-1 lg:col-span-5 relative z-20">
+            <div className={`inline-flex items-center gap-2 border-b border-primary/20 pb-2 mb-10 text-[10px] uppercase tracking-[0.3em] font-semibold text-primary transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              Инженерная прозрачность
             </div>
             
-            <h1 className={`text-5xl sm:text-6xl xl:text-7xl font-sans font-black tracking-tighter mb-8 uppercase leading-[0.9] transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-              CAD-ПРОЕКТЫ<br />
-              <span className="text-primary font-mono text-4xl sm:text-5xl">// СТЕКЛА</span>
+            <h1 className={`text-5xl sm:text-6xl xl:text-7xl font-serif font-medium tracking-tight mb-10 leading-[1.1] transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Идеальный<br />
+              <span className="italic text-primary font-light">расчет</span> света.
             </h1>
             
-            <p className={`max-w-md text-sm font-mono text-muted-foreground mb-12 uppercase leading-relaxed transition-all duration-700 delay-300 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-              > РАЗРАБАТЫВАЕМ ТОЧНЫЕ ИНЖЕНЕРНЫЕ ЧЕРТЕЖИ ПОД СТАНКИ С ЧПУ.<br/>
-              > ЗАКАЖИТЕ СТЕКЛО НАПРЯМУЮ НА ЗАВОДЕ.<br/>
-              > ТОЧНОСТЬ ДО 1 МИЛЛИМЕТРА.
+            <p className={`max-w-md text-base text-muted-foreground mb-12 font-light leading-relaxed transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Профессиональные CAD-чертежи для производства премиальных стеклянных душевых. Точность до миллиметра, абсолютный минимализм.
             </p>
             
-            <div className={`transition-all duration-700 delay-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
-              <button onClick={scrollToConfigurator} className="w-full sm:w-auto border-2 border-foreground bg-primary px-8 py-4 text-xs font-mono font-bold uppercase tracking-widest text-white transition-all hover:bg-foreground flex items-center justify-center gap-4 group">
-                ИНИЦИИРОВАТЬ РАСЧЕТ 
+            <div className={`transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <button onClick={scrollToConfigurator} className="w-full sm:w-auto rounded-full bg-primary px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/20 transition-all hover:bg-foreground hover:shadow-foreground/20 hover:-translate-y-1 flex items-center justify-center gap-4 group">
+                Начать проект 
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
 
-          <div className={`order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full border-2 border-foreground transition-all duration-1000 delay-700 bg-primary ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.98]'}`}>
-            <Image 
-              src="/hero_tech_bg_1780444334766.png" 
-              alt="CAD Blueprint vs Reality" 
-              fill 
-              className="object-cover"
-              priority
-            />
-            {/* Technical Overlays */}
-            <div className="absolute top-4 left-4 bg-black/80 text-white font-mono text-[10px] px-2 py-1">VIEW: HYBRID_RENDER</div>
-            <div className="absolute bottom-4 right-4 bg-primary text-white font-mono text-[10px] px-2 py-1">SCALE: 1:10</div>
+          <div className={`order-1 lg:order-2 lg:col-span-7 relative h-[500px] lg:h-[750px] w-full transition-all duration-1000 delay-700 ${mounted ? 'opacity-100' : 'opacity-0 blur-sm scale-[1.02]'}`}>
+            {/* The Blueprint/Reality Hybrid Image */}
+            <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
+              <Image 
+                src="/hero_tech_bg_1780444334766.png" 
+                alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
+                fill 
+                className="object-cover"
+                priority
+              />
+              {/* Glassmorphism overlay corner detail */}
+              <div className="absolute bottom-6 right-6 bg-white/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/50 text-[10px] font-mono font-semibold uppercase tracking-widest text-foreground shadow-lg">
+                Precision: ±1mm
+              </div>
+            </div>
           </div>
 
         </div>
       </section>
 
-      {/* Blueprint Grid Services */}
-      <section id="services" className="border-b-2 border-foreground bg-background relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-foreground">
+      {/* Services (Grid approach with Glass touches) */}
+      <section id="services" className="py-32 bg-white relative border-b border-border/40">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           
-          <div className="col-span-1 md:col-span-3 p-6 lg:p-12 border-b-2 border-foreground bg-grid-pattern-lg">
-            <Reveal>
-              <h2 className="text-4xl sm:text-5xl font-sans font-black uppercase tracking-tighter mb-4">Технический протокол</h2>
-              <p className="font-mono text-sm uppercase text-muted-foreground">| Инженерия без допущений |</p>
-            </Reveal>
-          </div>
-
-          {[
-            { id: "S-01", title: "ДОПУСКИ & ЗАЗОРЫ", desc: "РАССЧИТЫВАЕМ МИКРО-ДОПУСКИ ДЛЯ СИЛИКОНОВЫХ УПЛОТНИТЕЛЕЙ. ВОДА ОСТАЕТСЯ ВНУТРИ КОНТУРА." },
-            { id: "S-02", title: "ИНТЕГРАЦИЯ ФУРНИТУРЫ", desc: "АДАПТИРУЕМ DWG-ФАЙЛ ПОД ПЕТЛИ И КОННЕКТОРЫ ЛЮБОГО ПРОИЗВОДИТЕЛЯ ИЗ ТЕХ. ЗАДАНИЯ." },
-            { id: "S-03", title: "ЭКСПОРТ ЧПУ", desc: "ГЕНЕРИРУЕМ ГОТОВЫЙ DWG ДЛЯ ЗАВОДСКИХ СТАНКОВ И ЧИТАЕМЫЙ PDF ДЛЯ МОНТАЖНИКА." }
-          ].map((srv, i) => (
-            <Reveal key={i} delay={i * 150} className="p-8 lg:p-12 bg-white relative group hover:bg-secondary transition-colors">
-              <div className="absolute top-0 left-0 w-full h-1 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              <div className="mb-8 font-mono text-4xl font-bold text-primary">{srv.id}</div>
-              <h3 className="mb-4 text-xl font-sans font-bold uppercase tracking-tight">{srv.title}</h3>
-              <p className="font-mono text-xs text-muted-foreground leading-relaxed uppercase">{srv.desc}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* How it works (Data Flow) */}
-      <section id="how-it-works" className="border-b-2 border-foreground bg-white relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 divide-y-2 md:divide-y-0 md:divide-x-2 divide-foreground">
-          
-          <div className="col-span-1 md:col-span-4 p-6 lg:p-12 border-b-2 border-foreground bg-primary text-white">
-            <Reveal>
-              <h2 className="text-3xl sm:text-4xl font-sans font-black uppercase tracking-tighter">Алгоритм сборки данных</h2>
-            </Reveal>
-          </div>
-
-          {[
-            { num: "01", title: "АРХИТЕКТУРА", desc: "ВЫБОР ТИПА КОНСТРУКЦИИ" },
-            { num: "02", title: "ГАБАРИТЫ", desc: "ВВОД X / Y / Z ПАРАМЕТРОВ" },
-            { num: "03", title: "ФУРНИТУРА", desc: "ВВОД ССЫЛОК НА ПЕТЛИ" },
-            { num: "04", title: "ЭКСПОРТ", desc: "ПОЛУЧЕНИЕ DWG + PDF" }
-          ].map((step, i) => (
-            <Reveal key={i} delay={i * 100} className="p-8 relative bg-white">
-              <div className="text-5xl font-sans font-black text-foreground/10 mb-6">{step.num}</div>
-              <h3 className="mb-2 text-base font-sans font-bold text-foreground uppercase">{step.title}</h3>
-              <p className="font-mono text-xs text-muted-foreground">{step.desc}</p>
-              
-              {i < 3 && (
-                <div className="absolute top-1/2 -right-3 hidden md:flex items-center justify-center w-6 h-6 bg-foreground text-white z-10 font-mono text-xs">
-                  >
-                </div>
-              )}
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Tech FAQ */}
-      <section id="faq" className="border-b-2 border-foreground bg-background relative z-10">
-        <div className="px-6 lg:px-12 py-20">
           <Reveal>
-            <div className="inline-block border border-foreground px-3 py-1 text-xs font-mono font-bold uppercase tracking-widest mb-8">
-              DATABASE_QUERY: FAQ
+            <div className="mb-20 flex flex-col md:flex-row justify-between items-end gap-8 border-b border-border/40 pb-10">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight">Математика<br/><span className="text-primary italic font-light">красоты</span></h2>
+              <p className="text-muted-foreground max-w-sm font-light text-base leading-relaxed">
+                Сложные инженерные вычисления, скрытые за абсолютной визуальной простотой.
+              </p>
             </div>
           </Reveal>
 
-          <div className="border-2 border-foreground bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-border/40">
+            {[
+              { icon: <Layers strokeWidth={1.5} size={32}/>, title: "Идеальные зазоры", desc: "Рассчитываем допуски для силиконовых уплотнителей и петель, чтобы вода оставалась внутри." },
+              { icon: <Settings strokeWidth={1.5} size={32}/>, title: "Любая фурнитура", desc: "Адаптируем чертеж под любую выбранную вами фурнитуру с маркетплейсов или из бутиков." },
+              { icon: <FileCheck2 strokeWidth={1.5} size={32}/>, title: "Точный экспорт", desc: "Выдаем понятный PDF для вас и профессиональный формат DWG для заводского станка с ЧПУ." }
+            ].map((srv, i) => (
+              <Reveal key={i} delay={i * 150} className="border-r border-b border-border/40 p-12 transition-all hover:bg-muted/50 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 bg-white relative z-10">
+                <div className="mb-12 text-primary bg-primary/5 w-16 h-16 rounded-2xl flex items-center justify-center">
+                  {srv.icon}
+                </div>
+                <h3 className="mb-4 text-2xl font-serif font-medium">{srv.title}</h3>
+                <p className="text-muted-foreground font-light leading-relaxed">{srv.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section id="how-it-works" className="py-32 bg-background relative overflow-hidden">
+        {/* Soft circle in background */}
+        <div className="absolute -left-40 top-40 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 relative z-10">
+          <Reveal>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight mb-20">Чистота процесса</h2>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border-t border-l border-border/40 bg-white/60 backdrop-blur-sm rounded-[2rem] shadow-xl shadow-primary/5 overflow-hidden">
+            {[
+              { num: "01", title: "Архитектура", desc: "Укажите тип душевой ниши или нестандартную геометрию пространства." },
+              { num: "02", title: "Габариты", desc: "Снимите размеры проема (мы предоставим понятную инструкцию)." },
+              { num: "03", title: "Фурнитура", desc: "Выберите любые петли и ручки. Мы учтем их посадочные отверстия." },
+              { num: "04", title: "Производство", desc: "Получите DWG файл. Отправьте его на любой стекольный завод." }
+            ].map((step, i) => (
+              <Reveal key={i} delay={i * 100} className="border-r border-b border-border/40 p-10 lg:p-12">
+                <div className="text-5xl font-serif text-primary/30 font-light italic mb-8">{step.num}</div>
+                <h3 className="mb-4 text-xl font-serif font-medium text-foreground">{step.title}</h3>
+                <p className="text-muted-foreground font-light text-sm leading-relaxed">{step.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ (Accordion) */}
+      <section id="faq" className="py-32 bg-white relative border-y border-border/40">
+        <div className="mx-auto max-w-[1000px] px-6 lg:px-12">
+          <Reveal>
+            <h2 className="text-4xl sm:text-5xl font-serif font-medium tracking-tight mb-16 text-center">Прояснение</h2>
+          </Reveal>
+
+          <div className="border-t border-border/40">
             {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
                 <Reveal key={index} delay={index * 100}>
-                  <div className="border-b-2 border-foreground last:border-b-0">
+                  <div className="border-b border-border/40">
                     <button 
                       onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full p-6 lg:p-8 flex items-center justify-between text-left group hover:bg-secondary transition-colors"
+                      className="w-full py-8 flex items-center justify-between text-left group"
                     >
-                      <span className="text-lg lg:text-xl font-sans font-bold uppercase tracking-tight">{faq.q}</span>
-                      <div className="text-foreground border-2 border-foreground p-1 font-mono text-xl transition-colors group-hover:bg-primary group-hover:text-white group-hover:border-primary">
-                        {isOpen ? '-' : '+'}
+                      <span className="text-xl font-serif font-medium group-hover:text-primary transition-colors">{faq.q}</span>
+                      <div className={`text-muted-foreground relative w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-primary border-primary text-white' : 'border-border group-hover:border-primary group-hover:text-primary'}`}>
+                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                       </div>
                     </button>
                     
-                    <div className={`grid transition-all duration-300 ease-in-out bg-secondary ${isOpen ? 'grid-rows-[1fr] border-t-2 border-foreground' : 'grid-rows-[0fr]'}`}>
+                    <div className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] pb-8 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                       <div className="overflow-hidden">
-                        <p className="p-6 lg:p-8 font-mono text-xs lg:text-sm text-foreground leading-relaxed">
-                          > {faq.a}
+                        <p className="text-muted-foreground font-light leading-relaxed max-w-3xl">
+                          {faq.a}
                         </p>
                       </div>
                     </div>
@@ -243,13 +236,19 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Configurator Terminal */}
-      <section id="configurator" className="bg-primary py-20 relative z-10 bg-grid-pattern border-b-2 border-foreground">
-        <div className="mx-auto max-w-5xl px-6 relative z-20">
+      {/* Configurator Section */}
+      <section id="configurator" className="py-32 bg-background relative overflow-hidden">
+        {/* Soft lighting effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10">
           <Reveal>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl sm:text-5xl font-sans font-black text-white uppercase tracking-tighter mb-4">Терминал расчетов</h2>
-              <p className="font-mono text-xs text-white/70 uppercase">Введите входные параметры для генерации чертежа</p>
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center gap-2 border-b border-primary/30 pb-2 mb-8 text-[10px] uppercase tracking-[0.3em] font-semibold text-primary">
+                Бриф
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight mb-6">Проектирование</h2>
+              <p className="text-muted-foreground font-light max-w-xl mx-auto">Отправьте нам исходные данные, и инженер подготовит точный чертеж для идеальной душевой.</p>
             </div>
           </Reveal>
           
@@ -261,17 +260,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background py-12 px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+      <footer className="bg-white py-20">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-border/40 pt-10">
           <div className="flex items-center gap-3">
-            <span className="text-2xl font-mono font-bold uppercase tracking-widest text-primary">DWG_GLASS</span>
+            <div className="w-6 h-6 rounded-full bg-foreground text-background flex items-center justify-center font-serif text-xs font-bold">D</div>
+            <span className="text-lg font-serif font-semibold text-foreground tracking-widest">Dwgglass</span>
           </div>
-          <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground text-center">
-            SYSTEM VERSION 2.0.26<br/>ALL RIGHTS RESERVED.
+          <div className="text-muted-foreground text-[11px] font-light uppercase tracking-widest">
+            © 2026. Архитектурное проектирование стекла.
           </div>
-          <div className="flex gap-8 font-mono text-xs font-bold uppercase tracking-widest">
-            <a href="#" className="hover:text-primary transition-colors">>> TELEGRAM</a>
-            <a href="#" className="hover:text-primary transition-colors">>> E-MAIL</a>
+          <div className="flex gap-8 text-[11px] text-foreground font-bold uppercase tracking-[0.2em]">
+            <a href="#" className="hover:text-primary transition-colors">Telegram</a>
+            <a href="#" className="hover:text-primary transition-colors">Почта</a>
           </div>
         </div>
       </footer>
