@@ -24,18 +24,18 @@ interface Beam {
 }
 
 function createBeam(width: number, height: number): Beam {
-    const angle = -45 + Math.random() * 90;
+    const angle = -35 + Math.random() * 10;
     return {
         x: Math.random() * width * 1.5 - width * 0.25,
         y: Math.random() * height * 1.5 - height * 0.25,
-        width: 40 + Math.random() * 80,
+        width: 30 + Math.random() * 60,
         length: height * 2.5,
         angle: angle,
-        speed: 1.5 + Math.random() * 3.0,
-        opacity: 0.5 + Math.random() * 0.5,
+        speed: 0.6 + Math.random() * 1.2,
+        opacity: 0.3 + Math.random() * 0.3, // Увеличена базовая яркость лучей
         hue: 190 + Math.random() * 70,
         pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.04 + Math.random() * 0.06,
+        pulseSpeed: 0.02 + Math.random() * 0.03,
     };
 }
 
@@ -47,12 +47,12 @@ export function BeamsBackground({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const beamsRef = useRef<Beam[]>([]);
     const animationFrameRef = useRef<number>(0);
-    const MINIMUM_BEAMS = 30;
+    const MINIMUM_BEAMS = 20;
 
     const opacityMap = {
         subtle: 0.7,
         medium: 0.85,
-        strong: 1.5,
+        strong: 1.5, // Увеличен множитель яркости для режима strong
     };
 
     useEffect(() => {
@@ -90,10 +90,10 @@ export function BeamsBackground({
                 column * spacing +
                 spacing / 2 +
                 (Math.random() - 0.5) * spacing * 0.5;
-            beam.width = 40 + Math.random() * 80;
-            beam.speed = 1.5 + Math.random() * 3.0;
+            beam.width = 100 + Math.random() * 100;
+            beam.speed = 0.5 + Math.random() * 0.4;
             beam.hue = 190 + (index * 70) / totalBeams;
-            beam.opacity = 0.5 + Math.random() * 0.5;
+            beam.opacity = 0.3 + Math.random() * 0.3; // Увеличена базовая яркость
             return beam;
         }
 
@@ -102,20 +102,33 @@ export function BeamsBackground({
             ctx.translate(beam.x, beam.y);
             ctx.rotate((beam.angle * Math.PI) / 180);
 
+            // Calculate pulsing opacity
             const pulsingOpacity =
                 beam.opacity *
-                (0.6 + Math.sin(beam.pulse) * 0.4) *
+                (0.8 + Math.sin(beam.pulse) * 0.2) *
                 opacityMap[intensity];
 
             const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
 
-            gradient.addColorStop(0, `hsla(${beam.hue}, 100%, 70%, 0)`);
-            gradient.addColorStop(0.2, `hsla(${beam.hue}, 100%, 70%, ${pulsingOpacity * 0.5})`);
-            gradient.addColorStop(0.4, `hsla(${beam.hue}, 100%, 80%, ${pulsingOpacity})`);
-            gradient.addColorStop(0.5, `hsla(${beam.hue}, 100%, 90%, ${pulsingOpacity})`);
-            gradient.addColorStop(0.6, `hsla(${beam.hue}, 100%, 80%, ${pulsingOpacity})`);
-            gradient.addColorStop(0.8, `hsla(${beam.hue}, 100%, 70%, ${pulsingOpacity * 0.5})`);
-            gradient.addColorStop(1, `hsla(${beam.hue}, 100%, 70%, 0)`);
+            // Enhanced gradient with multiple color stops
+            gradient.addColorStop(0, `hsla(${beam.hue}, 85%, 65%, 0)`);
+            gradient.addColorStop(
+                0.1,
+                `hsla(${beam.hue}, 85%, 65%, ${pulsingOpacity * 0.5})`
+            );
+            gradient.addColorStop(
+                0.4,
+                `hsla(${beam.hue}, 85%, 65%, ${pulsingOpacity})`
+            );
+            gradient.addColorStop(
+                0.6,
+                `hsla(${beam.hue}, 85%, 65%, ${pulsingOpacity})`
+            );
+            gradient.addColorStop(
+                0.9,
+                `hsla(${beam.hue}, 85%, 65%, ${pulsingOpacity * 0.5})`
+            );
+            gradient.addColorStop(1, `hsla(${beam.hue}, 85%, 65%, 0)`);
 
             ctx.fillStyle = gradient;
             ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
@@ -126,14 +139,14 @@ export function BeamsBackground({
             if (!canvas || !ctx) return;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.filter = "blur(15px)";
+            ctx.filter = "blur(35px)";
 
             const totalBeams = beamsRef.current.length;
             beamsRef.current.forEach((beam, index) => {
                 beam.y -= beam.speed;
-                beam.x += Math.sin(beam.pulse) * 1.5;
                 beam.pulse += beam.pulseSpeed;
 
+                // Reset beam when it goes off screen
                 if (beam.y + beam.length < -100) {
                     resetBeam(beam, index, totalBeams);
                 }
