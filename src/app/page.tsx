@@ -123,7 +123,7 @@ export default function Home() {
           <div className={`order-1 lg:order-2 lg:col-span-7 relative h-[500px] lg:h-[700px] w-full transition-all duration-1000 delay-700 ${mounted ? 'opacity-100' : 'opacity-0 blur-sm scale-[1.02]'}`}>
             <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10 border border-border/40">
               <Image 
-                src="/hero_tech_bg_1780444334766.png" 
+                src="/split_hero_final.png" 
                 alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
                 fill 
                 className="object-cover"
