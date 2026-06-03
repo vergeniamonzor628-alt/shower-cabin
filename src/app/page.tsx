@@ -89,48 +89,53 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section (Behind Glass Aesthetic) */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        
-        {/* Full screen background image */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/hero_tech_bg_1780444334766.png" 
-            alt="CAD Blueprint" 
-            fill 
-            className="object-cover object-center scale-105"
-            priority
-          />
-        </div>
+      {/* Hero Section */}
+      <section className="relative pt-40 pb-32 overflow-hidden border-b border-border/40">
+        {/* Декоративное мягкое свечение на фоне */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
-        {/* Frosted Glass Overlay */}
-        <div className="absolute inset-0 z-10 bg-white/40 backdrop-blur-2xl border-b border-white/20"></div>
-        {/* Subtle gradient overlay to ensure text readability */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-white/90 via-white/50 to-white/20"></div>
-
-        <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-20 text-center">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 relative z-10 grid lg:grid-cols-12 gap-16 items-center">
           
-          <div className={`inline-flex items-center gap-2 border border-primary/20 bg-white/50 backdrop-blur-md px-6 py-2 rounded-full mb-8 text-[10px] uppercase tracking-[0.2em] font-bold text-primary transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Экономия до 50 000 ₽ на ремонте
-          </div>
-          
-          <h1 className={`text-5xl sm:text-6xl xl:text-7xl font-serif font-medium tracking-tight mb-8 leading-[1.1] text-foreground transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Премиум душевая <br/><span className="italic font-light">напрямую с завода.</span>
-          </h1>
-          
-          <p className={`max-w-2xl mx-auto text-base sm:text-lg text-foreground/80 mb-12 font-medium leading-relaxed transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем <span className="font-bold text-primary">профессиональный CAD-чертеж</span>, с которым любой стекольный завод изготовит вашу идеальную кабину за 1/3 цены.
-          </p>
-          
-          <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <button onClick={scrollToConfigurator} className="w-full sm:w-auto rounded-full bg-primary px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 hover:shadow-primary/40 flex items-center justify-center gap-4 group">
-              Создать чертеж моей кабины
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <p className="text-xs text-foreground font-semibold flex items-center gap-2 bg-white/50 backdrop-blur-sm py-2 px-4 rounded-full border border-white/40">
-              <ShieldCheck size={14} className="text-primary"/> Готовый PDF-файл за 24 часа
+          <div className="order-2 lg:order-1 lg:col-span-5 relative z-20">
+            <div className={`inline-flex items-center gap-2 border-b border-primary/20 pb-2 mb-8 text-[10px] uppercase tracking-[0.2em] font-bold text-primary transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              Экономия до 50 000 ₽ на ремонте
+            </div>
+            
+            <h1 className={`text-4xl sm:text-5xl xl:text-6xl font-serif font-medium tracking-tight mb-8 leading-[1.1] transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Премиум душевая напрямую <span className="italic text-primary font-light">с завода.</span>
+            </h1>
+            
+            <p className={`max-w-md text-base text-muted-foreground mb-10 font-light leading-relaxed transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем <strong>профессиональный CAD-чертеж</strong>, с которым любой стекольный завод изготовит вашу идеальную кабину за 1/3 цены.
             </p>
+            
+            <div className={`transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <button onClick={scrollToConfigurator} className="w-full sm:w-auto rounded-full bg-primary px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/20 transition-all hover:bg-foreground hover:-translate-y-1 flex items-center justify-center gap-4 group mb-4">
+                Создать чертеж моей кабины
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              <p className="text-xs text-muted-foreground font-medium flex items-center gap-2">
+                <ShieldCheck size={14} className="text-primary"/> Готовый PDF-файл за 24 часа. Подходит для РФ.
+              </p>
+            </div>
           </div>
+
+          <div className={`order-1 lg:order-2 lg:col-span-7 relative h-[500px] lg:h-[700px] w-full transition-all duration-1000 delay-700 ${mounted ? 'opacity-100' : 'opacity-0 blur-sm scale-[1.02]'}`}>
+            <div className="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10 border border-border/40">
+              <Image 
+                src="/split_hero.png" 
+                alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
+                fill 
+                className="object-cover"
+                priority
+              />
+              <div className="absolute bottom-6 right-6 bg-white/60 backdrop-blur-md px-5 py-3 rounded-xl border border-white/80 shadow-lg flex items-center gap-3">
+                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                 <span className="text-[10px] font-bold uppercase tracking-widest text-foreground">От идеи к чертежу</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
