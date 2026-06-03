@@ -33,15 +33,22 @@ export default function Home() {
         <div className="absolute inset-0 z-0 overflow-hidden bg-background">
           <div className="absolute inset-[-5%] w-[110%] h-[110%] opacity-80 animate-[pulse_10s_ease-in-out_infinite]">
              <Image 
-                src="/split_hero_neutral_1780475992592.png" 
-                alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
+                src="/hero_blueprint_shower_1780488146668.png" 
+                alt="CAD Blueprint" 
                 fill 
                 className="object-cover scale-[1.05]"
                 priority
               />
+             <Image 
+                src="/hero_realistic_shower_1780488135788.png" 
+                alt="Luxury Shower" 
+                fill 
+                className="object-cover scale-[1.05] animate-crossfade"
+                priority
+              />
           </div>
           {/* Glassmorphism Overlays */}
-          <div className="absolute inset-0 backdrop-blur-md bg-background/40"></div>
+          <div className="absolute inset-0 backdrop-blur-[2px] bg-background/50"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
         </div>
 
@@ -155,8 +162,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blueprint Gallery */}
+      <section className="py-24 bg-background relative border-t border-border/40 overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16 max-w-2xl mx-auto opacity-0 animate-fade-in-up">
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Наши проекты</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Точность в каждой линии</h2>
+            <p className="text-white/60 text-lg font-light">
+              Мы проектируем конструкции любой сложности: от простых душевых перегородок до нестандартных кабин в мансарды с вырезами под бортики и трубы.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 animate-fade-in-up-delay-1">
+            <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 group shadow-2xl">
+              <Image src="/blueprint_on_table.png" alt="Чертеж на столе" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                <span className="text-white font-medium">Инженерный анализ</span>
+              </div>
+            </div>
+            <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 group shadow-2xl">
+              <Image src="/hero_blueprint_shower_1780488146668.png" alt="CAD чертеж кабины" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                <span className="text-white font-medium">CAD проектирование</span>
+              </div>
+            </div>
+            <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 group shadow-2xl">
+              <Image src="/split_hero_neutral_1780475992592.png" alt="Сравнение чертежа и фото" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                <span className="text-white font-medium">Идеальная посадка</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Configurator Section */}
-      <section id="configurator" className="py-32 bg-[#17181c] border-t border-white/5">
+      <section id="configurator" className="py-24 bg-[#17181c] border-t border-white/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>

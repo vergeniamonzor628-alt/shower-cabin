@@ -78,7 +78,7 @@ export default function Configurator() {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-xl shadow-2xl shadow-primary/10 rounded-[2rem] flex flex-col min-h-[650px] relative overflow-hidden border border-white">
+    <div className="bg-white/80 backdrop-blur-xl shadow-2xl shadow-primary/10 rounded-[2rem] flex flex-col relative overflow-hidden border border-white">
       
       {/* Progress Indicator */}
       {step < 4 && (
@@ -110,25 +110,25 @@ export default function Configurator() {
         {/* Step 1: Cabin Type */}
         {step === 1 && (
           <div className="animate-in fade-in zoom-in-95 duration-300 w-full">
-            <h3 className="mb-8 text-2xl font-serif font-medium text-foreground text-center">
+            <h3 className="mb-6 text-xl md:text-2xl font-serif font-medium text-foreground text-center">
               Выберите тип конструкции
             </h3>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
               {CABIN_TYPES.map(type => (
                 <div 
                   key={type.id}
                   onClick={() => { setValue("orderType", "template"); setValue("cabinType", type.name); }}
-                  className={`cursor-pointer rounded-2xl p-3 transition-all duration-300 group ${
+                  className={`cursor-pointer rounded-2xl p-2 transition-all duration-300 group ${
                     orderType === "template" && cabinType === type.name 
                       ? 'bg-white shadow-xl shadow-primary/15 ring-2 ring-primary scale-[1.02]' 
                       : 'bg-white/50 hover:bg-white hover:shadow-lg ring-1 ring-border/50'
                   }`}
                 >
-                  <div className="relative aspect-[4/5] w-full mb-4 rounded-xl overflow-hidden bg-muted/30">
+                  <div className="relative aspect-[4/3] w-full mb-3 rounded-xl overflow-hidden bg-muted/30">
                     <Image src={type.img} alt={type.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                   </div>
-                  <div className={`text-sm font-medium text-center transition-colors ${
+                  <div className={`text-[11px] md:text-xs font-medium text-center transition-colors leading-tight ${
                     orderType === "template" && cabinType === type.name ? 'text-primary' : 'text-foreground'
                   }`}>
                     {type.name}
@@ -139,7 +139,7 @@ export default function Configurator() {
 
             <div 
               onClick={() => { setValue("orderType", "custom"); setValue("cabinType", ""); }}
-              className={`cursor-pointer rounded-2xl p-6 text-center transition-all duration-300 ${
+              className={`cursor-pointer rounded-2xl p-4 text-center transition-all duration-300 mx-auto max-w-md ${
                 orderType === "custom" 
                   ? 'bg-primary text-white shadow-xl shadow-primary/20 scale-[1.01]' 
                   : 'bg-white/50 ring-1 ring-border/50 hover:bg-white hover:shadow-lg text-foreground'
@@ -159,37 +159,37 @@ export default function Configurator() {
             
             {orderType === "template" ? (
               <>
-                <h3 className="mb-8 text-2xl font-serif font-medium text-foreground text-center">
+                <h3 className="mb-6 text-xl md:text-2xl font-serif font-medium text-foreground text-center">
                   Укажите габариты (в мм)
                 </h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                  <div className="space-y-2">
-                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Ширина проема</label>
-                    <input {...register("width")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">Ширина проема</label>
+                    <input {...register("width")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Напр: 900" />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Глубина (если есть)</label>
-                    <input {...register("depth")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">Глубина (если есть)</label>
+                    <input {...register("depth")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Напр: 900" />
                   </div>
-                  <div className="space-y-2 md:col-span-2">
-                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Высота по стеклу</label>
-                    <input {...register("height")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 2000" />
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">Высота по стеклу</label>
+                    <input {...register("height")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Напр: 2000" />
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4 rounded-xl bg-primary/5 p-5 border border-primary/10">
-                    <Zap className="text-primary shrink-0 mt-0.5" size={20} />
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3 rounded-xl bg-primary/5 p-4 border border-primary/10">
+                    <Zap className="text-primary shrink-0 mt-0.5" size={16} />
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-1">Фурнитура</p>
-                      <p className="text-sm text-slate-500 font-light leading-relaxed">
-                        Укажите ссылки на петли, коннекторы или ручки, которые вы планируете купить. Инженер должен учесть отверстия для них.
+                      <p className="text-xs font-semibold text-foreground mb-0.5">Фурнитура</p>
+                      <p className="text-xs text-slate-500 font-light leading-relaxed">
+                        Ссылки на петли или ручки. Инженер учтет вырезы для них.
                       </p>
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <textarea {...register("hardware")} className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[100px]" placeholder="Вставьте ссылки сюда..."></textarea>
+                  <div className="space-y-1.5">
+                    <textarea {...register("hardware")} className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[60px]" placeholder="Вставьте ссылки сюда..."></textarea>
                   </div>
                 </div>
               </>
