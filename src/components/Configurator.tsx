@@ -88,11 +88,11 @@ export default function Configurator() {
             { num: 2, label: "Размеры" },
             { num: 3, label: "Контакты" }
           ].map(s => (
-            <div key={s.num} className={`flex-1 flex flex-col items-center justify-center py-5 border-r border-border/40 last:border-r-0 relative transition-colors ${step === s.num ? 'bg-primary/5 text-primary' : 'text-muted-foreground'}`}>
-              <div className={`text-[10px] uppercase tracking-widest font-bold mb-1 ${step >= s.num ? 'text-primary' : 'text-muted-foreground/50'}`}>
+            <div key={s.num} className={`flex-1 flex flex-col items-center justify-center py-5 border-r border-border/40 last:border-r-0 relative transition-colors ${step === s.num ? 'bg-primary/5 text-primary' : 'text-slate-500'}`}>
+              <div className={`text-[10px] uppercase tracking-widest font-bold mb-1 ${step >= s.num ? 'text-primary' : 'text-slate-500/50'}`}>
                 Шаг 0{s.num}
               </div>
-              <div className={`text-sm font-serif font-medium ${step >= s.num ? 'text-foreground' : 'text-muted-foreground'}`}>
+              <div className={`text-sm font-serif font-medium ${step >= s.num ? 'text-foreground' : 'text-slate-500'}`}>
                 {s.label}
               </div>
               {/* Active indicator line */}
@@ -146,7 +146,7 @@ export default function Configurator() {
               }`}
             >
               <h4 className="text-lg font-serif font-medium mb-2">Нестандартный проект</h4>
-              <p className={`text-sm font-light ${orderType === "custom" ? 'text-white/80' : 'text-muted-foreground'}`}>
+              <p className={`text-sm font-light ${orderType === "custom" ? 'text-white/80' : 'text-slate-500'}`}>
                 Мансардные скосы, вырезы под трубы, сложная геометрия.
               </p>
             </div>
@@ -165,15 +165,15 @@ export default function Configurator() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                   <div className="space-y-2">
-                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Ширина проема</label>
+                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Ширина проема</label>
                     <input {...register("width")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Глубина (если есть)</label>
+                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Глубина (если есть)</label>
                     <input {...register("depth")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
                   </div>
                   <div className="space-y-2 md:col-span-2">
-                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Высота по стеклу</label>
+                    <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Высота по стеклу</label>
                     <input {...register("height")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 2000" />
                   </div>
                 </div>
@@ -183,7 +183,7 @@ export default function Configurator() {
                     <Zap className="text-primary shrink-0 mt-0.5" size={20} />
                     <div>
                       <p className="text-sm font-semibold text-foreground mb-1">Фурнитура</p>
-                      <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                      <p className="text-sm text-slate-500 font-light leading-relaxed">
                         Укажите ссылки на петли, коннекторы или ручки, которые вы планируете купить. Инженер должен учесть отверстия для них.
                       </p>
                     </div>
@@ -199,7 +199,7 @@ export default function Configurator() {
                   Опишите ваш проект
                 </h3>
                 <div className="space-y-2">
-                  <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Детали и размеры</label>
+                  <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Детали и размеры</label>
                   <textarea {...register("customDescription")} className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[250px] leading-relaxed" placeholder="Опишите габариты, наличие уклона потолка, вырезы под бортик и т.д."></textarea>
                 </div>
               </>
@@ -215,15 +215,15 @@ export default function Configurator() {
             </h3>
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Ваше Имя</label>
+                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Ваше Имя</label>
                 <input {...register("name")} type="text" className={`w-full rounded-xl border ${errors.name ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-white/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="Иван" />
               </div>
               <div className="space-y-2">
-                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Телефон (WhatsApp)</label>
+                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Телефон (WhatsApp)</label>
                 <input {...register("phone")} type="tel" className={`w-full rounded-xl border ${errors.phone ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-white/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="+7 (999) 000-00-00" />
               </div>
               <div className="space-y-2">
-                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Telegram (по желанию)</label>
+                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Telegram (по желанию)</label>
                 <input {...register("telegram")} type="text" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="@username" />
               </div>
             </div>
@@ -237,18 +237,18 @@ export default function Configurator() {
               <Check size={40} />
             </div>
             <h2 className="mb-4 text-3xl font-serif font-medium text-foreground">Заявка принята</h2>
-            <p className="mb-10 text-muted-foreground font-light">
+            <p className="mb-10 text-slate-500 font-light">
               Мы получили данные. Чтобы инженер приступил к чертежу, пожалуйста, оплатите проект (окупается в 15-20 раз за счет отказа от салонов).
             </p>
             
             <div className="mx-auto mb-10 max-w-sm rounded-2xl bg-white p-8 shadow-xl shadow-primary/5 border border-border/40 text-left">
                <div className="mb-6 flex justify-between items-end border-b border-border/40 pb-6">
-                 <span className="text-sm font-medium text-muted-foreground">Стоимость чертежа</span>
+                 <span className="text-sm font-medium text-slate-500">Стоимость чертежа</span>
                  <span className="text-2xl font-serif font-semibold text-foreground">1 500 ₽</span>
                </div>
-               <p className="mb-2 text-sm text-muted-foreground">Перевод по СБП на номер:</p>
+               <p className="mb-2 text-sm text-slate-500">Перевод по СБП на номер:</p>
                <p className="mb-2 text-xl font-medium text-foreground">+7 900 123-45-67</p>
-               <p className="text-sm text-muted-foreground">Сбербанк или Тинькофф (Иван И.)</p>
+               <p className="text-sm text-slate-500">Сбербанк или Тинькофф (Иван И.)</p>
             </div>
 
             <a href="https://wa.me/79001234567?text=Привет,%20перевел(а)%20за%20чертеж." target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 hover:shadow-primary/30">
@@ -265,7 +265,7 @@ export default function Configurator() {
           <button 
             type="button"
             onClick={() => setStep(prev => Math.max(prev - 1, 1))}
-            className={`rounded-full px-6 py-3 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors ${step > 1 ? 'visible' : 'invisible'}`}
+            className={`rounded-full px-6 py-3 text-sm font-semibold text-slate-500 hover:text-foreground transition-colors ${step > 1 ? 'visible' : 'invisible'}`}
           >
             Назад
           </button>

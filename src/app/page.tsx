@@ -78,7 +78,7 @@ export default function Home() {
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white font-serif font-bold text-lg shadow-md shadow-primary/20">A</div>
             <span className="text-xl font-serif font-semibold tracking-wider text-foreground">AquaDraft</span>
           </div>
-          <div className="hidden md:flex items-center gap-12 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-12 text-[11px] font-semibold text-slate-600 uppercase tracking-[0.2em]">
             <a href="#problem" className="hover:text-primary transition-colors">Суть</a>
             <a href="#how-it-works" className="hover:text-primary transition-colors">Как это работает</a>
             <a href="#faq" className="hover:text-primary transition-colors">Вопросы</a>
