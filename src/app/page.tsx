@@ -1,31 +1,13 @@
 import Image from "next/image";
 import Configurator from "@/components/Configurator";
+import { BeamsBackground } from "@/components/ui/beams-background";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background selection:bg-primary/30 relative">
+    <main className="min-h-screen bg-neutral-950 selection:bg-primary/30 relative">
       
       {/* Global Animated Background */}
-      <div className="fixed inset-0 z-0 overflow-hidden bg-background">
-        <div className="absolute inset-[-5%] w-[110%] h-[110%] opacity-100 animate-[pulse_10s_ease-in-out_infinite]">
-           <Image 
-              src="/hero_blueprint_shower_1780488146668.png" 
-              alt="CAD Blueprint" 
-              fill 
-              className="object-cover scale-[1.05]"
-              priority
-            />
-           <Image 
-              src="/hero_realistic_shower_1780488135788.png" 
-              alt="Luxury Shower" 
-              fill 
-              className="object-cover scale-[1.05] animate-crossfade"
-              priority
-            />
-        </div>
-        {/* Glassmorphism Overlays */}
-        <div className="absolute inset-0 backdrop-blur-[2px] bg-background/30"></div>
-      </div>
+      <BeamsBackground className="fixed inset-0 z-0 h-screen" intensity="medium" />
       
       {/* Header */}
       <header className="absolute top-0 w-full z-50 border-b border-white/10 bg-background/30 backdrop-blur-md">
