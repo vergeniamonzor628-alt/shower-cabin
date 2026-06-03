@@ -238,7 +238,7 @@ export default function Configurator() {
             </div>
             <h2 className="mb-4 text-3xl font-serif font-medium text-foreground">Заявка принята</h2>
             <p className="mb-10 text-muted-foreground font-light">
-              Мы получили данные. Чтобы инженер приступил к чертежу, пожалуйста, оплатите проект.
+              Мы получили данные. Чтобы инженер приступил к чертежу, пожалуйста, оплатите проект (окупается в 15-20 раз за счет отказа от салонов).
             </p>
             
             <div className="mx-auto mb-10 max-w-sm rounded-2xl bg-white p-8 shadow-xl shadow-primary/5 border border-border/40 text-left">
