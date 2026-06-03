@@ -76,6 +76,8 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
       {/* The Pain (Problem) */}
       <section className="py-32 bg-black/60 backdrop-blur-[2px] relative z-10 border-border/40 overflow-hidden">
         {/* Decorative Photo */}
