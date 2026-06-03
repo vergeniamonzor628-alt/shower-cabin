@@ -93,13 +93,15 @@ export default function Home() {
       <section className="relative min-h-[95vh] flex items-center pt-20 pb-20 overflow-hidden border-b border-border/40">
         
         {/* SVG Filter for Underwater Effect */}
-        <svg className="absolute w-0 h-0">
-          <filter id="water-ripple">
-            <feTurbulence type="fractalNoise" baseFrequency="0.005 0.005" numOctaves="1" result="noise">
-              <animate attributeName="baseFrequency" values="0.005 0.005;0.008 0.008;0.005 0.005" dur="15s" repeatCount="indefinite" />
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="40" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
+        <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
+          <defs>
+            <filter id="water-ripple" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="2" result="noise">
+                <animate attributeName="baseFrequency" values="0.005;0.008;0.005" dur="15s" repeatCount="indefinite" />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
         </svg>
 
         {/* Animated Background */}
