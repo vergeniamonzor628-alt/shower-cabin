@@ -95,7 +95,7 @@ export default function Home() {
             <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
               <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
-                <span className="text-white/80 font-medium">Никаких наценок за "премиум бренд"</span>
+                <span className="text-white/80 font-medium">Никаких наценок за &quot;премиум бренд&quot;</span>
               </li>
               <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
