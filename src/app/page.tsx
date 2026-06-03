@@ -72,7 +72,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
       
       {/* Header */}
-      <header className="fixed top-0 z-50 w-full bg-background/80 backdrop-blur-xl border-b border-border/40 shadow-sm">
+      <header className="fixed top-0 z-50 w-full bg-white/60 backdrop-blur-xl border-b border-border/40 shadow-sm">
         <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
           <div className="flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white font-serif font-bold text-lg shadow-md shadow-primary/20">A</div>
@@ -129,7 +129,7 @@ export default function Home() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute bottom-6 right-6 bg-background/80 backdrop-blur-md px-5 py-3 rounded-xl border border-card/50 shadow-lg flex items-center gap-3">
+              <div className="absolute bottom-6 right-6 bg-white/60 backdrop-blur-md px-5 py-3 rounded-xl border border-white/80 shadow-lg flex items-center gap-3">
                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                  <span className="text-[10px] font-bold uppercase tracking-widest text-foreground">От идеи к чертежу</span>
               </div>
@@ -190,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* How it works (With Workspace Close Up) */}
-      <section id="how-it-works" className="py-32 bg-background relative border-t border-border/40">
+      <section id="how-it-works" className="py-32 bg-white relative border-t border-border/40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           
           <Reveal>
@@ -269,7 +269,7 @@ export default function Home() {
       </section>
       
       {/* Configurator Section */}
-      <section id="configurator" className="py-32 bg-background relative overflow-hidden border-t border-border/40">
+      <section id="configurator" className="py-32 bg-white relative overflow-hidden border-t border-border/40">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10">
