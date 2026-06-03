@@ -1,91 +1,28 @@
-"use client";
-
 import Image from "next/image";
 import Configurator from "@/components/Configurator";
-import { 
-  ArrowRight,
-  ShieldCheck, 
-  Ruler,
-  Factory,
-  CheckCircle2,
-  Plus,
-  Minus
-} from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-
-function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entry.target);
-      }
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-    
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-  
-  return (
-    <div 
-      ref={ref} 
-      className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${className}`} 
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-}
 
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const scrollToConfigurator = () => {
-    const el = document.getElementById('configurator');
-    el?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const faqs = [
-    {
-      q: "Зачем мне ваш чертеж, если в магазине кабина стоит 30 000 руб?",
-      a: "В магазине за эти деньги вы получите тонкое стекло (4-6 мм), пластиковые заедающие ролики и стандартный размер (из-за которого придется лить 5 см герметика). За те же деньги, заказав толстое стекло 8 мм на заводе по нашему чертежу, вы соберете премиальную кабину, которая в салоне стоила бы от 80 000 руб."
-    },
-    {
-      q: "А что если завод сделает стекло, а оно не влезет?",
-      a: "Если ошибка в нашем чертеже (неверно рассчитан зазор под петлю) — мы бесплатно переделываем чертеж и компенсируем вам затраты. Если завод нарушил размеры чертежа — вы защищены договором с заводом. Если вы сами неверно сняли размеры помещения — ответственность на вас. Обязательно посмотрите нашу инструкцию по замерам!"
-    },
-    {
-      q: "Я еще не купил фурнитуру, можно заказать чертеж?",
-      a: "Да, но производство на заводе начнется только после того, как вы определитесь с петлями. Разные петли требуют разных вырезов в стекле. Вы можете прислать ссылки на фурнитуру позже напрямую нашему инженеру."
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
+    <main className="min-h-screen bg-background selection:bg-primary/30">
       
       {/* Header */}
-      <header className="fixed top-0 z-50 w-full bg-white/60 backdrop-blur-xl border-b border-border/40 shadow-sm">
-        <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
+      <header className="absolute top-0 w-full z-50 border-b border-white/10 bg-background/30 backdrop-blur-md">
+        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white font-serif font-bold text-lg shadow-md shadow-primary/20">A</div>
-            <span className="text-xl font-serif font-semibold tracking-wider text-foreground">AquaDraft</span>
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-serif font-bold text-lg">
+              A
+            </div>
+            <span className="font-serif font-semibold text-xl text-white tracking-wide">AquaDraft</span>
           </div>
-          <div className="hidden md:flex items-center gap-12 text-[11px] font-semibold text-slate-600 uppercase tracking-[0.2em]">
-            <a href="#problem" className="hover:text-primary transition-colors">Суть</a>
-            <a href="#how-it-works" className="hover:text-primary transition-colors">Как это работает</a>
-            <a href="#faq" className="hover:text-primary transition-colors">Вопросы</a>
+          
+          <div className="hidden md:flex items-center gap-12 text-[11px] font-semibold text-white/70 uppercase tracking-[0.2em]">
+            <a href="#how-it-works" className="hover:text-white transition-colors">Метод</a>
+            <a href="#configurator" className="hover:text-white transition-colors">Конфигуратор</a>
           </div>
-          <button onClick={scrollToConfigurator} className="rounded-full bg-foreground px-8 py-3 text-[11px] font-bold text-background uppercase tracking-[0.15em] shadow-lg shadow-foreground/10 transition-all hover:bg-primary hover:shadow-primary/20 hover:-translate-y-0.5">
-            Рассчитать проект
-          </button>
+
+          <a href="#configurator" className="bg-white text-background px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white/90 transition-all">
+            Начать проект
+          </a>
         </div>
       </header>
 
@@ -104,203 +41,206 @@ export default function Home() {
               />
           </div>
           {/* Glassmorphism Overlays */}
-          <div className="absolute inset-0 backdrop-blur-md bg-background/30"></div>
+          <div className="absolute inset-0 backdrop-blur-md bg-background/40"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
         </div>
 
-        <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10 text-center">
-          <div className={`inline-flex items-center justify-center gap-2 border-b border-primary/30 pb-2 mb-8 text-[10px] uppercase tracking-[0.2em] font-bold text-primary transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Экономия до 50 000 ₽ на ремонте
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="max-w-[900px]">
+            <div className="inline-flex mb-8 items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-white text-[10px] font-bold uppercase tracking-[0.2em]">Индивидуальное проектирование</span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-[5.5rem] font-serif text-white leading-[1.05] mb-8 tracking-tight">
+              Архитектурный подход <br />
+              <span className="text-white/60 italic font-light">к вашей ванной.</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-12 font-light leading-relaxed">
+              Премиальные душевые кабины напрямую с завода. Без посредников, без наценок за бренд, с точностью посадки до миллиметра.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+              <a href="#configurator" className="bg-white hover:bg-white/90 text-background px-8 py-4 rounded-full font-medium text-sm transition-all flex items-center gap-2">
+                Спроектировать кабину
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  <div className="w-10 h-10 rounded-full border-2 border-background bg-slate-200 overflow-hidden relative"><Image src="/corner_shower_neutral_1780476003860.png" alt="1" fill className="object-cover"/></div>
+                  <div className="w-10 h-10 rounded-full border-2 border-background bg-slate-300 overflow-hidden relative"><Image src="/niche_shower_neutral_1780476014823.png" alt="2" fill className="object-cover"/></div>
+                  <div className="w-10 h-10 rounded-full border-2 border-background bg-slate-400 overflow-hidden relative"><Image src="/walk_in_shower_neutral_1780476025174.png" alt="3" fill className="object-cover"/></div>
+                </div>
+                <div className="text-left">
+                  <p className="text-xs text-white/70 font-medium uppercase tracking-wider">Доступно 5 форм</p>
+                  <p className="text-[10px] text-white/40">Под любой интерьер</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* The Pain (Problem) */}
+      <section className="py-32 bg-[#17181c] border-t border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent blur-3xl"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <div className="max-w-xl">
+              <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
+              <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-[1.2]">
+                Зачем переплачивать 300% <span className="italic text-white/50">салонам сантехники?</span>
+              </h2>
+              
+              <div className="space-y-8">
+                <p className="text-white/60 leading-relaxed text-lg font-light">
+                  Салоны не производят стекло — они просто перепродают его, закладывая маржу за бренд, логистику и аренду шоурума. Мы предлагаем другой путь — прямой доступ к промышленному стекольному производству.
+                </p>
+                
+                <ul className="space-y-5">
+                  <li className="flex gap-4">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span className="text-white/80">Никаких наценок за "премиум бренд"</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span className="text-white/80">Индивидуальный размер без доплат за нестандарт</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span className="text-white/80">Профессиональный инженерный расчет (допуски 1мм)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Price Comparison Card */}
+            <div className="bg-white/5 border border-white/10 rounded-[2rem] p-10 backdrop-blur-sm relative">
+              <div className="absolute -top-4 -right-4 bg-primary text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">
+                Ваша выгода
+              </div>
+              <div className="space-y-10">
+                <div>
+                  <div className="flex justify-between items-end mb-2">
+                    <div className="text-white/40 text-sm font-semibold uppercase tracking-wider">В салоне</div>
+                    <div className="text-2xl font-serif text-white/30 line-through decoration-white/20">~ 150 000 ₽</div>
+                  </div>
+                  <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full bg-white/20 w-full"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between items-end mb-2">
+                    <div className="text-primary text-sm font-semibold uppercase tracking-wider">Наш метод</div>
+                    <div className="text-5xl font-serif text-white">~ 45 000 ₽</div>
+                  </div>
+                  <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary w-1/3 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* The Method (How it works) */}
+      <section id="how-it-works" className="py-32 bg-background relative border-t border-border/40">
+        <div className="container mx-auto px-6">
           
-          <h1 className={`text-5xl sm:text-6xl xl:text-7xl font-serif font-medium tracking-tight mb-8 leading-[1.1] text-foreground transition-all duration-1000 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Премиум душевая напрямую <br className="hidden sm:block" /><span className="italic text-primary font-light">с завода.</span>
-          </h1>
-          
-          <p className={`max-w-2xl mx-auto text-lg text-muted-foreground mb-12 font-light leading-relaxed transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем <strong>профессиональный CAD-чертеж</strong>, с которым любой стекольный завод изготовит вашу идеальную кабину за 1/3 цены.
-          </p>
-          
-          <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <button onClick={scrollToConfigurator} className="w-full sm:w-auto rounded-full bg-primary px-10 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-primary/20 transition-all hover:bg-foreground hover:-translate-y-1 flex items-center justify-center gap-4 group">
-              Создать чертеж моей кабины
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <p className="text-xs text-muted-foreground font-medium flex items-center gap-2 text-left">
-              <ShieldCheck size={14} className="text-primary"/> Готовый PDF-файл за 24 часа. <br className="hidden sm:block" />Подходит для РФ.
+          <div className="text-center mb-24 max-w-2xl mx-auto">
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Процесс работы</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Как мы ломаем систему</h2>
+            <p className="text-white/60 text-lg font-light">
+              Мы превращаем сложный процесс заказа индивидуальной кабины в три простых и абсолютно прозрачных шага.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Problem / Workspace Section */}
-      <section id="problem" className="py-32 bg-background relative overflow-hidden">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
-          
-          <div className="relative z-10 order-2 lg:order-1">
-            <Reveal>
-              <div className="inline-block text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-6">Почему чертеж необходим?</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium tracking-tight mb-8">
-                Завод не примет заказ<br/><span className="italic font-light">"на пальцах"</span>
-              </h2>
-              <p className="text-muted-foreground font-light text-base leading-relaxed mb-10">
-                На производстве никто не будет слушать "мне стекло примерно метр на два". Им нужны точные координаты сверления отверстий под петли и учет технологических зазоров (2-3 мм). 
-                <br/><br/>
-                Ошибетесь на миллиметр при расчете — стекло не влезет в нишу, а каленое стекло <strong>нельзя подрезать</strong>.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            {/* Step 1 */}
+            <div className="group bg-white/5 border border-white/10 p-10 rounded-[2rem] hover:bg-white/10 transition-colors">
+              <div className="text-white/20 font-serif text-7xl mb-8 group-hover:text-primary/40 transition-colors">01</div>
+              <h3 className="text-xl font-semibold text-white mb-4">Вы снимаете размеры</h3>
+              <p className="text-white/50 leading-relaxed font-light">
+                Используйте нашу простую видеоинструкцию. Вам понадобится только рулетка и 10 минут времени. Никаких специальных навыков не требуется.
               </p>
-
-              <div className="flex flex-col gap-6 border-l-2 border-primary/20 pl-6">
-                <div className="flex gap-4 items-start">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"><Ruler size={16}/></div>
-                  <div>
-                    <h4 className="font-serif font-medium text-lg mb-1">Абсолютная точность</h4>
-                    <p className="text-sm font-light text-muted-foreground">Мы закладываем все допуски под выбранную вами фурнитуру.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"><CheckCircle2 size={16}/></div>
-                  <div>
-                    <h4 className="font-serif font-medium text-lg mb-1">Готово для любого ЧПУ станка</h4>
-                    <p className="text-sm font-light text-muted-foreground">Форматы DWG и PDF гарантируют, что вас примет любой завод.</p>
-                  </div>
-                </div>
+            </div>
+            
+            {/* Step 2 */}
+            <div className="group bg-primary/10 border border-primary/20 p-10 rounded-[2rem] relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="text-primary/40 font-serif text-7xl mb-8 group-hover:text-primary transition-colors">02</div>
+                <h3 className="text-xl font-semibold text-white mb-4">Мы делаем проект</h3>
+                <p className="text-white/70 leading-relaxed font-light">
+                  Наши инженеры создают точный CAD-чертеж с допусками, вырезами под петли и спецификацией фурнитуры. Готовый PDF-файл за 24 часа.
+                </p>
               </div>
-            </Reveal>
-          </div>
-
-          <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
-            <Reveal className="w-full h-full">
-              <Image 
-                src="/workspace_1_new.png" 
-                alt="Architectural workspace" 
-                fill 
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
-            </Reveal>
-          </div>
-
-        </div>
-      </section>
-
-      {/* How it works (With Workspace Close Up) */}
-      <section id="how-it-works" className="py-32 bg-background relative border-t border-border/40">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-          
-          <Reveal>
-            <div className="text-center mb-20">
-              <h2 className="text-4xl sm:text-5xl font-serif font-medium tracking-tight mb-6">Путь к идеальной душевой</h2>
-              <p className="text-muted-foreground font-light max-w-xl mx-auto">Всего 4 простых шага отделяют вас от роскошной душевой по цене масс-маркета.</p>
-            </div>
-          </Reveal>
-
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-5 relative h-[400px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
-              <Reveal className="w-full h-full">
-                <Image 
-                  src="/workspace_2_new.png" 
-                  alt="Blueprint close-up" 
-                  fill 
-                  className="object-cover"
-                />
-              </Reveal>
             </div>
 
-            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-8">
-              {[
-                { num: "01", title: "Архитектура", desc: "Угловая, в нишу, П-образная или нестандартная. Выберите тип кабины." },
-                { num: "02", title: "Габариты", desc: "Измерьте ширину и высоту вашей ниши обычной рулеткой (мы поможем)." },
-                { num: "03", title: "Фурнитура", desc: "Прикрепите ссылки на петли, которые вы купили. Мы рассчитаем под них вырезы." },
-                { num: "04", title: "Завод", desc: "Через 24 часа отправьте наш PDF-файл на ближайший стекольный завод." }
-              ].map((step, i) => (
-                <Reveal key={i} delay={i * 100} className="bg-background rounded-2xl p-8 border border-border/50">
-                  <div className="text-4xl font-serif text-primary/20 font-light italic mb-6">{step.num}</div>
-                  <h3 className="mb-3 text-lg font-serif font-medium text-foreground">{step.title}</h3>
-                  <p className="text-muted-foreground font-light text-sm leading-relaxed">{step.desc}</p>
-                </Reveal>
-              ))}
+            {/* Step 3 */}
+            <div className="group bg-white/5 border border-white/10 p-10 rounded-[2rem] hover:bg-white/10 transition-colors">
+              <div className="text-white/20 font-serif text-7xl mb-8 group-hover:text-primary/40 transition-colors">03</div>
+              <h3 className="text-xl font-semibold text-white mb-4">Завод производит</h3>
+              <p className="text-white/50 leading-relaxed font-light">
+                Вы отправляете чертеж на ближайший стекольный завод. Они производят стекло в точности по чертежу. Вы получаете премиум по цене производителя.
+              </p>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* FAQ (Accordion) */}
-      <section id="faq" className="py-32 bg-background relative border-t border-border/40">
-        <div className="mx-auto max-w-[1000px] px-6 lg:px-12">
-          <Reveal>
-            <h2 className="text-4xl sm:text-5xl font-serif font-medium tracking-tight mb-16 text-center">Частые сомнения</h2>
-          </Reveal>
-
-          <div className="border-t border-border/40">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <Reveal key={index} delay={index * 100}>
-                  <div className="border-b border-border/40">
-                    <button 
-                      onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full py-8 flex items-center justify-between text-left group"
-                    >
-                      <span className="text-xl font-serif font-medium group-hover:text-primary transition-colors pr-8">{faq.q}</span>
-                      <div className={`shrink-0 text-muted-foreground relative w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-primary border-primary text-white' : 'border-border group-hover:border-primary group-hover:text-primary'}`}>
-                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-                      </div>
-                    </button>
-                    
-                    <div className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] pb-8 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
-                      <div className="overflow-hidden">
-                        <p className="text-muted-foreground font-light leading-relaxed max-w-3xl">
-                          {faq.a}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-      
       {/* Configurator Section */}
-      <section id="configurator" className="py-32 bg-background relative overflow-hidden border-t border-border/40">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
-
-        <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10">
-          <Reveal>
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 border-b border-primary/30 pb-2 mb-8 text-[10px] uppercase tracking-[0.3em] font-semibold text-primary">
-                Шаг первый
-              </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium tracking-tight mb-6">Какая у вас ванная?</h2>
-              <p className="text-muted-foreground font-light max-w-xl mx-auto">Ответьте на несколько вопросов ниже, и мы подготовим чертеж, с которым вы сэкономите до 50 000 рублей.</p>
-            </div>
-          </Reveal>
+      <section id="configurator" className="py-32 bg-[#17181c] border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>
+            <p className="text-white/60 text-lg font-light">
+              Выберите базовую форму, чтобы запустить процесс проектирования. 
+              Каждая кабина будет адаптирована инженерами под ваши точные размеры.
+            </p>
+          </div>
           
-          <Reveal delay={200}>
-            <Configurator />
-          </Reveal>
-          
+          <Configurator />
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-background py-20">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-border/40 pt-10">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 rounded-full bg-foreground text-background flex items-center justify-center font-serif text-xs font-bold">A</div>
-            <span className="text-lg font-serif font-semibold text-foreground tracking-widest">AquaDraft</span>
+      {/* Trust & Footer */}
+      <footer className="bg-background pt-24 pb-12 border-t border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24 border-b border-white/10 pb-24">
+            <div className="flex flex-col items-center text-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <h4 className="text-white font-semibold mb-2">Чертеж за 24 часа</h4>
+              <p className="text-white/50 text-sm font-light">Вы не теряете время на ожидание.</p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <h4 className="text-white font-semibold mb-2">Точность посадки</h4>
+              <p className="text-white/50 text-sm font-light">Гарантия соответствия всем ГОСТам.</p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <h4 className="text-white font-semibold mb-2">Поддержка производства</h4>
+              <p className="text-white/50 text-sm font-light">Бесплатная консультация вашего завода.</p>
+            </div>
           </div>
-          <div className="text-muted-foreground text-[11px] font-light uppercase tracking-widest">
-            © 2026. Инженерные чертежи. Сделано для людей.
-          </div>
-          <div className="flex gap-8 text-[11px] text-foreground font-bold uppercase tracking-[0.2em]">
-            <a href="#" className="hover:text-primary transition-colors">Telegram Поддержка</a>
-            <a href="#" className="hover:text-primary transition-colors">Оферта</a>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3">
+              <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white font-serif font-bold text-xs">A</div>
+              <span className="font-serif font-semibold text-white">AquaDraft Bureau</span>
+            </div>
+            <p className="text-white/40 text-sm">© 2026 Все права защищены.</p>
           </div>
         </div>
       </footer>
-
-    </div>
+    </main>
   );
 }
