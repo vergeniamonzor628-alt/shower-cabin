@@ -4,7 +4,7 @@ import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
   variable: "--font-sans",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin", "cyrillic-ext"],
 });
 
 const serif = Lora({
