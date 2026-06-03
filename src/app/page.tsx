@@ -29,23 +29,18 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex items-center pt-20 pb-20 overflow-hidden border-b border-border/40">
         
-        {/* Animated Background */}
+        {/* Animated Video Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-background">
-          <div className="absolute inset-[-5%] w-[110%] h-[110%] opacity-80 animate-[pulse_10s_ease-in-out_infinite]">
-             <Image 
-                src="/hero_blueprint_shower_1780488146668.png" 
-                alt="CAD Blueprint" 
-                fill 
-                className="object-cover scale-[1.05]"
-                priority
-              />
-             <Image 
-                src="/hero_realistic_shower_1780488135788.png" 
-                alt="Luxury Shower" 
-                fill 
-                className="object-cover scale-[1.05] animate-crossfade"
-                priority
-              />
+          <div className="absolute inset-0 w-full h-full opacity-80">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover scale-[1.05]"
+            >
+              <source src="/hero_video.mp4" type="video/mp4" />
+            </video>
           </div>
           {/* Glassmorphism Overlays */}
           <div className="absolute inset-0 backdrop-blur-[2px] bg-background/50"></div>
