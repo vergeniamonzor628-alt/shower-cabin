@@ -79,7 +79,7 @@ export default function Home() {
       </section>
 
       {/* The Pain (Problem) */}
-      <section className="py-32 bg-background/80 relative z-10 border-t border-border/40 overflow-hidden">
+      <section className="py-32 bg-neutral-900/30 backdrop-blur-md relative z-10 border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in-up">
             <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
@@ -110,7 +110,7 @@ export default function Home() {
       </section>
 
       {/* The Method (How it works) */}
-      <section id="how-it-works" className="py-32 bg-background relative border-t border-border/40">
+      <section id="how-it-works" className="py-32 bg-neutral-900/40 backdrop-blur-md relative border-t border-border/40">
         <div className="container mx-auto px-6">
           
           <div className="text-center mb-24 max-w-2xl mx-auto">
@@ -158,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* Blueprint Gallery */}
-      <section className="py-24 bg-background relative border-t border-border/40 overflow-hidden">
+      <section className="py-24 bg-neutral-900/50 backdrop-blur-md relative border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 max-w-2xl mx-auto opacity-0 animate-fade-in-up">
             <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Наши проекты</div>
@@ -192,7 +192,7 @@ export default function Home() {
       </section>
 
       {/* Configurator Section */}
-      <section id="configurator" className="py-24 bg-[#17181c] border-t border-white/5">
+      <section id="configurator" className="py-24 bg-neutral-900/60 backdrop-blur-md border-t border-white/5 relative">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>
