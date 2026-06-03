@@ -177,7 +177,7 @@ export default function Home() {
           <div className="order-1 lg:order-2 relative h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
             <Reveal className="w-full h-full">
               <Image 
-                src="/workspace_1_1780447199052.png" 
+                src="/workspace_1_new.png" 
                 alt="Architectural workspace" 
                 fill 
                 className="object-cover"
@@ -204,7 +204,7 @@ export default function Home() {
             <div className="lg:col-span-5 relative h-[400px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl shadow-primary/10">
               <Reveal className="w-full h-full">
                 <Image 
-                  src="/workspace_2_1780447209664.png" 
+                  src="/workspace_2_new.png" 
                   alt="Blueprint close-up" 
                   fill 
                   className="object-cover"
