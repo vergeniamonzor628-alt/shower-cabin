@@ -190,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* How it works (With Workspace Close Up) */}
-      <section id="how-it-works" className="py-32 bg-white relative border-t border-border/40">
+      <section id="how-it-works" className="py-32 bg-background relative border-t border-border/40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           
           <Reveal>
@@ -269,7 +269,7 @@ export default function Home() {
       </section>
       
       {/* Configurator Section */}
-      <section id="configurator" className="py-32 bg-white relative overflow-hidden border-t border-border/40">
+      <section id="configurator" className="py-32 bg-background relative overflow-hidden border-t border-border/40">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10">
