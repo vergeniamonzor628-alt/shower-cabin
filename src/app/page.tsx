@@ -59,7 +59,7 @@ export default function Home() {
           </h1>
           
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-            Получите точный инженерный чертеж для заказа стекла напрямую на заводе всего за 1 500 ₽. Никаких переплат салонам сантехники — соберите кабину мечты по цене комплектующих.
+            Получите точный инженерный чертеж (PDF + DWG) для заказа стекла напрямую на заводе всего за 1 500 ₽. Никаких переплат салонам сантехники — соберите кабину мечты по цене комплектующих.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 animate-fade-in-up-delay-1">
@@ -229,6 +229,111 @@ export default function Home() {
           </div>
           
           <Configurator />
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-24 bg-black/60 backdrop-blur-[2px] relative z-10 border-t border-border/40">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-16">
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Отзывы</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Реальный опыт заказчиков</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 relative">
+              <div className="text-primary text-4xl font-serif absolute top-6 left-6 opacity-20">&quot;</div>
+              <p className="text-white/80 font-light leading-relaxed mb-6 relative z-10 pt-4">
+                Чертеж окупился в первый же день! Салон посчитал мне душевую в нишу на 85 000 рублей. Заказал чертеж за полторы, отправил файл на ближайший завод и забрал каленое стекло за 18 000 руб. Итого экономия космическая, а встало всё идеально.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/50 font-medium">АМ</div>
+                <div>
+                  <div className="text-white font-medium">Алексей М.</div>
+                  <div className="text-white/40 text-sm">Частный заказчик</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 relative">
+              <div className="text-primary text-4xl font-serif absolute top-6 left-6 opacity-20">&quot;</div>
+              <p className="text-white/80 font-light leading-relaxed mb-6 relative z-10 pt-4">
+                Быстро получил точные чертежи и инструкции по вырезам. Очень удобно, что сразу выдают DWG файл для станка ЧПУ — на производстве даже вопросов не задали, просто загрузили файл в станок. Геометрия сошлась до миллиметра.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/50 font-medium">ВК</div>
+                <div>
+                  <div className="text-white font-medium">Виктор К.</div>
+                  <div className="text-white/40 text-sm">Прораб</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-24 bg-background relative z-10 border-t border-border/40">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-16">
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Тарифы</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Стоимость проектирования</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Basic Plan */}
+            <div className="bg-white/5 border border-white/10 hover:border-white/20 transition-colors rounded-3xl p-10 flex flex-col">
+              <h3 className="text-2xl text-white font-medium mb-2">Базовый проект</h3>
+              <div className="text-4xl text-white font-serif mb-6">1 500 ₽</div>
+              <p className="text-white/50 font-light mb-8 h-12">
+                Для стандартных кабин: прямые, в нишу, Г-образные угловые.
+              </p>
+              <ul className="space-y-4 mb-10 flex-1">
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <span className="text-primary mt-1">✓</span> Проектирование по вашим размерам
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <span className="text-primary mt-1">✓</span> Зазоры под петли и ручку
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <span className="text-primary mt-1">✓</span> Экспорт в <strong className="font-medium text-white">PDF</strong> для завода
+                </li>
+              </ul>
+              <button className="w-full py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white transition-colors" onClick={() => {
+                document.getElementById('configurator')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                Заказать
+              </button>
+            </div>
+
+            {/* Premium Plan */}
+            <div className="bg-primary/10 border border-primary/30 hover:border-primary/50 transition-colors rounded-3xl p-10 flex flex-col relative overflow-hidden">
+              <div className="absolute top-6 right-6 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Популярный
+              </div>
+              <h3 className="text-2xl text-white font-medium mb-2">Сложная геометрия</h3>
+              <div className="text-4xl text-white font-serif mb-6">3 500 ₽</div>
+              <p className="text-white/50 font-light mb-8 h-12">
+                Для сложных проектов: мансарды, вырезы под трубы, бортики и П-образные кабины.
+              </p>
+              <ul className="space-y-4 mb-10 flex-1">
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <span className="text-primary mt-1">✓</span> Индивидуальные сложные вырезы
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <span className="text-primary mt-1">✓</span> Приоритетная поддержка инженера
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light">
+                  <span className="text-primary mt-1">✓</span> Экспорт в <strong className="font-medium text-white">PDF и DWG</strong> (для ЧПУ)
+                </li>
+              </ul>
+              <button className="w-full py-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground transition-colors shadow-[0_0_20px_rgba(212,175,55,0.3)]" onClick={() => {
+                document.getElementById('configurator')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                Выбрать
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
