@@ -94,18 +94,18 @@ export default function Home() {
         
         {/* Animated Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-background">
-          <div className="absolute inset-0 opacity-40 animate-[pulse_10s_ease-in-out_infinite]">
+          <div className="absolute inset-[-5%] w-[110%] h-[110%] opacity-80 animate-[pulse_10s_ease-in-out_infinite]">
              <Image 
-                src="/split_hero_ultra_luxury_1780474775915.png" 
+                src="/split_hero_neutral_1780475992592.png" 
                 alt="Luxury Minimalist Bathroom vs CAD Blueprint" 
                 fill 
-                className="object-cover scale-[1.02]"
+                className="object-cover scale-[1.05]"
                 priority
               />
           </div>
           {/* Glassmorphism Overlays */}
-          <div className="absolute inset-0 backdrop-blur-[60px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background"></div>
+          <div className="absolute inset-0 backdrop-blur-md bg-background/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
         </div>
 
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10 text-center">
