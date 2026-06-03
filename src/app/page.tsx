@@ -53,13 +53,13 @@ export default function Home() {
             Проектирование по стандартам ГОСТ
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-serif text-white leading-[1.1] mb-8 tracking-tight">
-            Индивидуальные душевые <br className="hidden md:block"/>
-            <span className="text-primary italic font-light">по инженерным стандартам.</span>
+          <h1 className="text-5xl sm:text-6xl md:text-[4.5rem] font-serif text-white leading-[1.1] mb-8 tracking-tight">
+            Сэкономьте до 50 000 ₽ на <br className="hidden md:block"/>
+            <span className="text-primary italic font-light">премиальной душевой.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-            Никаких переплат салонам сантехники. Вы снимаете размеры — мы делаем профессиональный CAD-чертеж, с которым любой стекольный завод изготовит вашу кабину с точностью до миллиметра.
+            Получите точный инженерный чертеж для заказа стекла напрямую на заводе всего за 1 500 ₽. Никаких переплат салонам сантехники — соберите кабину мечты по цене комплектующих.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 animate-fade-in-up-delay-1">
@@ -89,7 +89,7 @@ export default function Home() {
             </h2>
             
             <p className="text-white/60 leading-relaxed text-lg font-light mb-12">
-              Салоны не производят стекло — они просто перепродают его, закладывая маржу за бренд, логистику и аренду шоурума. Мы предлагаем другой путь — прямой доступ к промышленному стекольному производству.
+              Решили заказать стекло напрямую и сэкономить? Завод не примет заказ &quot;на пальцах&quot;. Им нужны координаты отверстий под петли и учет технологических зазоров (2-3 мм). Ошибетесь на миллиметр — стекло не влезет в нишу, а каленое стекло <strong className="text-white font-semibold">нельзя подрезать</strong>. Доверьте расчет инженерам.
             </p>
             
             <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -106,6 +106,50 @@ export default function Home() {
                 <span className="text-white/80 font-medium">Инженерный расчет (допуски 1мм)</span>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Proof (Было / Стало) Section */}
+      <section className="py-24 bg-black/60 backdrop-blur-[2px] relative border-t border-border/40 overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Как должен выглядеть заказ</h2>
+            <p className="text-white/60 text-lg font-light">
+              Чтобы вас поняли на производстве и сделали всё без ошибок
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 items-stretch max-w-5xl mx-auto">
+            {/* Было */}
+            <div className="flex-1 bg-white/5 border border-red-500/20 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-full h-1 bg-red-500/50" />
+              <div>
+                <div className="text-red-400 font-medium mb-6 uppercase tracking-wider text-sm">❌ Рисунок от руки</div>
+                <h3 className="text-2xl text-white mb-4">Отказ на заводе</h3>
+                <p className="text-white/50 font-light leading-relaxed">
+                  С эскизом &quot;на коленке&quot; завод откажет в производстве или снимет с себя ответственность за любые ошибки. Без указания зазоров, отступов под петли и фасок стекло будет испорчено.
+                </p>
+              </div>
+              <div className="mt-8 h-48 bg-black/40 rounded-xl border border-white/10 flex items-center justify-center">
+                <span className="text-white/20">Место для фото листка в клетку</span>
+              </div>
+            </div>
+
+            {/* Стало */}
+            <div className="flex-1 bg-primary/10 border border-primary/30 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+              <div>
+                <div className="text-primary font-medium mb-6 uppercase tracking-wider text-sm">✅ CAD-чертеж</div>
+                <h3 className="text-2xl text-white mb-4">Идеальная посадка</h3>
+                <p className="text-white/70 font-light leading-relaxed">
+                  Наш инженерный чертеж гарантирует, что стекло встанет в ванную с точностью до миллиметра, а фурнитура закрепится без люфтов и перекосов. Завод примет такой файл в работу за 5 минут.
+                </p>
+              </div>
+              <div className="mt-8 h-48 relative overflow-hidden rounded-xl border border-primary/20">
+                <Image src="/hero_blueprint_shower_1780488146668.png" alt="CAD-чертеж" fill className="object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -185,6 +229,48 @@ export default function Home() {
           </div>
           
           <Configurator />
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-black/60 backdrop-blur-[2px] relative z-10 border-t border-border/40">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">FAQ</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Остались сомнения?</h2>
+          </div>
+          
+          <div className="grid gap-6">
+            <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-pointer marker:content-['']">
+              <summary className="flex items-center justify-between text-xl font-semibold text-white outline-none">
+                А что если завод сделает стекло, а оно не влезет?
+                <svg className="w-5 h-5 text-primary transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div className="pt-6 text-white/60 leading-relaxed font-light">
+                Если ошибка в нашем чертеже (неверно рассчитан зазор под петлю) — мы бесплатно переделываем чертеж и компенсируем затраты. Если завод нарушил размеры чертежа — это брак производства. Если вы неверно сняли размеры помещения — ответственность на вас. Обязательно посмотрите нашу видео-инструкцию по замерам!
+              </div>
+            </details>
+
+            <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-pointer marker:content-['']">
+              <summary className="flex items-center justify-between text-xl font-semibold text-white outline-none">
+                Я еще не купил фурнитуру, можно заказать чертеж?
+                <svg className="w-5 h-5 text-primary transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div className="pt-6 text-white/60 leading-relaxed font-light">
+                Да, но производство стекла начнется только после того, как вы определитесь с петлями. Разные петли требуют разных вырезов в стекле. Вы можете прислать ссылки на фурнитуру позже напрямую инженеру.
+              </div>
+            </details>
+
+            <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-pointer marker:content-['']">
+              <summary className="flex items-center justify-between text-xl font-semibold text-white outline-none">
+                Зачем мне ваш чертеж, если в магазине душевая стоит 30 000 руб?
+                <svg className="w-5 h-5 text-primary transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div className="pt-6 text-white/60 leading-relaxed font-light">
+                В магазине за эти деньги вы получите тонкое стекло (4-6 мм), пластиковые заедающие ролики и стандартный размер (из-за которого придется лить 5 см герметика в щели). За те же деньги, заказав стекло 8 мм на заводе по нашему чертежу, вы соберете премиальную кабину, которая в салоне стоила бы от 80 000 руб.
+              </div>
+            </details>
+          </div>
         </div>
       </section>
 
