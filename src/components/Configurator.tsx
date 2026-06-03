@@ -78,11 +78,11 @@ export default function Configurator() {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-xl shadow-2xl shadow-primary/10 rounded-[2rem] flex flex-col min-h-[650px] relative overflow-hidden border border-white">
+    <div className="bg-card/80 backdrop-blur-xl shadow-2xl shadow-primary/10 rounded-[2rem] flex flex-col min-h-[650px] relative overflow-hidden border border-white">
       
       {/* Progress Indicator */}
       {step < 4 && (
-        <div className="flex border-b border-border/40 bg-white/50">
+        <div className="flex border-b border-border/40 bg-muted/50">
           {[
             { num: 1, label: "Архитектура" },
             { num: 2, label: "Размеры" },
@@ -121,8 +121,8 @@ export default function Configurator() {
                   onClick={() => { setValue("orderType", "template"); setValue("cabinType", type.name); }}
                   className={`cursor-pointer rounded-2xl p-3 transition-all duration-300 group ${
                     orderType === "template" && cabinType === type.name 
-                      ? 'bg-white shadow-xl shadow-primary/15 ring-2 ring-primary scale-[1.02]' 
-                      : 'bg-white/50 hover:bg-white hover:shadow-lg ring-1 ring-border/50'
+                      ? 'bg-card shadow-xl shadow-primary/15 ring-2 ring-primary scale-[1.02]' 
+                      : 'bg-muted/50 hover:bg-card hover:shadow-lg ring-1 ring-border/50'
                   }`}
                 >
                   <div className="relative aspect-[4/5] w-full mb-4 rounded-xl overflow-hidden bg-muted/30">
@@ -142,7 +142,7 @@ export default function Configurator() {
               className={`cursor-pointer rounded-2xl p-6 text-center transition-all duration-300 ${
                 orderType === "custom" 
                   ? 'bg-primary text-white shadow-xl shadow-primary/20 scale-[1.01]' 
-                  : 'bg-white/50 ring-1 ring-border/50 hover:bg-white hover:shadow-lg text-foreground'
+                  : 'bg-muted/50 ring-1 ring-border/50 hover:bg-card hover:shadow-lg text-foreground'
               }`}
             >
               <h4 className="text-lg font-serif font-medium mb-2">Нестандартный проект</h4>
@@ -166,15 +166,15 @@ export default function Configurator() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                   <div className="space-y-2">
                     <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Ширина проема</label>
-                    <input {...register("width")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
+                    <input {...register("width")} type="number" className="w-full rounded-xl border border-border/50 bg-muted/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Глубина (если есть)</label>
-                    <input {...register("depth")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
+                    <input {...register("depth")} type="number" className="w-full rounded-xl border border-border/50 bg-muted/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 900" />
                   </div>
                   <div className="space-y-2 md:col-span-2">
                     <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Высота по стеклу</label>
-                    <input {...register("height")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 2000" />
+                    <input {...register("height")} type="number" className="w-full rounded-xl border border-border/50 bg-muted/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Например: 2000" />
                   </div>
                 </div>
 
@@ -189,7 +189,7 @@ export default function Configurator() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <textarea {...register("hardware")} className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[100px]" placeholder="Вставьте ссылки сюда..."></textarea>
+                    <textarea {...register("hardware")} className="w-full rounded-xl border border-border/50 bg-muted/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[100px]" placeholder="Вставьте ссылки сюда..."></textarea>
                   </div>
                 </div>
               </>
@@ -200,7 +200,7 @@ export default function Configurator() {
                 </h3>
                 <div className="space-y-2">
                   <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Детали и размеры</label>
-                  <textarea {...register("customDescription")} className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[250px] leading-relaxed" placeholder="Опишите габариты, наличие уклона потолка, вырезы под бортик и т.д."></textarea>
+                  <textarea {...register("customDescription")} className="w-full rounded-xl border border-border/50 bg-muted/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[250px] leading-relaxed" placeholder="Опишите габариты, наличие уклона потолка, вырезы под бортик и т.д."></textarea>
                 </div>
               </>
             )}
@@ -216,15 +216,15 @@ export default function Configurator() {
             <div className="space-y-6">
               <div className="space-y-2">
                 <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Ваше Имя</label>
-                <input {...register("name")} type="text" className={`w-full rounded-xl border ${errors.name ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-white/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="Иван" />
+                <input {...register("name")} type="text" className={`w-full rounded-xl border ${errors.name ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-muted/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="Иван" />
               </div>
               <div className="space-y-2">
                 <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Телефон (WhatsApp)</label>
-                <input {...register("phone")} type="tel" className={`w-full rounded-xl border ${errors.phone ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-white/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="+7 (999) 000-00-00" />
+                <input {...register("phone")} type="tel" className={`w-full rounded-xl border ${errors.phone ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-muted/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="+7 (999) 000-00-00" />
               </div>
               <div className="space-y-2">
                 <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-muted-foreground">Telegram (по желанию)</label>
-                <input {...register("telegram")} type="text" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="@username" />
+                <input {...register("telegram")} type="text" className="w-full rounded-xl border border-border/50 bg-muted/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-card focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="@username" />
               </div>
             </div>
           </div>
@@ -241,7 +241,7 @@ export default function Configurator() {
               Мы получили данные. Чтобы инженер приступил к чертежу, пожалуйста, оплатите проект (окупается в 15-20 раз за счет отказа от салонов).
             </p>
             
-            <div className="mx-auto mb-10 max-w-sm rounded-2xl bg-white p-8 shadow-xl shadow-primary/5 border border-border/40 text-left">
+            <div className="mx-auto mb-10 max-w-sm rounded-2xl bg-card p-8 shadow-xl shadow-primary/5 border border-border/40 text-left">
                <div className="mb-6 flex justify-between items-end border-b border-border/40 pb-6">
                  <span className="text-sm font-medium text-muted-foreground">Стоимость чертежа</span>
                  <span className="text-2xl font-serif font-semibold text-foreground">1 500 ₽</span>
@@ -261,7 +261,7 @@ export default function Configurator() {
 
       {/* Footer Navigation */}
       {step < 4 && (
-        <div className="border-t border-border/40 bg-white/50 p-6 flex justify-between items-center relative z-10 rounded-b-[2rem]">
+        <div className="border-t border-border/40 bg-muted/50 p-6 flex justify-between items-center relative z-10 rounded-b-[2rem]">
           <button 
             type="button"
             onClick={() => setStep(prev => Math.max(prev - 1, 1))}
