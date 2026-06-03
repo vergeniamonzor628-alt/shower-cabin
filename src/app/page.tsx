@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Configurator from "@/components/Configurator";
-import { BeamsBackground } from "@/components/ui/beams-background";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-neutral-950 selection:bg-primary/30 relative">
-      
-      {/* Global Animated Background */}
-      <BeamsBackground className="fixed inset-0 z-0 h-screen" intensity="medium" />
+    <main className="min-h-screen bg-background selection:bg-primary/30">
       
       {/* Header */}
       <header className="absolute top-0 w-full z-50 border-b border-white/10 bg-background/30 backdrop-blur-md">
@@ -31,8 +27,31 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center pt-20 pb-20 overflow-hidden border-b border-border/20 z-10">
+      <section className="relative min-h-[95vh] flex items-center pt-20 pb-20 overflow-hidden border-b border-border/40">
         
+        {/* Animated Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-background">
+          <div className="absolute inset-[-5%] w-[110%] h-[110%] opacity-80 animate-[pulse_10s_ease-in-out_infinite]">
+             <Image 
+                src="/hero_blueprint_shower_1780488146668.png" 
+                alt="CAD Blueprint" 
+                fill 
+                className="object-cover scale-[1.05]"
+                priority
+              />
+             <Image 
+                src="/hero_realistic_shower_1780488135788.png" 
+                alt="Luxury Shower" 
+                fill 
+                className="object-cover scale-[1.05] animate-crossfade"
+                priority
+              />
+          </div>
+          {/* Glassmorphism Overlays */}
+          <div className="absolute inset-0 backdrop-blur-[2px] bg-background/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
+        </div>
+
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10 text-center opacity-0 animate-fade-in-up">
           
           <div className="inline-block mb-8 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
@@ -65,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* The Pain (Problem) */}
-      <section className="py-32 bg-background/40 backdrop-blur-md relative z-10 border-t border-border/20 overflow-hidden">
+      <section className="py-32 bg-background/80 relative z-10 border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in-up">
             <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
@@ -96,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* The Method (How it works) */}
-      <section id="how-it-works" className="py-32 bg-background/40 backdrop-blur-md relative z-10 border-t border-border/20">
+      <section id="how-it-works" className="py-32 bg-background relative border-t border-border/40">
         <div className="container mx-auto px-6">
           
           <div className="text-center mb-24 max-w-2xl mx-auto">
@@ -144,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* Blueprint Gallery */}
-      <section className="py-24 bg-background/60 backdrop-blur-md relative z-10 border-t border-border/20 overflow-hidden">
+      <section className="py-24 bg-background relative border-t border-border/40 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16 max-w-2xl mx-auto opacity-0 animate-fade-in-up">
             <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Наши проекты</div>
@@ -178,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* Configurator Section */}
-      <section id="configurator" className="py-24 bg-background/80 backdrop-blur-xl relative z-10 border-t border-white/10">
+      <section id="configurator" className="py-24 bg-[#17181c] border-t border-white/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>
@@ -193,7 +212,7 @@ export default function Home() {
       </section>
 
       {/* Trust & Footer */}
-      <footer className="bg-background/90 backdrop-blur-xl relative z-10 pt-24 pb-12 border-t border-white/10">
+      <footer className="bg-background pt-24 pb-12 border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24 border-b border-white/10 pb-24">
             <div className="flex flex-col items-center text-center">
