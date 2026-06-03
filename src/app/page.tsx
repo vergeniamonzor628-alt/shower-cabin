@@ -40,7 +40,7 @@ export default function Home() {
           <SmoothVideoLoop 
             src="/hero_video.mp4" 
             className="absolute inset-0 w-full h-full opacity-80 scale-[1.05]" 
-            fadeDurationMs={1500} 
+            fadeDurationMs={3000} 
           />
           {/* Glassmorphism Overlays */}
           <div className="absolute inset-0 backdrop-blur-[2px] bg-background/50"></div>

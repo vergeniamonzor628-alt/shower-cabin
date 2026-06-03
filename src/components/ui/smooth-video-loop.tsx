@@ -9,72 +9,76 @@ interface SmoothVideoLoopProps {
   fadeDurationMs?: number;
 }
 
-export function SmoothVideoLoop({ src, className, fadeDurationMs = 1000 }: SmoothVideoLoopProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [opacity, setOpacity] = useState(0); // Start hidden to fade in smoothly
-  const [isReady, setIsReady] = useState(false);
+export function SmoothVideoLoop({ src, className, fadeDurationMs = 1500 }: SmoothVideoLoopProps) {
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const v1 = video1Ref.current;
+    const v2 = video2Ref.current;
+    if (!v1 || !v2) return;
 
-    let isFadingOut = false;
-    let fadeOutTimeout: NodeJS.Timeout;
+    let isTransitioning = false;
 
-    const handleTimeUpdate = () => {
-      // Если до конца осталось время затухания, начинаем затемнение
-      if (!isFadingOut && video.duration && video.currentTime >= video.duration - (fadeDurationMs / 1000)) {
-        isFadingOut = true;
-        setOpacity(0); // Уводим в темноту
-
-        // Ждем пока видео полностью затухнет, затем перематываем и включаем снова
-        fadeOutTimeout = setTimeout(() => {
-          video.currentTime = 0;
-          video.play().catch(e => console.warn("Loop play failed:", e));
-          
-          // Даем чуть-чуть времени, чтобы кадр обновился в темноте, и плавно показываем
-          requestAnimationFrame(() => {
-            setOpacity(1);
-            isFadingOut = false;
-          });
+    const handleTimeUpdate = (vCurrent: HTMLVideoElement, vNext: HTMLVideoElement, currentId: 1 | 2) => {
+      // Начинаем переход за fadeDurationMs до конца видео
+      if (!isTransitioning && vCurrent.duration && vCurrent.currentTime >= vCurrent.duration - (fadeDurationMs / 1000)) {
+        isTransitioning = true;
+        
+        // Запускаем следующее видео с начала
+        vNext.currentTime = 0;
+        vNext.play().catch(e => console.warn("Video play failed:", e));
+        
+        // Переключаем активное видео для CSS crossfade
+        setActiveVideo(currentId === 1 ? 2 : 1);
+        
+        // Останавливаем старое видео после завершения перехода
+        setTimeout(() => {
+          vCurrent.pause();
+          isTransitioning = false;
         }, fadeDurationMs);
       }
     };
 
-    const handleCanPlay = () => {
-      if (!isReady) {
-        setIsReady(true);
-        setOpacity(1); // Плавное появление при первой загрузке
-        video.play().catch(e => console.warn("Initial play failed:", e));
-      }
-    };
+    const onTimeUpdate1 = () => handleTimeUpdate(v1, v2, 1);
+    const onTimeUpdate2 = () => handleTimeUpdate(v2, v1, 2);
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("canplay", handleCanPlay);
+    v1.addEventListener("timeupdate", onTimeUpdate1);
+    v2.addEventListener("timeupdate", onTimeUpdate2);
 
-    // Запускаем
-    if (video.readyState >= 3) {
-      handleCanPlay();
-    }
+    // Принудительно запускаем первое видео
+    v1.play().catch(e => console.warn("Initial video play failed:", e));
 
     return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("canplay", handleCanPlay);
-      clearTimeout(fadeOutTimeout);
+      v1.removeEventListener("timeupdate", onTimeUpdate1);
+      v2.removeEventListener("timeupdate", onTimeUpdate2);
     };
-  }, [fadeDurationMs, isReady]);
+  }, [fadeDurationMs]);
 
   return (
-    <div className={cn("relative overflow-hidden bg-black", className)}>
+    <div className={cn("relative overflow-hidden", className)}>
       <video
-        ref={videoRef}
+        ref={video1Ref}
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out"
-        style={{ 
-          transitionDuration: `${fadeDurationMs}ms`,
-          opacity: opacity
-        }}
+        className={cn(
+          "absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out",
+          activeVideo === 1 ? "opacity-100 z-10" : "opacity-0 z-0"
+        )}
+        style={{ transitionDuration: `${fadeDurationMs}ms` }}
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+      <video
+        ref={video2Ref}
+        muted
+        playsInline
+        className={cn(
+          "absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out",
+          activeVideo === 2 ? "opacity-100 z-10" : "opacity-0 z-0"
+        )}
+        style={{ transitionDuration: `${fadeDurationMs}ms` }}
       >
         <source src={src} type="video/mp4" />
       </video>
