@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Configurator from "@/components/Configurator";
 import { BeamsBackground } from "@/components/ui/beams-background";
+import { SmoothVideoLoop } from "@/components/ui/smooth-video-loop";
 
 export default function Home() {
   return (
@@ -36,17 +37,11 @@ export default function Home() {
         
         {/* Animated Video Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-background">
-          <div className="absolute inset-0 w-full h-full opacity-80">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover scale-[1.05]"
-            >
-              <source src="/hero_video.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <SmoothVideoLoop 
+            src="/hero_video.mp4" 
+            className="absolute inset-0 w-full h-full opacity-80 scale-[1.05]" 
+            fadeDurationMs={1500} 
+          />
           {/* Glassmorphism Overlays */}
           <div className="absolute inset-0 backdrop-blur-[2px] bg-background/50"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
