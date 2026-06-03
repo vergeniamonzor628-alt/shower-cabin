@@ -76,16 +76,16 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Decorative Blueprint Strip 1 */}
-      <div className="w-full h-24 md:h-32 relative border-y border-white/10 opacity-40 hover:opacity-80 transition-opacity duration-700">
-        <Image src="/hero_blueprint_shower_1780488146668.png" alt="Blueprint decor" fill className="object-cover object-center grayscale" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
-      </div>
-
       {/* The Pain (Problem) */}
       <section className="py-32 bg-black/60 backdrop-blur-[2px] relative z-10 border-border/40 overflow-hidden">
+        {/* Decorative Photo */}
+        <div className="absolute -right-20 top-20 w-96 h-96 opacity-30 md:opacity-50 transform rotate-12 rotate-[-5deg] pointer-events-none mix-blend-screen hidden md:block">
+          <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
+            <Image src="/split_hero_neutral_1780475992592.png" alt="Decor" fill className="object-cover" />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+        </div>
+        
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in-up">
             <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
@@ -115,15 +115,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative Blueprint Strip 2 */}
-      <div className="w-full h-24 md:h-32 relative border-y border-white/10 opacity-40 hover:opacity-80 transition-opacity duration-700">
-        <Image src="/blueprint_on_table.png" alt="Blueprint decor" fill className="object-cover object-center grayscale" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
-      </div>
-
       {/* The Method (How it works) */}
-      <section id="how-it-works" className="py-32 bg-black/60 backdrop-blur-[2px] relative border-border/40">
-        <div className="container mx-auto px-6">
+      <section id="how-it-works" className="py-32 bg-black/60 backdrop-blur-[2px] relative border-border/40 overflow-hidden">
+        {/* Decorative Photo */}
+        <div className="absolute -left-32 top-1/3 w-[500px] h-[400px] opacity-20 transform -rotate-6 pointer-events-none mix-blend-screen hidden lg:block">
+          <div className="relative w-full h-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl blur-[1px]">
+            <Image src="/blueprint_on_table.png" alt="Decor" fill className="object-cover" />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           
           <div className="text-center mb-24 max-w-2xl mx-auto">
             <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Процесс работы</div>
@@ -169,15 +170,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative Blueprint Strip 3 */}
-      <div className="w-full h-24 md:h-32 relative border-y border-white/10 opacity-40 hover:opacity-80 transition-opacity duration-700">
-        <Image src="/split_hero_neutral_1780475992592.png" alt="Blueprint decor" fill className="object-cover object-center grayscale" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
-      </div>
-
       {/* Configurator Section */}
-      <section id="configurator" className="py-24 bg-black/80 backdrop-blur-[2px] border-white/5 relative">
-        <div className="container mx-auto px-6">
+      <section id="configurator" className="py-24 bg-black/80 backdrop-blur-[2px] border-white/5 relative overflow-hidden">
+        {/* Decorative Photo */}
+        <div className="absolute -right-10 bottom-20 w-80 h-80 opacity-20 transform rotate-12 pointer-events-none mix-blend-screen hidden lg:block">
+          <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10 shadow-2xl blur-[2px]">
+            <Image src="/hero_blueprint_shower_1780488146668.png" alt="Decor" fill className="object-cover" />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>
             <p className="text-white/60 text-lg font-light">
