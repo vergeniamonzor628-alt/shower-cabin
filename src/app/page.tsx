@@ -80,13 +80,6 @@ export default function Home() {
 
       {/* The Pain (Problem) */}
       <section className="py-32 bg-black/60 backdrop-blur-[2px] relative z-10 border-border/40 overflow-hidden">
-        {/* Decorative Photo */}
-        <div className="absolute -right-20 top-20 w-96 h-96 opacity-30 md:opacity-50 transform rotate-12 rotate-[-5deg] pointer-events-none mix-blend-screen hidden md:block">
-          <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
-            <Image src="/split_hero_neutral_1780475992592.png" alt="Decor" fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
-        </div>
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in-up">
@@ -119,13 +112,6 @@ export default function Home() {
 
       {/* The Method (How it works) */}
       <section id="how-it-works" className="py-32 bg-black/60 backdrop-blur-[2px] relative border-border/40 overflow-hidden">
-        {/* Decorative Photo */}
-        <div className="absolute -left-32 top-1/3 w-[500px] h-[400px] opacity-20 transform -rotate-6 pointer-events-none mix-blend-screen hidden lg:block">
-          <div className="relative w-full h-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl blur-[1px]">
-            <Image src="/blueprint_on_table.png" alt="Decor" fill className="object-cover" />
-          </div>
-        </div>
-
         <div className="container mx-auto px-6 relative z-10">
           
           <div className="text-center mb-24 max-w-2xl mx-auto">
@@ -136,36 +122,51 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             
-            {/* Step 1 */}
-            <div className="group bg-white/5 border border-white/10 p-10 rounded-[2rem] hover:bg-white/10 transition-colors">
-              <div className="text-white/20 font-serif text-7xl mb-8 group-hover:text-primary/40 transition-colors">01</div>
-              <h3 className="text-xl font-semibold text-white mb-4">Вы снимаете размеры</h3>
-              <p className="text-white/50 leading-relaxed font-light">
-                Используйте нашу простую видеоинструкцию. Вам понадобится только рулетка и 10 минут времени. Никаких специальных навыков не требуется.
-              </p>
+            {/* Step 1 - Bento (col-span-8) */}
+            <div className="md:col-span-8 group bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors flex flex-col md:flex-row relative">
+              <div className="p-10 md:w-1/2 z-10 flex flex-col justify-center">
+                <div className="text-white/20 font-serif text-7xl mb-6 group-hover:text-primary/40 transition-colors">01</div>
+                <h3 className="text-2xl font-semibold text-white mb-4">Вы снимаете размеры</h3>
+                <p className="text-white/50 leading-relaxed font-light">
+                  Используйте нашу простую видеоинструкцию. Вам понадобится только рулетка и 10 минут времени. Никаких специальных навыков не требуется.
+                </p>
+              </div>
+              <div className="relative md:w-1/2 h-64 md:h-auto overflow-hidden border-l border-white/5">
+                <Image src="/blueprint_on_table.png" alt="Чертежи" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 mix-blend-screen" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent md:bg-gradient-to-t md:from-black/20" />
+              </div>
             </div>
             
-            {/* Step 2 */}
-            <div className="group bg-primary/10 border border-primary/20 p-10 rounded-[2rem] relative overflow-hidden">
+            {/* Step 2 - Bento (col-span-4) */}
+            <div className="md:col-span-4 group bg-primary/10 border border-primary/20 rounded-[2rem] overflow-hidden relative flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="text-primary/40 font-serif text-7xl mb-8 group-hover:text-primary transition-colors">02</div>
-                <h3 className="text-xl font-semibold text-white mb-4">Мы делаем проект</h3>
-                <p className="text-white/70 leading-relaxed font-light">
-                  Наши инженеры создают точный CAD-чертеж с допусками, вырезами под петли и спецификацией фурнитуры. Готовый PDF-файл за 24 часа.
+              <div className="p-10 z-10 flex flex-col flex-grow">
+                <div className="text-primary/40 font-serif text-7xl mb-6 group-hover:text-primary transition-colors">02</div>
+                <h3 className="text-2xl font-semibold text-white mb-4">Мы делаем проект</h3>
+                <p className="text-white/70 leading-relaxed font-light mb-6">
+                  Наши инженеры создают точный CAD-чертеж с допусками и спецификацией.
                 </p>
+              </div>
+              <div className="relative h-48 w-full overflow-hidden border-t border-primary/20">
+                <Image src="/hero_blueprint_shower_1780488146668.png" alt="CAD чертеж" fill className="object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-90" />
               </div>
             </div>
 
-            {/* Step 3 */}
-            <div className="group bg-white/5 border border-white/10 p-10 rounded-[2rem] hover:bg-white/10 transition-colors">
-              <div className="text-white/20 font-serif text-7xl mb-8 group-hover:text-primary/40 transition-colors">03</div>
-              <h3 className="text-xl font-semibold text-white mb-4">Завод производит</h3>
-              <p className="text-white/50 leading-relaxed font-light">
-                Вы отправляете чертеж на ближайший стекольный завод. Они производят стекло в точности по чертежу. Никаких переплат салонам.
-              </p>
+            {/* Step 3 - Bento (col-span-12) */}
+            <div className="md:col-span-12 group bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors relative flex flex-col md:flex-row-reverse">
+              <div className="p-10 md:w-1/2 z-10 flex flex-col justify-center lg:pl-16">
+                <div className="text-white/20 font-serif text-7xl mb-6 group-hover:text-primary/40 transition-colors">03</div>
+                <h3 className="text-2xl font-semibold text-white mb-4">Завод производит</h3>
+                <p className="text-white/50 leading-relaxed font-light">
+                  Вы отправляете готовый PDF-чертеж на ближайший стекольный завод. Они производят стекло в точности по инженерному чертежу. Никаких переплат салонам сантехники — только прямая работа с производством.
+                </p>
+              </div>
+              <div className="relative md:w-1/2 h-64 md:h-96 overflow-hidden border-r border-white/5">
+                <Image src="/split_hero_neutral_1780475992592.png" alt="Готовая кабина" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-70" />
+                <div className="absolute inset-0 bg-gradient-to-l from-black/80 to-transparent" />
+              </div>
             </div>
 
           </div>
@@ -174,13 +175,6 @@ export default function Home() {
 
       {/* Configurator Section */}
       <section id="configurator" className="py-24 bg-black/80 backdrop-blur-[2px] border-white/5 relative overflow-hidden">
-        {/* Decorative Photo */}
-        <div className="absolute -right-10 bottom-20 w-80 h-80 opacity-20 transform rotate-12 pointer-events-none mix-blend-screen hidden lg:block">
-          <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10 shadow-2xl blur-[2px]">
-            <Image src="/hero_blueprint_shower_1780488146668.png" alt="Decor" fill className="object-cover" />
-          </div>
-        </div>
-
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>
