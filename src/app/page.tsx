@@ -299,11 +299,9 @@ export default function Home() {
                   <span className="text-primary mt-1">✓</span> Экспорт в <strong className="font-medium text-white">PDF</strong> для завода
                 </li>
               </ul>
-              <button className="w-full py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white transition-colors" onClick={() => {
-                document.getElementById('configurator')?.scrollIntoView({ behavior: 'smooth' });
-              }}>
+              <a href="#configurator" className="w-full py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white transition-colors text-center inline-block">
                 Заказать
-              </button>
+              </a>
             </div>
 
             {/* Premium Plan */}
@@ -327,11 +325,9 @@ export default function Home() {
                   <span className="text-primary mt-1">✓</span> Экспорт в <strong className="font-medium text-white">PDF и DWG</strong> (для ЧПУ)
                 </li>
               </ul>
-              <button className="w-full py-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground transition-colors shadow-[0_0_20px_rgba(212,175,55,0.3)]" onClick={() => {
-                document.getElementById('configurator')?.scrollIntoView({ behavior: 'smooth' });
-              }}>
+              <a href="#configurator" className="w-full py-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground transition-colors shadow-[0_0_20px_rgba(212,175,55,0.3)] text-center inline-block">
                 Выбрать
-              </button>
+              </a>
             </div>
           </div>
         </div>
