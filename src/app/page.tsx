@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Configurator from "@/components/Configurator";
+import { BeamsBackground } from "@/components/ui/beams-background";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background selection:bg-primary/30">
+    <main className="min-h-screen bg-background selection:bg-primary/30 relative">
       
+      {/* Global Animated Beams */}
+      <div className="fixed inset-0 z-0 pointer-events-none mix-blend-screen opacity-60">
+        <BeamsBackground className="h-full w-full" intensity="medium" />
+      </div>
       {/* Header */}
       <header className="absolute top-0 w-full z-50 border-b border-white/10 bg-background/30 backdrop-blur-md">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
