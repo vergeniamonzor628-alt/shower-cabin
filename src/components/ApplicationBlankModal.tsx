@@ -16,6 +16,7 @@ const formSchema = z.object({
   customDescription: z.string().optional(),
   name: z.string().min(2, "Обязательно"),
   phone: z.string().min(10, "Обязательно"),
+  projectTier: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -32,9 +33,10 @@ interface ApplicationBlankModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialType?: string;
+  projectTier?: 'basic' | 'complex';
 }
 
-export default function ApplicationBlankModal({ isOpen, onClose, initialType = "Угловая" }: ApplicationBlankModalProps) {
+export default function ApplicationBlankModal({ isOpen, onClose, initialType = "Угловая", projectTier = 'basic' }: ApplicationBlankModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -42,6 +44,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
     resolver: zodResolver(formSchema),
     defaultValues: {
       cabinType: initialType,
+      projectTier: projectTier,
     }
   });
 
@@ -105,6 +108,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                 <h2 className="text-3xl md:text-4xl font-serif text-white leading-none">Бланк Заявки на Чертеж</h2>
               </div>
               <div className="text-left md:text-right text-white/40 font-mono text-xs uppercase space-y-1">
+                <div>Тариф: <span className="text-primary">{projectTier === 'complex' ? 'Сложный (3 000 ₽)' : 'Базовый (1 500 ₽)'}</span></div>
                 <div>Document ID: SHWR-{(Math.random()*10000).toFixed(0).padStart(4, '0')}</div>
                 <div>Date: {new Date().toLocaleDateString('ru-RU')}</div>
               </div>

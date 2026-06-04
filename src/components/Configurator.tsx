@@ -53,6 +53,7 @@ const CABIN_TYPES = [
 
 export default function Configurator() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [projectTier, setProjectTier] = useState<'basic' | 'complex'>('basic');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
@@ -151,9 +152,39 @@ export default function Configurator() {
           </div>
 
           <div className="mt-auto pt-6 border-t border-white/10">
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 mb-6 shadow-inner">
+            <div className="mb-6">
+              <h4 className="text-sm font-mono text-white/50 uppercase tracking-widest mb-4">Уровень сложности</h4>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setProjectTier('basic')}
+                  className={`flex-1 p-3 rounded-xl border text-left transition-all ${
+                    projectTier === 'basic' 
+                      ? 'bg-white/10 border-white/30 text-white' 
+                      : 'bg-white/[0.02] border-white/5 text-white/50 hover:bg-white/[0.05]'
+                  }`}
+                >
+                  <div className="font-medium">Базовый</div>
+                  <div className="text-xs mt-1">1 500 ₽</div>
+                </button>
+                <button
+                  onClick={() => setProjectTier('complex')}
+                  className={`flex-1 p-3 rounded-xl border text-left transition-all ${
+                    projectTier === 'complex' 
+                      ? 'bg-primary/20 border-primary text-white' 
+                      : 'bg-white/[0.02] border-white/5 text-white/50 hover:bg-white/[0.05]'
+                  }`}
+                >
+                  <div className="font-medium">Сложный</div>
+                  <div className="text-xs mt-1 text-primary">3 000 ₽</div>
+                </button>
+              </div>
+            </div>
+
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 mb-6 shadow-inner w-full">
               <Check className="w-5 h-5 text-primary" />
-              <span className="text-base font-medium text-white/90">Цена стекла: {activeType.price}</span>
+              <span className="text-base font-medium text-white/90">
+                Ориентир. цена стекла: {activeType.price}
+              </span>
             </div>
             
             <button 
@@ -166,7 +197,7 @@ export default function Configurator() {
               </div>
             </button>
             <p className="text-center text-sm text-white/40 mt-5 font-mono">
-              Чертёж 1 500 ₽ • Готовность 24 часа
+              Чертёж {projectTier === 'basic' ? '1 500 ₽' : '3 000 ₽'} • Готовность {projectTier === 'basic' ? '24 часа' : '48 часов'}
             </p>
           </div>
         </div>
@@ -177,6 +208,7 @@ export default function Configurator() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         initialType={activeType.name}
+        projectTier={projectTier}
       />
     </div>
   );

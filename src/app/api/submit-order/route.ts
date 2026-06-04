@@ -18,19 +18,18 @@ export async function POST(req: Request) {
     }
     message += `\n`;
 
-    if (data.orderType === "template") {
-      message += `🚿 *Шаблонный заказ:*\n`;
-      message += `• Тип: ${data.cabinType || 'Не выбран'}\n`;
-      message += `• Ширина: ${data.width || 'Не указана'}\n`;
-      message += `• Высота: ${data.height || 'Не указана'}\n`;
-      if (data.depth) message += `• Глубина: ${data.depth}\n`;
-      
-      message += `\n🔩 *Фурнитура / Зазоры:*\n`;
-      message += `${data.hardware ? data.hardware : 'Не указано'}\n`;
-    } else {
-      message += `🛠 *Индивидуальный проект:*\n`;
-      message += `${data.customDescription || 'Описание отсутствует'}\n`;
-    }
+    message += `🚿 *Заказ чертежа:*\n`;
+    message += `• Тариф: ${data.projectTier === 'complex' ? 'Сложный (3000₽)' : 'Базовый (1500₽)'}\n`;
+    message += `• Тип кабины: ${data.cabinType || 'Не выбран'}\n`;
+    message += `• Ширина: ${data.width || 'Не указана'}\n`;
+    message += `• Высота: ${data.height || 'Не указана'}\n`;
+    if (data.depth) message += `• Глубина: ${data.depth}\n`;
+    
+    message += `\n🔩 *Фурнитура / Зазоры:*\n`;
+    message += `${data.hardware ? data.hardware : 'Не указано'}\n`;
+    
+    message += `\n🛠 *Особенности:*\n`;
+    message += `${data.customDescription || 'Отсутствуют'}\n`;
 
     message += `\n⏳ *Статус:* Ожидает оплату`;
 
