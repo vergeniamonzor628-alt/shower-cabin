@@ -1,0 +1,22 @@
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_ATBP6T3HejFbD2SrcB7Jvw1KytXC",
+    "url": "https://shower-cabin-k5n2xt54j-katyakeramika-s-projects.vercel.app",
+    "inspectorUrl": "https://vercel.com/katyakeramika-s-projects/shower-cabin/ATBP6T3HejFbD2SrcB7Jvw1KytXC",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_ATBP6T3HejFbD2SrcB7Jvw1KytXC"
+  },
+  "message": "Deployment shower-cabin-k5n2xt54j-katyakeramika-s-projects.vercel.app ready.",
+  "next": [
+    {
+      "command": "vercel inspect shower-cabin-k5n2xt54j-katyakeramika-s-projects.vercel.app",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod",
+      "when": "Promote to production"
+    }
+  ]
+}

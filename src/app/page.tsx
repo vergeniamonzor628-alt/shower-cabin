@@ -33,6 +33,7 @@ export default function Home() {
           <div className="hidden lg:flex items-center gap-12 text-[11px] font-semibold text-white/70 uppercase tracking-[0.2em]">
             <a href="#how-it-works" className="hover:text-white transition-colors">Процесс</a>
             <a href="#examples" className="hover:text-white transition-colors">Примеры</a>
+            <a href="#pricing" className="hover:text-white transition-colors">Тарифы</a>
             <a href="#configurator" className="hover:text-white transition-colors">Конфигуратор</a>
             <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           </div>
@@ -265,6 +266,79 @@ export default function Home() {
                 <div className="text-white text-lg font-medium mb-2">Контроль инженера</div>
                 <div className="text-white/40 text-sm font-light leading-relaxed">Проверяем замеры на логичность. Если что-то не так — свяжемся.</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* PRICING                                      */}
+      {/* ============================================ */}
+      <section id="pricing" className="py-32 bg-background relative z-10 border-b border-white/5 overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6 tracking-tight">Тарифы</h2>
+            <p className="text-white/50 text-lg font-light">Выберите формат чертежа, подходящий для вашего проекта.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Basic Tier */}
+            <div className="bg-white/[0.02] border border-white/5 rounded-[2rem] p-8 md:p-12 hover:bg-white/[0.04] transition-colors relative flex flex-col">
+              <h3 className="text-2xl font-serif text-white mb-2">Базовый чертёж</h3>
+              <p className="text-white/40 text-sm font-light mb-8">Идеально для простых кабин с прямыми углами.</p>
+              <div className="text-4xl font-serif text-white mb-8">1 500 ₽</div>
+              
+              <ul className="space-y-4 mb-10 flex-grow">
+                <li className="flex items-start gap-3 text-white/60 font-light text-sm">
+                  <Check className="w-5 h-5 text-white/20 shrink-0" />
+                  <span>Расчет размеров стекла с учетом зазоров</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/60 font-light text-sm">
+                  <Check className="w-5 h-5 text-white/20 shrink-0" />
+                  <span>Стандартные вырезы под петли и коннекторы</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/60 font-light text-sm">
+                  <Check className="w-5 h-5 text-white/20 shrink-0" />
+                  <span>Готовый PDF-файл для завода</span>
+                </li>
+              </ul>
+              
+              <a href="#configurator" className="w-full inline-flex justify-center items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-4 rounded-xl font-medium text-sm transition-all">
+                Выбрать базовый
+              </a>
+            </div>
+
+            {/* Premium Tier */}
+            <div className="bg-primary/5 border border-primary/20 rounded-[2rem] p-8 md:p-12 relative flex flex-col overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold uppercase tracking-widest py-1 px-4 rounded-bl-xl">Популярный</div>
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
+              
+              <h3 className="text-2xl font-serif text-white mb-2 relative z-10">Сложный проект</h3>
+              <p className="text-white/40 text-sm font-light mb-8 relative z-10">Для неровных стен, мансард и сложной фурнитуры.</p>
+              <div className="text-4xl font-serif text-white mb-8 relative z-10">3 000 ₽</div>
+              
+              <ul className="space-y-4 mb-10 flex-grow relative z-10">
+                <li className="flex items-start gap-3 text-white/80 font-light text-sm">
+                  <Check className="w-5 h-5 text-primary shrink-0" />
+                  <span>Всё, что входит в базовый чертёж</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light text-sm">
+                  <Check className="w-5 h-5 text-primary shrink-0" />
+                  <span>Учет кривизны стен, уклона пола, скосов под крышу</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light text-sm">
+                  <Check className="w-5 h-5 text-primary shrink-0" />
+                  <span>Индивидуальные вырезы под сложную фурнитуру</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/80 font-light text-sm">
+                  <Check className="w-5 h-5 text-primary shrink-0" />
+                  <span>Подбор спецификации комплектующих (ссылки)</span>
+                </li>
+              </ul>
+              
+              <a href="#configurator" className="w-full inline-flex justify-center items-center gap-2 bg-primary hover:bg-primary/90 text-white shadow-[0_0_30px_-10px_rgba(var(--primary),0.5)] px-6 py-4 rounded-xl font-medium text-sm transition-all relative z-10">
+                Заказать сложный
+              </a>
             </div>
           </div>
         </div>
