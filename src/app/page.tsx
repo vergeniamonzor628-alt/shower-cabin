@@ -4,6 +4,8 @@ import { BeamsBackground } from "@/components/ui/beams-background";
 import { SmoothVideoLoop } from "@/components/ui/smooth-video-loop";
 import StickyCTA from "@/components/StickyCTA";
 import { Check, ArrowRight } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export default function Home() {
   return (
@@ -112,18 +114,18 @@ export default function Home() {
       <section className="py-12 bg-black/40 backdrop-blur-md relative z-10 border-b border-white/5">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-12 md:gap-24 text-center">
-            <div>
+            <RevealOnScroll delay={0.1}>
               <div className="text-3xl font-serif text-white mb-1">Точность 1 мм</div>
               <div className="text-white/40 text-xs font-light uppercase tracking-widest">Допуски CAD</div>
-            </div>
-            <div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.2}>
               <div className="text-3xl font-serif text-white mb-1">~15-25 тыс.</div>
               <div className="text-white/40 text-xs font-light uppercase tracking-widest">Средняя цена на заводе</div>
-            </div>
-            <div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.3}>
               <div className="text-3xl font-serif text-primary mb-1">24 часа</div>
               <div className="text-white/40 text-xs font-light uppercase tracking-widest">Срок подготовки файла</div>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -134,14 +136,14 @@ export default function Home() {
       <section id="how-it-works" className="py-24 bg-background relative border-b border-white/5 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           
-          <div className="text-center mb-20 max-w-2xl mx-auto">
+          <RevealOnScroll delay={0.1} className="text-center mb-20 max-w-2xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-6 tracking-tight">Как это устроено</h2>
-          </div>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-5xl mx-auto">
             
             {/* Step 1 - Bento */}
-            <div className="md:col-span-8 group bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden hover:bg-white/[0.04] transition-colors flex flex-col md:flex-row relative">
+            <TiltCard className="md:col-span-8 group bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden hover:bg-white/[0.04] transition-colors flex flex-col md:flex-row relative backdrop-blur-sm">
               <div className="p-10 md:w-1/2 z-10 flex flex-col justify-center">
                 <div className="text-white/10 font-serif text-7xl mb-6 group-hover:text-primary/30 transition-colors">01</div>
                 <h3 className="text-2xl font-serif text-white mb-4">Вы измеряете</h3>
@@ -153,10 +155,10 @@ export default function Home() {
                 <Image src="/blueprint_on_table.png" alt="Замер" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" />
                 <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent md:bg-gradient-to-t" />
               </div>
-            </div>
+            </TiltCard>
             
             {/* Step 2 - Bento */}
-            <div className="md:col-span-4 group bg-primary/5 border border-primary/10 rounded-[2rem] overflow-hidden relative flex flex-col">
+            <TiltCard className="md:col-span-4 group bg-primary/5 border border-primary/10 rounded-[2rem] overflow-hidden relative flex flex-col backdrop-blur-sm">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="p-10 z-10 flex flex-col flex-grow">
                 <div className="text-primary/20 font-serif text-7xl mb-6 group-hover:text-primary/50 transition-colors">02</div>
@@ -165,10 +167,10 @@ export default function Home() {
                   Инженер готовит проект с допусками для производства за 24 часа.
                 </p>
               </div>
-            </div>
+            </TiltCard>
 
             {/* Step 3 - Bento */}
-            <div className="md:col-span-12 group bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden hover:bg-white/[0.04] transition-colors relative flex flex-col md:flex-row-reverse">
+            <TiltCard className="md:col-span-12 group bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden hover:bg-white/[0.04] transition-colors relative flex flex-col md:flex-row-reverse backdrop-blur-sm">
               <div className="p-10 md:w-1/2 z-10 flex flex-col justify-center lg:pl-16">
                 <div className="text-white/10 font-serif text-7xl mb-6 group-hover:text-primary/30 transition-colors">03</div>
                 <h3 className="text-2xl font-serif text-white mb-4">Завод производит</h3>
@@ -180,7 +182,7 @@ export default function Home() {
                 <Image src="/premium_walkin_shower_1780571966263.png" alt="Готовая кабина" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-l from-background to-transparent" />
               </div>
-            </div>
+            </TiltCard>
 
           </div>
         </div>
@@ -193,15 +195,16 @@ export default function Home() {
       {/* ============================================ */}
       <section id="examples" className="py-24 bg-background relative z-10 border-b border-white/5 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
+          <RevealOnScroll className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-4 tracking-tight">Примеры работ</h2>
             <p className="text-white/50 text-lg font-light">Готовые проекты по нашим чертежам.</p>
-          </div>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Example 1 */}
-            <div className="group rounded-[2rem] overflow-hidden bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all">
-              <div className="relative aspect-[3/4] overflow-hidden">
+            <RevealOnScroll delay={0.1}>
+              <TiltCard className="group rounded-[2rem] overflow-hidden bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all backdrop-blur-md">
+                <div className="relative aspect-[3/4] overflow-hidden">
                 <Image src="/premium_corner_shower_1780571932250.png" alt="Угловая кабина" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -209,11 +212,13 @@ export default function Home() {
                   <p className="text-white/40 text-sm font-light">Стекло 8мм · 900×900</p>
                 </div>
               </div>
-            </div>
+              </TiltCard>
+            </RevealOnScroll>
 
             {/* Example 2 */}
-            <div className="group rounded-[2rem] overflow-hidden bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all">
-              <div className="relative aspect-[3/4] overflow-hidden">
+            <RevealOnScroll delay={0.2}>
+              <TiltCard className="group rounded-[2rem] overflow-hidden bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all backdrop-blur-md">
+                <div className="relative aspect-[3/4] overflow-hidden">
                 <Image src="/premium_walkin_shower_1780571966263.png" alt="Walk-in" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -221,11 +226,13 @@ export default function Home() {
                   <p className="text-white/40 text-sm font-light">Стекло 10мм · 1200×2100</p>
                 </div>
               </div>
-            </div>
+              </TiltCard>
+            </RevealOnScroll>
 
             {/* Example 3 */}
-            <div className="group rounded-[2rem] overflow-hidden bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all">
-              <div className="relative aspect-[3/4] overflow-hidden">
+            <RevealOnScroll delay={0.3}>
+              <TiltCard className="group rounded-[2rem] overflow-hidden bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-all backdrop-blur-md">
+                <div className="relative aspect-[3/4] overflow-hidden">
                 <Image src="/premium_niche_shower_1780571944244.png" alt="Ниша" fill className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -233,7 +240,8 @@ export default function Home() {
                   <p className="text-white/40 text-sm font-light">Стекло 8мм · 800×2000</p>
                 </div>
               </div>
-            </div>
+              </TiltCard>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -245,27 +253,27 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center">
+              <RevealOnScroll delay={0.1} className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center backdrop-blur-sm">
                 <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-4">
                   <span className="text-white/80 text-xl">🛡️</span>
                 </div>
                 <div className="text-white text-lg font-medium mb-2">Гарантия точности</div>
                 <div className="text-white/40 text-sm font-light leading-relaxed">Ошибка в чертеже? Переделаем бесплатно и компенсируем убытки.</div>
-              </div>
-              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center">
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.2} className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center backdrop-blur-sm">
                 <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-4">
                   <span className="text-white/80 text-xl">⏳</span>
                 </div>
                 <div className="text-white text-lg font-medium mb-2">Готово за 24 часа</div>
                 <div className="text-white/40 text-sm font-light leading-relaxed">Быстро проектируем, чтобы вы быстрее заказали стекло.</div>
-              </div>
-              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center">
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.3} className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center backdrop-blur-sm">
                 <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-4">
                   <span className="text-white/80 text-xl">👨‍💻</span>
                 </div>
                 <div className="text-white text-lg font-medium mb-2">Контроль инженера</div>
                 <div className="text-white/40 text-sm font-light leading-relaxed">Проверяем замеры на логичность. Если что-то не так — свяжемся.</div>
-              </div>
+              </RevealOnScroll>
             </div>
           </div>
         </div>
@@ -349,9 +357,9 @@ export default function Home() {
       {/* ============================================ */}
       <section id="configurator" className="py-32 bg-background border-b border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
+          <RevealOnScroll className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Заказать проект</h2>
-          </div>
+          </RevealOnScroll>
           
           <Configurator />
         </div>
@@ -362,32 +370,40 @@ export default function Home() {
       {/* ============================================ */}
       <section id="faq" className="py-32 bg-background relative z-10">
         <div className="container mx-auto px-6 max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-serif text-white mb-16 text-center tracking-tight">Вопросы и ответы</h2>
+          <RevealOnScroll>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-16 text-center tracking-tight">Вопросы и ответы</h2>
+          </RevealOnScroll>
           
           <div className="space-y-4">
-            <details className="group bg-white/[0.02] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.04] transition-colors cursor-pointer marker:content-['']">
+            <RevealOnScroll delay={0.1}>
+              <details className="group bg-white/[0.02] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.04] transition-colors cursor-pointer marker:content-[''] backdrop-blur-md">
               <summary className="flex items-center justify-between text-lg font-medium text-white outline-none">
                 Что, если я измерю неправильно?
                 <svg className="w-5 h-5 text-white/40 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
               <p className="pt-4 text-white/50 font-light leading-relaxed">Мы даем видео-инструкцию, ошибиться сложно. Но если цифры не будут биться логически, инженер это заметит и свяжется с вами.</p>
-            </details>
+              </details>
+            </RevealOnScroll>
 
-            <details className="group bg-white/[0.02] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.04] transition-colors cursor-pointer marker:content-['']">
+            <RevealOnScroll delay={0.2}>
+              <details className="group bg-white/[0.02] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.04] transition-colors cursor-pointer marker:content-[''] backdrop-blur-md">
               <summary className="flex items-center justify-between text-lg font-medium text-white outline-none">
                 Где мне заказать стекло?
                 <svg className="w-5 h-5 text-white/40 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
               <p className="pt-4 text-white/50 font-light leading-relaxed">В любом стекольном цеху вашего города. Просто отправьте им наш PDF.</p>
-            </details>
+              </details>
+            </RevealOnScroll>
 
-            <details className="group bg-white/[0.02] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.04] transition-colors cursor-pointer marker:content-['']">
+            <RevealOnScroll delay={0.3}>
+              <details className="group bg-white/[0.02] border border-white/5 rounded-2xl p-6 hover:bg-white/[0.04] transition-colors cursor-pointer marker:content-[''] backdrop-blur-md">
               <summary className="flex items-center justify-between text-lg font-medium text-white outline-none">
                 А что с фурнитурой?
                 <svg className="w-5 h-5 text-white/40 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
               <p className="pt-4 text-white/50 font-light leading-relaxed">Пришлите ссылки на петли и ручки. Мы добавим правильные вырезы в чертеж.</p>
-            </details>
+              </details>
+            </RevealOnScroll>
           </div>
         </div>
       </section>

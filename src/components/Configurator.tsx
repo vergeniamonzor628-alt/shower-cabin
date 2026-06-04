@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import ApplicationBlankModal from './ApplicationBlankModal';
+import { TiltCard } from './ui/TiltCard';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation } from 'swiper/modules';
@@ -131,22 +132,23 @@ export default function Configurator() {
             
             <div className="flex flex-col gap-3">
               {CABIN_TYPES.map((type, index) => (
-                <button
-                  key={type.id}
-                  onClick={() => swiperInstance?.slideToLoop(index)}
-                  className={`flex items-center justify-between p-5 rounded-2xl border transition-all duration-300 ${
-                    activeIndex === index
-                      ? 'bg-primary/10 border-primary text-white shadow-[0_0_30px_rgba(var(--primary),0.15)] scale-[1.02]'
-                      : 'bg-white/[0.03] border-white/5 text-white/60 hover:bg-white/[0.08] hover:text-white hover:border-white/20'
-                  }`}
-                >
-                  <span className="font-medium text-lg">{type.name}</span>
-                  <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
-                    activeIndex === index ? 'border-primary bg-primary text-white' : 'border-white/20 text-transparent'
-                  }`}>
-                    {activeIndex === index && <Check size={14} />}
-                  </div>
-                </button>
+                <TiltCard key={type.id} className="block">
+                  <button
+                    onClick={() => swiperInstance?.slideToLoop(index)}
+                    className={`flex items-center justify-between p-5 w-full rounded-2xl border transition-all duration-300 ${
+                      activeIndex === index
+                        ? 'bg-primary/10 border-primary text-white shadow-[0_0_30px_rgba(var(--primary),0.15)] scale-[1.02]'
+                        : 'bg-white/[0.03] border-white/5 text-white/60 hover:bg-white/[0.08] hover:text-white hover:border-white/20'
+                    }`}
+                  >
+                    <span className="font-medium text-lg">{type.name}</span>
+                    <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
+                      activeIndex === index ? 'border-primary bg-primary text-white' : 'border-white/20 text-transparent'
+                    }`}>
+                      {activeIndex === index && <Check size={14} />}
+                    </div>
+                  </button>
+                </TiltCard>
               ))}
             </div>
           </div>
