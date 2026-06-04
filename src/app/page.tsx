@@ -18,16 +18,20 @@ export default function Home() {
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-serif font-bold text-lg">
               A
             </div>
-            <span className="font-serif font-semibold text-xl text-white tracking-wide">AquaDraft</span>
+            <div>
+              <span className="font-serif font-semibold text-xl text-white tracking-wide">AquaDraft</span>
+              <span className="hidden lg:inline text-[10px] text-white/40 ml-3 uppercase tracking-[0.15em]">Инженерные чертежи для душевых</span>
+            </div>
           </div>
           
           <div className="hidden md:flex items-center gap-12 text-[11px] font-semibold text-white/70 uppercase tracking-[0.2em]">
-            <a href="#how-it-works" className="hover:text-white transition-colors">Метод</a>
+            <a href="#how-it-works" className="hover:text-white transition-colors">Процесс</a>
             <a href="#configurator" className="hover:text-white transition-colors">Конфигуратор</a>
+            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           </div>
 
           <a href="#configurator" className="bg-white text-background px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white/90 transition-all">
-            Начать проект
+            Рассчитать проект
           </a>
         </div>
       </header>
@@ -50,17 +54,32 @@ export default function Home() {
         <div className="mx-auto max-w-[1000px] px-6 lg:px-12 relative z-10 text-center opacity-0 animate-fade-in-up">
           
           <div className="inline-block mb-8 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-sm">
-            Проектирование по стандартам ГОСТ
+            Инженерное бюро
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-[4.5rem] font-serif text-white leading-[1.1] mb-8 tracking-tight">
-            Сэкономьте до 50 000 ₽ на <br className="hidden md:block"/>
-            <span className="text-primary italic font-light">премиальной душевой.</span>
+            Премиальная душевая <br className="hidden md:block"/>
+            <span className="text-primary italic font-light">за цену комплектующих.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-            Получите точный инженерный чертеж (PDF + DWG) для заказа стекла напрямую на заводе всего за 1 500 ₽. Никаких переплат салонам сантехники — соберите кабину мечты по цене комплектующих.
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+            Мы делаем инженерный чертеж (PDF + DWG) — вы заказываете стекло напрямую на заводе, минуя салоны с наценкой 300%.
           </p>
+
+          {/* Micro-calculation — proof for the claim */}
+          <div className="flex items-center justify-center gap-4 sm:gap-8 mb-12 opacity-0 animate-fade-in-up-delay-1">
+            <div className="text-center">
+              <div className="text-white/30 text-xs uppercase tracking-wider mb-1">В салоне</div>
+              <div className="text-white/50 text-2xl font-serif line-through decoration-red-400/60">~80 000 ₽</div>
+            </div>
+            <div className="text-white/20">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+            <div className="text-center">
+              <div className="text-primary/80 text-xs uppercase tracking-wider mb-1">Завод + наш чертеж</div>
+              <div className="text-white text-2xl font-serif">~25 000 ₽</div>
+            </div>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 animate-fade-in-up-delay-1">
             <a href="#configurator" className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-medium text-sm transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(99,102,241,0.3)]">
@@ -72,82 +91,46 @@ export default function Home() {
               <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-sm text-primary">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
               </div>
-              <p className="text-xs text-white/70 font-medium leading-tight">Готовый PDF-файл за 24 часа.<br/>Подходит для РФ.</p>
+              <p className="text-xs text-white/70 font-medium leading-tight">Чертеж за 1 500 ₽ · 24 часа<br/>Подходит для любого завода РФ</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Pain (Problem) */}
+      {/* The Pain — Why the factory won't accept your sketch */}
       <section className="py-32 bg-black/60 backdrop-blur-[2px] relative z-10 border-border/40 overflow-hidden">
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in-up">
-            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Рынок против вас</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-[1.2]">
-              Зачем переплачивать 300% <span className="italic text-white/50">салонам сантехники?</span>
-            </h2>
-            
-            <p className="text-white/60 leading-relaxed text-lg font-light mb-12">
-              Решили заказать стекло напрямую и сэкономить? Завод не примет заказ &quot;на пальцах&quot;. Им нужны координаты отверстий под петли и учет технологических зазоров (2-3 мм). Ошибетесь на миллиметр — стекло не влезет в нишу, а каленое стекло <strong className="text-white font-semibold">нельзя подрезать</strong>. Доверьте расчет инженерам.
-            </p>
-            
-            <ul className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-              <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
-                <span className="text-white/80 font-medium">Никаких наценок за &quot;премиум бренд&quot;</span>
-              </li>
-              <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
-                <span className="text-white/80 font-medium">Индивидуальный размер без доплат</span>
-              </li>
-              <li className="bg-white/5 border border-white/10 p-8 rounded-2xl">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4"><polyline points="20 6 9 17 4 12"/></svg>
-                <span className="text-white/80 font-medium">Инженерный расчет (допуски 1мм)</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Proof (Было / Стало) Section */}
-      <section className="py-24 bg-black/60 backdrop-blur-[2px] relative border-t border-border/40 overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Как должен выглядеть заказ</h2>
-            <p className="text-white/60 text-lg font-light">
-              Чтобы вас поняли на производстве и сделали всё без ошибок
-            </p>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-8 items-stretch max-w-5xl mx-auto">
-            {/* Было */}
-            <div className="flex-1 bg-white/5 border border-red-500/20 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-0 w-full h-1 bg-red-500/50" />
-              <div>
-                <div className="text-red-400 font-medium mb-6 uppercase tracking-wider text-sm">❌ Рисунок от руки</div>
-                <h3 className="text-2xl text-white mb-4">Отказ на заводе</h3>
-                <p className="text-white/50 font-light leading-relaxed">
-                  С эскизом &quot;на коленке&quot; завод откажет в производстве или снимет с себя ответственность за любые ошибки. Без указания зазоров, отступов под петли и фасок стекло будет испорчено.
-                </p>
-              </div>
-              <div className="mt-8 h-48 bg-black/40 rounded-xl border border-white/10 flex items-center justify-center">
-                <span className="text-white/20">Место для фото листка в клетку</span>
-              </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Проблема</div>
+              <h2 className="text-4xl md:text-5xl font-serif text-white mb-6 leading-[1.2]">
+                Почему завод <span className="italic text-white/50">не примет ваш заказ</span>
+              </h2>
             </div>
 
-            {/* Стало */}
-            <div className="flex-1 bg-primary/10 border border-primary/30 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
-              <div>
-                <div className="text-primary font-medium mb-6 uppercase tracking-wider text-sm">✅ CAD-чертеж</div>
-                <h3 className="text-2xl text-white mb-4">Идеальная посадка</h3>
-                <p className="text-white/70 font-light leading-relaxed">
-                  Наш инженерный чертеж гарантирует, что стекло встанет в ванную с точностью до миллиметра, а фурнитура закрепится без люфтов и перекосов. Завод примет такой файл в работу за 5 минут.
-                </p>
+            {/* Factory quote — social proof from the real world */}
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 mb-12 relative">
+              <div className="text-primary/20 text-6xl font-serif absolute top-4 left-6">&quot;</div>
+              <blockquote className="text-white/80 text-xl md:text-2xl font-light leading-relaxed italic relative z-10 pl-8 md:pl-12">
+                Для оформления заказа предоставьте чертеж с указанием всех отверстий под фурнитуру, фасок, допусков и технологических зазоров.
+              </blockquote>
+              <div className="mt-6 pl-8 md:pl-12 text-white/40 text-sm">— Типовое требование стекольного производства</div>
+            </div>
+
+            <p className="text-white/60 leading-relaxed text-lg font-light mb-16 max-w-3xl mx-auto text-center">
+              На производстве никто не будет слушать &quot;мне стекло примерно метр на два&quot;. Им нужны точные координаты сверления, учет зазоров (2-3 мм) и допусков. Ошибетесь на миллиметр — стекло не влезет в нишу, а каленое стекло <strong className="text-white font-semibold">нельзя подрезать</strong>. Деньги и время потеряны.
+            </p>
+
+            {/* Integrated Before/After comparison */}
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <div className="bg-red-500/5 border border-red-500/15 rounded-2xl p-6 text-center">
+                <div className="text-red-400/80 text-xs font-bold uppercase tracking-wider mb-3">Без чертежа</div>
+                <p className="text-white/50 font-light text-sm leading-relaxed">Завод откажет или снимет с себя ответственность за ошибки. Стекло придется переделывать за свой счет.</p>
               </div>
-              <div className="mt-8 h-48 relative overflow-hidden rounded-xl border border-primary/20">
-                <Image src="/hero_blueprint_shower_1780488146668.png" alt="CAD-чертеж" fill className="object-cover" />
+              <div className="bg-primary/5 border border-primary/15 rounded-2xl p-6 text-center">
+                <div className="text-primary/80 text-xs font-bold uppercase tracking-wider mb-3">С нашим чертежом</div>
+                <p className="text-white/70 font-light text-sm leading-relaxed">Завод получает готовый файл с допусками и вырезами. Стекло встает с точностью до миллиметра. Гарантия производства.</p>
               </div>
             </div>
           </div>
@@ -159,10 +142,10 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10">
           
           <div className="text-center mb-24 max-w-2xl mx-auto">
-            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Процесс работы</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Как мы ломаем систему</h2>
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Процесс</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Три шага до готового стекла</h2>
             <p className="text-white/60 text-lg font-light">
-              Мы превращаем сложный процесс заказа индивидуальной кабины в три простых и абсолютно прозрачных шага.
+              От замера рулеткой до получения стекла с завода — весь путь прозрачен и понятен.
             </p>
           </div>
 
@@ -221,10 +204,10 @@ export default function Home() {
       <section id="configurator" className="py-24 bg-black/80 backdrop-blur-[2px] border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-20 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Спроектируйте свою кабину</h2>
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Конфигуратор</div>
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight">Начните прямо сейчас</h2>
             <p className="text-white/60 text-lg font-light">
-              Выберите базовую форму, чтобы запустить процесс проектирования. 
-              Каждая кабина будет адаптирована инженерами под ваши точные размеры.
+              Выберите форму кабины, укажите размеры — инженер подготовит чертеж за 24 часа.
             </p>
           </div>
           
@@ -232,73 +215,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 bg-background relative z-10 border-t border-border/40">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <div className="text-center mb-16">
-            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Тарифы</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Стоимость проектирования</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Basic Plan */}
-            <div className="bg-white/5 border border-white/10 hover:border-white/20 transition-colors rounded-3xl p-10 flex flex-col">
-              <h3 className="text-2xl text-white font-medium mb-2">Базовый проект</h3>
-              <div className="text-4xl text-white font-serif mb-6">1 500 ₽</div>
-              <p className="text-white/50 font-light mb-8 h-12">
-                Для стандартных кабин: прямые, в нишу, Г-образные угловые.
-              </p>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-start gap-3 text-white/80 font-light">
-                  <span className="text-primary mt-1">✓</span> Проектирование по вашим размерам
-                </li>
-                <li className="flex items-start gap-3 text-white/80 font-light">
-                  <span className="text-primary mt-1">✓</span> Зазоры под петли и ручку
-                </li>
-                <li className="flex items-start gap-3 text-white/80 font-light">
-                  <span className="text-primary mt-1">✓</span> Экспорт в <strong className="font-medium text-white">PDF</strong> для завода
-                </li>
-              </ul>
-              <a href="#configurator" className="w-full py-4 rounded-xl bg-white/10 hover:bg-white/15 text-white transition-colors text-center inline-block">
-                Заказать
-              </a>
-            </div>
-
-            {/* Premium Plan */}
-            <div className="bg-primary/10 border border-primary/30 hover:border-primary/50 transition-colors rounded-3xl p-10 flex flex-col relative overflow-hidden">
-              <div className="absolute top-6 right-6 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                Популярный
-              </div>
-              <h3 className="text-2xl text-white font-medium mb-2">Сложная геометрия</h3>
-              <div className="text-4xl text-white font-serif mb-6">3 500 ₽</div>
-              <p className="text-white/50 font-light mb-8 h-12">
-                Для сложных проектов: мансарды, вырезы под трубы, бортики и П-образные кабины.
-              </p>
-              <ul className="space-y-4 mb-10 flex-1">
-                <li className="flex items-start gap-3 text-white/80 font-light">
-                  <span className="text-primary mt-1">✓</span> Индивидуальные сложные вырезы
-                </li>
-                <li className="flex items-start gap-3 text-white/80 font-light">
-                  <span className="text-primary mt-1">✓</span> Приоритетная поддержка инженера
-                </li>
-                <li className="flex items-start gap-3 text-white/80 font-light">
-                  <span className="text-primary mt-1">✓</span> Экспорт в <strong className="font-medium text-white">PDF и DWG</strong> (для ЧПУ)
-                </li>
-              </ul>
-              <a href="#configurator" className="w-full py-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground transition-colors shadow-[0_0_20px_rgba(212,175,55,0.3)] text-center inline-block">
-                Выбрать
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
-      <section className="py-24 bg-black/60 backdrop-blur-[2px] relative z-10 border-t border-border/40">
+      <section id="faq" className="py-24 bg-black/60 backdrop-blur-[2px] relative z-10 border-t border-border/40">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-16">
-            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">FAQ</div>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Остались сомнения?</h2>
+            <div className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Вопросы</div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Частые вопросы</h2>
           </div>
           
           <div className="grid gap-6">
@@ -335,24 +257,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust & Footer */}
+      {/* Footer */}
       <footer className="bg-background pt-24 pb-12 border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24 border-b border-white/10 pb-24">
             <div className="flex flex-col items-center text-center">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <h4 className="text-white font-semibold mb-2">Чертеж за 24 часа</h4>
-              <p className="text-white/50 text-sm font-light">Вы не теряете время на ожидание.</p>
+              <p className="text-white/50 text-sm font-light">Готовый файл в формате PDF + DWG.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <h4 className="text-white font-semibold mb-2">Точность посадки</h4>
-              <p className="text-white/50 text-sm font-light">Гарантия соответствия всем ГОСТам.</p>
+              <h4 className="text-white font-semibold mb-2">Гарантия точности</h4>
+              <p className="text-white/50 text-sm font-light">Допуски по ГОСТам. Компенсация при ошибке.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <h4 className="text-white font-semibold mb-2">Поддержка производства</h4>
-              <p className="text-white/50 text-sm font-light">Бесплатная консультация вашего завода.</p>
+              <h4 className="text-white font-semibold mb-2">Поддержка 24/7</h4>
+              <p className="text-white/50 text-sm font-light">Инженерная консультация в Telegram.</p>
             </div>
           </div>
           
@@ -361,7 +283,12 @@ export default function Home() {
               <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white font-serif font-bold text-xs">A</div>
               <span className="font-serif font-semibold text-white">AquaDraft Bureau</span>
             </div>
-            <p className="text-white/40 text-sm">© 2026 Все права защищены.</p>
+            <div className="flex items-center gap-6 text-white/30 text-sm">
+              <a href="#" className="hover:text-white/60 transition-colors">Оферта</a>
+              <a href="#" className="hover:text-white/60 transition-colors">Политика конфиденциальности</a>
+              <a href="https://t.me/aquadraft" target="_blank" rel="noreferrer" className="hover:text-white/60 transition-colors">Telegram</a>
+            </div>
+            <p className="text-white/40 text-sm">© 2026. Сделано инженерами для людей.</p>
           </div>
         </div>
       </footer>
