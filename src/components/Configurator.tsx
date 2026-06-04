@@ -1,297 +1,183 @@
 "use client";
 
 import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Check, ArrowRight, Zap } from 'lucide-react';
 import Image from 'next/image';
+import { ArrowRight, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import ApplicationBlankModal from './ApplicationBlankModal';
 
-const formSchema = z.object({
-  orderType: z.enum(["template", "custom"]),
-  cabinType: z.string().optional(),
-  
-  width: z.string().optional(),
-  height: z.string().optional(),
-  depth: z.string().optional(),
-  hardware: z.string().optional(),
-  
-  customDescription: z.string().optional(),
-  
-  name: z.string().min(2, "Обязательно"),
-  phone: z.string().min(10, "Обязательно"),
-  telegram: z.string().optional(),
-});
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Navigation } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 
-type FormValues = z.infer<typeof formSchema>;
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
 
 const CABIN_TYPES = [
-  { id: 'corner', name: 'Угловая кабина', img: '/corner_shower_neutral_1780476003860.png' },
-  { id: 'niche', name: 'Дверь в нишу', img: '/niche_shower_neutral_1780476014823.png' },
-  { id: 'walk_in', name: 'Свободный вход', img: '/walk_in_shower_neutral_1780476025174.png' },
-  { id: 'u_shape', name: 'П-образная', img: '/u_shape_shower_neutral_1780476036979.png' },
-  { id: 'bath', name: 'Шторка на ванну', img: '/bath_screen_neutral_1780476048202.png' }
+  { 
+    id: 'corner', 
+    name: 'Угловая', 
+    desc: 'Самое популярное решение. Две стеклянные стены, дверь на петлях или раздвижная.',
+    img: '/premium_corner_shower_1780571932250.png',
+    price: '~15 000 ₽ (на заводе)'
+  },
+  { 
+    id: 'niche', 
+    name: 'Дверь в нишу', 
+    desc: 'Минималистично и надежно. Одно сплошное стекло с дверью, закрывающее проем.',
+    img: '/premium_niche_shower_1780571944244.png',
+    price: '~12 000 ₽ (на заводе)'
+  },
+  { 
+    id: 'walk_in', 
+    name: 'Walk-in', 
+    desc: 'Свободный вход без дверей. Одно большое неподвижное стекло.',
+    img: '/premium_walkin_shower_1780571966263.png',
+    price: '~10 000 ₽ (на заводе)'
+  },
+  { 
+    id: 'u_shape', 
+    name: 'П-образная', 
+    desc: 'Три стеклянные стороны. Идеально для примыкания к одной плоской стене.',
+    img: '/premium_ushape_shower_1780571955023.png',
+    price: '~22 000 ₽ (на заводе)'
+  },
+  { 
+    id: 'bath', 
+    name: 'Шторка на ванну', 
+    desc: 'Эстетичная защита от брызг. Неподвижная часть + распашная дверца.',
+    img: '/premium_bath_screen_1780572000188.png',
+    price: '~8 000 ₽ (на заводе)'
+  }
 ];
 
 export default function Configurator() {
-  const [step, setStep] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
-  const { register, handleSubmit, watch, setValue, trigger, formState: { errors } } = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      orderType: "template",
-    }
-  });
-
-  const orderType = watch("orderType");
-  const cabinType = watch("cabinType");
-
-  const handleNext = async () => {
-    let valid = false;
-    if (step === 1) {
-      if (orderType === "custom" || cabinType) valid = true;
-    } else if (step === 2) {
-      valid = true;
-    } else if (step === 3) {
-      valid = await trigger(["name", "phone"]);
-    }
-    
-    if (valid) setStep(prev => Math.min(prev + 1, 4));
-  };
-
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    setLoading(true);
-    try {
-      // Имитация отправки
-      const res = await fetch('/api/submit-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (res.ok) setStep(4);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const activeType = CABIN_TYPES[activeIndex];
 
   return (
-    <div className="bg-white/80 backdrop-blur-xl shadow-2xl shadow-primary/10 rounded-[2rem] flex flex-col relative overflow-hidden border border-white">
+    <div className="bg-[#0f0f11] border border-white/5 rounded-[2.5rem] overflow-hidden relative">
       
-      {/* Progress Indicator */}
-      {step < 4 && (
-        <div className="flex border-b border-border/40 bg-white/50">
-          {[
-            { num: 1, label: "Архитектура" },
-            { num: 2, label: "Размеры" },
-            { num: 3, label: "Контакты" }
-          ].map(s => (
-            <div key={s.num} className={`flex-1 flex flex-col items-center justify-center py-5 border-r border-border/40 last:border-r-0 relative transition-colors ${step === s.num ? 'bg-primary/5 text-primary' : 'text-slate-500'}`}>
-              <div className={`text-[10px] uppercase tracking-widest font-bold mb-1 ${step >= s.num ? 'text-primary' : 'text-slate-500/50'}`}>
-                Шаг 0{s.num}
-              </div>
-              <div className={`text-sm font-serif font-medium ${step >= s.num ? 'text-foreground' : 'text-slate-500'}`}>
-                {s.label}
-              </div>
-              {/* Active indicator line */}
-              {step === s.num && (
-                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Form Content */}
-      <form id="orderForm" onSubmit={handleSubmit(onSubmit)} className="flex-grow p-6 sm:p-10 flex flex-col justify-center relative z-10">
+      {/* Visual Constructor Area */}
+      <div className="flex flex-col xl:flex-row">
         
-        {/* Step 1: Cabin Type */}
-        {step === 1 && (
-          <div className="animate-in fade-in zoom-in-95 duration-300 w-full">
-            <h3 className="mb-6 text-xl md:text-2xl font-serif font-medium text-foreground text-center">
-              Выберите тип конструкции
-            </h3>
-            
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-              {CABIN_TYPES.map(type => (
-                <div 
-                  key={type.id}
-                  onClick={() => { setValue("orderType", "template"); setValue("cabinType", type.name); }}
-                  className={`cursor-pointer rounded-2xl p-2 transition-all duration-300 group ${
-                    orderType === "template" && cabinType === type.name 
-                      ? 'bg-white shadow-xl shadow-primary/15 ring-2 ring-primary scale-[1.02]' 
-                      : 'bg-white/50 hover:bg-white hover:shadow-lg ring-1 ring-border/50'
-                  }`}
-                >
-                  <div className="relative aspect-[4/3] w-full mb-3 rounded-xl overflow-hidden bg-muted/30">
-                    <Image src={type.img} alt={type.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                  </div>
-                  <div className={`text-[11px] md:text-xs font-medium text-center transition-colors leading-tight ${
-                    orderType === "template" && cabinType === type.name ? 'text-primary' : 'text-foreground'
-                  }`}>
-                    {type.name}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div 
-              onClick={() => { setValue("orderType", "custom"); setValue("cabinType", ""); }}
-              className={`cursor-pointer rounded-2xl p-4 text-center transition-all duration-300 mx-auto max-w-md ${
-                orderType === "custom" 
-                  ? 'bg-primary text-white shadow-xl shadow-primary/20 scale-[1.01]' 
-                  : 'bg-white/50 ring-1 ring-border/50 hover:bg-white hover:shadow-lg text-foreground'
-              }`}
+        {/* Left: 3D Carousel Viewer */}
+        <div className="xl:w-3/5 relative min-h-[500px] xl:min-h-[650px] bg-black/50 overflow-hidden flex flex-col justify-center py-12">
+          
+          {/* Swiper Carousel */}
+          <div className="w-full mt-4 mb-8">
+            <Swiper
+              effect={'coverflow'}
+              grabCursor={true}
+              centeredSlides={true}
+              loop={true}
+              slidesPerView={'auto'}
+              coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2.5,
+                slideShadows: false,
+              }}
+              navigation={{
+                prevEl: '.swiper-button-prev-custom',
+                nextEl: '.swiper-button-next-custom',
+              }}
+              onSwiper={(swiper) => setSwiperInstance(swiper)}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+              modules={[EffectCoverflow, Navigation]}
+              className="w-full !px-0"
             >
-              <h4 className="text-lg font-serif font-medium mb-2">Нестандартный проект</h4>
-              <p className={`text-sm font-light ${orderType === "custom" ? 'text-white/80' : 'text-slate-500'}`}>
-                Мансардные скосы, вырезы под трубы, сложная геометрия.
-              </p>
-            </div>
+              {CABIN_TYPES.map((type) => (
+                <SwiperSlide key={type.id} className="!w-[75%] md:!w-[55%] lg:!w-[45%] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative transition-all duration-300">
+                  <Image 
+                    src={type.img} 
+                    alt={type.name} 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        )}
 
-        {/* Step 2: Dimensions */}
-        {step === 2 && (
-          <div className="animate-in fade-in slide-in-from-right-8 duration-300 w-full max-w-3xl mx-auto">
-            
-            {orderType === "template" ? (
-              <>
-                <h3 className="mb-6 text-xl md:text-2xl font-serif font-medium text-foreground text-center">
-                  Укажите габариты (в мм)
-                </h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">Ширина проема</label>
-                    <input {...register("width")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Напр: 900" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">Глубина (если есть)</label>
-                    <input {...register("depth")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Напр: 900" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">Высота по стеклу</label>
-                    <input {...register("height")} type="number" className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Напр: 2000" />
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3 rounded-xl bg-primary/5 p-4 border border-primary/10">
-                    <Zap className="text-primary shrink-0 mt-0.5" size={16} />
-                    <div>
-                      <p className="text-xs font-semibold text-foreground mb-0.5">Фурнитура</p>
-                      <p className="text-xs text-slate-500 font-light leading-relaxed">
-                        Ссылки на петли или ручки. Инженер учтет вырезы для них.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <textarea {...register("hardware")} className="w-full rounded-xl border border-border/50 bg-white/50 px-4 py-3 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[60px]" placeholder="Вставьте ссылки сюда..."></textarea>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <h3 className="mb-8 text-2xl font-serif font-medium text-foreground text-center">
-                  Опишите ваш проект
-                </h3>
-                <div className="space-y-2">
-                  <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Детали и размеры</label>
-                  <textarea {...register("customDescription")} className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-sm text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all min-h-[250px] leading-relaxed" placeholder="Опишите габариты, наличие уклона потолка, вырезы под бортик и т.д."></textarea>
-                </div>
-              </>
-            )}
-          </div>
-        )}
-
-        {/* Step 3: Contacts */}
-        {step === 3 && (
-          <div className="animate-in fade-in slide-in-from-right-8 duration-300 w-full max-w-xl mx-auto">
-             <h3 className="mb-8 text-2xl font-serif font-medium text-foreground text-center">
-              Куда отправить чертеж?
-            </h3>
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Ваше Имя</label>
-                <input {...register("name")} type="text" className={`w-full rounded-xl border ${errors.name ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-white/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="Иван" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Телефон (WhatsApp)</label>
-                <input {...register("phone")} type="tel" className={`w-full rounded-xl border ${errors.phone ? 'border-destructive bg-destructive/5' : 'border-border/50 bg-white/50'} px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all`} placeholder="+7 (999) 000-00-00" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">Telegram (по желанию)</label>
-                <input {...register("telegram")} type="text" className="w-full rounded-xl border border-border/50 bg-white/50 px-5 py-4 text-lg text-foreground shadow-inner focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="@username" />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Step 4: Success */}
-        {step === 4 && (
-          <div className="animate-in fade-in zoom-in-95 duration-300 w-full max-w-xl mx-auto text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <Check size={40} />
-            </div>
-            <h2 className="mb-4 text-3xl font-serif font-medium text-foreground">Заявка принята</h2>
-            <p className="mb-10 text-slate-500 font-light">
-              Мы получили данные. Чтобы инженер приступил к чертежу, пожалуйста, оплатите проект (окупается в 15-20 раз за счет отказа от салонов).
-            </p>
-            
-            <div className="mx-auto mb-10 max-w-sm rounded-2xl bg-white p-8 shadow-xl shadow-primary/5 border border-border/40 text-left">
-               <div className="mb-6 flex justify-between items-end border-b border-border/40 pb-6">
-                 <span className="text-sm font-medium text-slate-500">Стоимость чертежа</span>
-                 <span className="text-2xl font-serif font-semibold text-foreground">1 500 ₽</span>
-               </div>
-               <p className="mb-2 text-sm text-slate-500">Перевод по СБП на номер:</p>
-               <p className="mb-2 text-xl font-medium text-foreground">+7 900 123-45-67</p>
-               <p className="text-sm text-slate-500">Сбербанк или Тинькофф (Иван И.)</p>
-            </div>
-
-            <a href="https://wa.me/79001234567?text=Привет,%20перевел(а)%20за%20чертеж." target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 hover:shadow-primary/30">
-              Написать в WhatsApp
-            </a>
-          </div>
-        )}
-
-      </form>
-
-      {/* Footer Navigation */}
-      {step < 4 && (
-        <div className="border-t border-border/40 bg-white/50 p-6 flex justify-between items-center relative z-10 rounded-b-[2rem]">
-          <button 
-            type="button"
-            onClick={() => setStep(prev => Math.max(prev - 1, 1))}
-            className={`rounded-full px-6 py-3 text-sm font-semibold text-slate-500 hover:text-foreground transition-colors ${step > 1 ? 'visible' : 'invisible'}`}
-          >
-            Назад
+          {/* Controls */}
+          <button className="swiper-button-prev-custom absolute left-4 xl:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/40 border border-white/10 text-white/70 hover:text-white hover:bg-black/60 transition-all backdrop-blur-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+            <ChevronLeft size={24} />
+          </button>
+          <button className="swiper-button-next-custom absolute right-4 xl:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/40 border border-white/10 text-white/70 hover:text-white hover:bg-black/60 transition-all backdrop-blur-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+            <ChevronRight size={24} />
           </button>
           
-          {step < 3 ? (
-            <button 
-              type="button"
-              onClick={handleNext} 
-              disabled={step === 1 && orderType === "template" && !cabinType}
-              className="rounded-full bg-foreground text-background px-8 py-3 text-sm font-semibold transition-all hover:bg-primary disabled:opacity-50 flex items-center gap-2 shadow-md hover:shadow-lg"
-            >
-              Далее <ArrowRight size={16} />
-            </button>
-          ) : (
-            <button 
-              type="button"
-              onClick={handleSubmit(onSubmit)} 
-              disabled={loading}
-              className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-foreground disabled:opacity-50 shadow-md shadow-primary/20 hover:shadow-lg"
-            >
-              {loading ? 'Отправка...' : 'Отправить инженеру'}
-            </button>
-          )}
+          <div className="absolute bottom-6 left-6 right-6 xl:bottom-10 xl:left-10 z-30 pointer-events-none text-center xl:text-left">
+            <h3 className="text-3xl md:text-5xl font-serif text-white mb-3 shadow-black/50 drop-shadow-lg">{activeType.name}</h3>
+            <p className="text-base md:text-lg text-white/80 max-w-md mx-auto xl:mx-0 shadow-black/50 drop-shadow-md">{activeType.desc}</p>
+          </div>
         </div>
-      )}
 
+        {/* Right: Selection Panel */}
+        <div className="xl:w-2/5 p-6 xl:p-10 flex flex-col bg-white/[0.02] border-l border-white/5">
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <h4 className="text-sm font-mono text-white/50 uppercase tracking-widest">Выберите конфигурацию</h4>
+            </div>
+            
+            <div className="flex flex-col gap-3">
+              {CABIN_TYPES.map((type, index) => (
+                <button
+                  key={type.id}
+                  onClick={() => swiperInstance?.slideToLoop(index)}
+                  className={`flex items-center justify-between p-5 rounded-2xl border transition-all duration-300 ${
+                    activeIndex === index
+                      ? 'bg-primary/10 border-primary text-white shadow-[0_0_30px_rgba(var(--primary),0.15)] scale-[1.02]'
+                      : 'bg-white/[0.03] border-white/5 text-white/60 hover:bg-white/[0.08] hover:text-white hover:border-white/20'
+                  }`}
+                >
+                  <span className="font-medium text-lg">{type.name}</span>
+                  <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
+                    activeIndex === index ? 'border-primary bg-primary text-white' : 'border-white/20 text-transparent'
+                  }`}>
+                    {activeIndex === index && <Check size={14} />}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-auto pt-6 border-t border-white/10">
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 mb-6 shadow-inner">
+              <Check className="w-5 h-5 text-primary" />
+              <span className="text-base font-medium text-white/90">Цена стекла: {activeType.price}</span>
+            </div>
+            
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="w-full group bg-white text-black p-5 rounded-2xl font-bold flex items-center justify-between transition-all hover:scale-[1.02] shadow-[0_0_40px_-10px_rgba(255,255,255,0.4)]"
+            >
+              <span className="text-xl">Заполнить ТЗ для чертежа</span>
+              <div className="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                <ArrowRight size={20} />
+              </div>
+            </button>
+            <p className="text-center text-sm text-white/40 mt-5 font-mono">
+              Чертёж 1 500 ₽ • Готовность 24 часа
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <ApplicationBlankModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        initialType={activeType.name}
+      />
     </div>
   );
 }
