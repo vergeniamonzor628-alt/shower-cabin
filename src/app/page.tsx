@@ -328,7 +328,6 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-6 text-white/30 text-sm">
               <a href="#" className="hover:text-white/60 transition-colors">Оферта</a>
-              <a href="https://t.me/aquadraft" target="_blank" rel="noreferrer" className="hover:text-white/60 transition-colors">Telegram</a>
             </div>
             <p className="text-white/30 text-xs">© 2026</p>
           </div>

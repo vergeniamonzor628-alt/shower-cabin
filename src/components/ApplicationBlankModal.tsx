@@ -86,22 +86,12 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
             </div>
             <h2 className="mb-4 text-3xl md:text-4xl font-serif font-medium text-white relative z-10">Техническое задание принято</h2>
             <p className="mb-10 text-white/60 font-light max-w-md mx-auto relative z-10">
-              Инженер приступит к чертежу после подтверждения проекта. Оплата чертежа окупается в 15-20 раз за счет отказа от салонов.
+              Инженер свяжется с вами в ближайшее время для уточнения деталей.
             </p>
-            
-            <div className="mx-auto mb-10 max-w-sm rounded-2xl bg-black/40 backdrop-blur-md p-8 shadow-xl border border-white/10 text-left relative z-10">
-               <div className="mb-6 flex justify-between items-end border-b border-white/10 pb-6">
-                 <span className="text-sm font-medium text-white/50">Стоимость чертежа</span>
-                 <span className="text-3xl font-serif font-semibold text-white">1 500 ₽</span>
-               </div>
-               <p className="mb-2 text-sm text-white/50">Номер для перевода СБП:</p>
-               <p className="mb-2 text-2xl font-medium text-white">+7 900 123-45-67</p>
-               <p className="text-sm text-white/50">Сбербанк или Тинькофф (Иван И.)</p>
-            </div>
 
-            <a href="https://wa.me/79001234567?text=Привет,%20перевел(а)%20за%20чертеж." target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full bg-primary px-10 py-5 text-sm font-bold text-white shadow-[0_0_40px_-10px_rgba(var(--primary),0.5)] transition-all hover:scale-105 hover:bg-primary/90 relative z-10">
-              Написать в WhatsApp
-            </a>
+            <button onClick={onClose} className="inline-flex items-center gap-3 rounded-full bg-primary px-10 py-5 text-sm font-bold text-white shadow-[0_0_40px_-10px_rgba(var(--primary),0.5)] transition-all hover:scale-105 hover:bg-primary/90 relative z-10">
+              Закрыть
+            </button>
           </div>
         ) : (
           <div className="relative">
@@ -217,7 +207,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                       
                       <div className="relative">
                         <input {...register("phone")} type="tel" id="phone" className={`peer w-full bg-transparent border-b-2 ${errors.phone ? 'border-red-500' : 'border-white/20'} px-0 py-2 text-white text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent`} placeholder="Телефон" />
-                        <label htmlFor="phone" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Телефон (WhatsApp)</label>
+                        <label htmlFor="phone" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Телефон</label>
                         {errors.phone && <span className="absolute right-0 top-2 text-red-500 text-xs">{errors.phone.message}</span>}
                       </div>
                     </div>
