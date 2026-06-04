@@ -169,79 +169,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section id="faq" className="py-24 bg-black/60 backdrop-blur-[2px] relative z-10 border-t border-border/40">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Вопросы</h2>
-          </div>
+        <div className="container mx-auto px-6 max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-12 text-center">Вопросы</h2>
           
-          <div className="grid gap-6">
+          <div className="grid gap-4">
             <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-pointer marker:content-['']">
-              <summary className="flex items-center justify-between text-xl font-semibold text-white outline-none">
-                А что если завод сделает стекло, а оно не влезет?
+              <summary className="flex items-center justify-between text-lg font-medium text-white outline-none">
+                А если стекло не влезет?
                 <svg className="w-5 h-5 text-primary transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
-              <div className="pt-6 text-white/60 leading-relaxed font-light">
-                Если ошибка в нашем чертеже (неверно рассчитан зазор под петлю) — мы бесплатно переделываем чертеж и компенсируем затраты. Если завод нарушил размеры чертежа — это брак производства. Если вы неверно сняли размеры помещения — ответственность на вас. Обязательно посмотрите нашу видео-инструкцию по замерам!
-              </div>
+              <p className="pt-4 text-white/60 font-light">Наша ошибка — переделаем бесплатно и компенсируем. Ваша — только если неверно измерили. Есть видео-инструкция.</p>
             </details>
 
             <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-pointer marker:content-['']">
-              <summary className="flex items-center justify-between text-xl font-semibold text-white outline-none">
-                Я еще не купил фурнитуру, можно заказать чертеж?
+              <summary className="flex items-center justify-between text-lg font-medium text-white outline-none">
+                Ещё не купил фурнитуру
                 <svg className="w-5 h-5 text-primary transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
-              <div className="pt-6 text-white/60 leading-relaxed font-light">
-                Да, но производство стекла начнется только после того, как вы определитесь с петлями. Разные петли требуют разных вырезов в стекле. Вы можете прислать ссылки на фурнитуру позже напрямую инженеру.
-              </div>
+              <p className="pt-4 text-white/60 font-light">Можно. Пришлёте ссылку на петли позже — мы учтём вырезы.</p>
             </details>
 
             <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-pointer marker:content-['']">
-              <summary className="flex items-center justify-between text-xl font-semibold text-white outline-none">
-                Зачем мне ваш чертеж, если в магазине душевая стоит 30 000 руб?
+              <summary className="flex items-center justify-between text-lg font-medium text-white outline-none">
+                В магазине душевая за 30 000
                 <svg className="w-5 h-5 text-primary transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
-              <div className="pt-6 text-white/60 leading-relaxed font-light">
-                В магазине за эти деньги вы получите тонкое стекло (4-6 мм), пластиковые заедающие ролики и стандартный размер (из-за которого придется лить 5 см герметика в щели). За те же деньги, заказав стекло 8 мм на заводе по нашему чертежу, вы соберете премиальную кабину, которая в салоне стоила бы от 80 000 руб.
-              </div>
+              <p className="pt-4 text-white/60 font-light">Там тонкое стекло 4 мм, пластик и стандартный размер. За те же деньги по нашему чертежу — закалённое 8 мм, точно в проём, без щелей.</p>
             </details>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-background pt-24 pb-12 border-t border-white/10">
+      <footer className="bg-background py-12 border-t border-white/10">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24 border-b border-white/10 pb-24">
-            <div className="flex flex-col items-center text-center">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <h4 className="text-white font-semibold mb-2">Чертеж за 24 часа</h4>
-              <p className="text-white/50 text-sm font-light">Готовый файл в формате PDF + DWG.</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <h4 className="text-white font-semibold mb-2">Гарантия точности</h4>
-              <p className="text-white/50 text-sm font-light">Допуски по ГОСТам. Компенсация при ошибке.</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <h4 className="text-white font-semibold mb-2">Поддержка 24/7</h4>
-              <p className="text-white/50 text-sm font-light">Инженерная консультация в Telegram.</p>
-            </div>
-          </div>
-          
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white font-serif font-bold text-xs">A</div>
-              <span className="font-serif font-semibold text-white">AquaDraft Bureau</span>
+              <span className="font-serif font-semibold text-white">AquaDraft</span>
             </div>
             <div className="flex items-center gap-6 text-white/30 text-sm">
               <a href="#" className="hover:text-white/60 transition-colors">Оферта</a>
-              <a href="#" className="hover:text-white/60 transition-colors">Политика конфиденциальности</a>
               <a href="https://t.me/aquadraft" target="_blank" rel="noreferrer" className="hover:text-white/60 transition-colors">Telegram</a>
             </div>
-            <p className="text-white/40 text-sm">© 2026. Сделано инженерами для людей.</p>
+            <p className="text-white/30 text-xs">© 2026</p>
           </div>
         </div>
       </footer>
