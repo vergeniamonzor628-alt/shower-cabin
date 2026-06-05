@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Lora } from "next/font/google";
+import { Manrope, Lora } from "next/font/google";
 import "./globals.css";
 
-const sans = Plus_Jakarta_Sans({
+const sans = Manrope({
   variable: "--font-sans",
-  subsets: ["latin", "cyrillic-ext"],
+  subsets: ["latin", "cyrillic"],
 });
 
 const serif = Lora({

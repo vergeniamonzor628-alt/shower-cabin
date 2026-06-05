@@ -2,216 +2,257 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Check, ChevronLeft, ChevronRight } from 'lucide-react';
-import ApplicationBlankModal from './ApplicationBlankModal';
+import { motion } from 'framer-motion';
+import { AnimatedButton } from '@/components/ui/AnimatedButton';
+import { Check } from 'lucide-react';
 import { TiltCard } from './ui/TiltCard';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/navigation';
-
 const CABIN_TYPES = [
-  { 
-    id: 'corner', 
-    name: 'Угловая', 
-    desc: 'Самое популярное решение. Две стеклянные стены, дверь на петлях или раздвижная.',
-    img: '/premium_corner_shower_1780571932250.png',
-    price: '~15 000 ₽ (на заводе)'
-  },
-  { 
-    id: 'niche', 
-    name: 'Дверь в нишу', 
-    desc: 'Минималистично и надежно. Одно сплошное стекло с дверью, закрывающее проем.',
-    img: '/premium_niche_shower_1780571944244.png',
-    price: '~12 000 ₽ (на заводе)'
-  },
-  { 
-    id: 'walk_in', 
-    name: 'Walk-in', 
-    desc: 'Свободный вход без дверей. Одно большое неподвижное стекло.',
-    img: '/premium_walkin_shower_1780571966263.png',
-    price: '~10 000 ₽ (на заводе)'
-  },
-  { 
-    id: 'u_shape', 
-    name: 'П-образная', 
-    desc: 'Три стеклянные стороны. Идеально для примыкания к одной плоской стене.',
-    img: '/premium_ushape_shower_1780571955023.png',
-    price: '~22 000 ₽ (на заводе)'
-  },
-  { 
-    id: 'bath', 
-    name: 'Шторка на ванну', 
-    desc: 'Эстетичная защита от брызг. Неподвижная часть + распашная дверца.',
-    img: '/premium_bath_screen_1780572000188.png',
-    price: '~8 000 ₽ (на заводе)'
-  }
+  { id: 'corner', name: 'Угловая', img: '/images/luxury_corner.png', desc: 'Классическое решение для экономии пространства. Идеально подходит для небольших ванных комнат, устанавливается в угол помещения.' },
+  { id: 'niche', name: 'В нишу', img: '/images/luxury_niche.png', desc: 'Душевая дверь, которая устанавливается между тремя стенами. Максимально практично и надежно.' },
+  { id: 'ushape', name: 'П-образная', img: '/images/luxury_ushape.png', desc: 'Монтируется к одной стене. Состоит из фронтальной части (с дверью) и двух боковых стекол. Роскошное решение для просторных ванных.' },
+  { id: 'walkin', name: 'Свободный вход (Walk-in)', img: '/images/luxury_walkin.png', desc: 'Одно неподвижное стекло без дверей. Минималистичный дизайн, визуально расширяющий пространство.' },
+  { id: 'bath', name: 'Шторка на ванну', img: '/images/luxury_bath.png', desc: 'Стеклянная перегородка на борт ванны. Защищает от брызг и выглядит намного эстетичнее тканевых штор.' },
+];
+
+const GLASS_TYPES = [
+  { id: 'clear', name: 'Прозрачное (M1)', color: 'bg-white/10', filterClass: '' },
+  { id: 'optiwhite', name: 'Осветленное', color: 'bg-white/30', filterClass: 'bg-white/10 mix-blend-overlay' },
+  { id: 'frosted', name: 'Матовое', color: 'bg-white/50', filterClass: 'bg-white/40 mix-blend-overlay' },
+  { id: 'graphite', name: 'Графит', color: 'bg-black/80', filterClass: 'bg-black/50 mix-blend-multiply' },
+  { id: 'bronze', name: 'Бронза', color: 'bg-[#5D4037]', filterClass: 'bg-[#5D4037]/50 mix-blend-multiply' },
+  { id: 'flutes', name: 'Рифленое', color: 'bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,rgba(255,255,255,0.4)_4px,rgba(255,255,255,0.4)_8px)]', filterClass: 'bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,rgba(255,255,255,0.2)_4px,rgba(255,255,255,0.2)_8px)] mix-blend-overlay' },
+];
+
+const HARDWARE_COLORS = [
+  { id: 'chrome', name: 'Хром', color: 'bg-gradient-to-br from-gray-300 to-gray-500' },
+  { id: 'black', name: 'Черный мат', color: 'bg-[#1A1A1A]' },
+  { id: 'gold', name: 'Золото', color: 'bg-gradient-to-br from-[#FDE047] to-[#D4AF37]' }
 ];
 
 export default function Configurator() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [projectTier, setProjectTier] = useState<'basic' | 'complex'>('basic');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [activeCabin, setActiveCabin] = useState(CABIN_TYPES[0].id);
+  const [activeGlass, setActiveGlass] = useState(GLASS_TYPES[0].id);
+  const [activeHardware, setActiveHardware] = useState(HARDWARE_COLORS[0].id);
+  const [gapMode, setGapMode] = useState<'links' | 'exact'>('links');
 
-  const activeType = CABIN_TYPES[activeIndex];
+  const selectedGlassFilter = GLASS_TYPES.find(g => g.id === activeGlass)?.filterClass || '';
 
   return (
-    <div className="bg-[#0f0f11] border border-white/5 rounded-[2.5rem] overflow-hidden relative">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
-      {/* Visual Constructor Area */}
-      <div className="flex flex-col xl:flex-row">
-        
-        {/* Left: 3D Carousel Viewer */}
-        <div className="xl:w-3/5 relative min-h-[500px] xl:min-h-[650px] bg-black/50 overflow-hidden flex flex-col justify-center py-12">
-          
-          {/* Swiper Carousel */}
-          <div className="w-full mt-4 mb-8">
-            <Swiper
-              effect={'coverflow'}
-              grabCursor={true}
-              centeredSlides={true}
-              loop={true}
-              slidesPerView={'auto'}
-              coverflowEffect={{
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 2.5,
-                slideShadows: false,
-              }}
-              navigation={{
-                prevEl: '.swiper-button-prev-custom',
-                nextEl: '.swiper-button-next-custom',
-              }}
-              onSwiper={(swiper) => setSwiperInstance(swiper)}
-              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-              modules={[EffectCoverflow, Navigation]}
-              className="w-full !px-0"
-            >
-              {CABIN_TYPES.map((type) => (
-                <SwiperSlide key={type.id} className="!w-[75%] md:!w-[55%] lg:!w-[45%] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative transition-all duration-300">
-                  <Image 
-                    src={type.img} 
-                    alt={type.name} 
-                    fill 
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-center"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+      {/* LEFT COLUMN: Visualizer (Sticky) */}
+      <div className="lg:col-span-5 lg:sticky lg:top-32 w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-[#2A2E35]">
+        <div className="relative w-full aspect-[4/5] overflow-hidden">
+          {/* Background Empty Bathroom */}
+          <div className="absolute inset-0 bg-[#3A3F47] animate-pulse-subtle">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#4B5563] to-[#1F2937]" />
           </div>
 
-          {/* Controls */}
-          <button className="swiper-button-prev-custom absolute left-4 xl:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/40 border border-white/10 text-white/70 hover:text-white hover:bg-black/60 transition-all backdrop-blur-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
-            <ChevronLeft size={24} />
-          </button>
-          <button className="swiper-button-next-custom absolute right-4 xl:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/40 border border-white/10 text-white/70 hover:text-white hover:bg-black/60 transition-all backdrop-blur-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
-            <ChevronRight size={24} />
-          </button>
+          {/* Overlapping Cabins */}
+          {CABIN_TYPES.map((cabin) => (
+            <div 
+              key={cabin.id}
+              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${activeCabin === cabin.id ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            >
+              <Image 
+                src={cabin.img} 
+                alt={cabin.name} 
+                fill
+                priority 
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center"
+              />
+            </div>
+          ))}
           
-          <div className="absolute bottom-6 left-6 right-6 xl:bottom-10 xl:left-10 z-30 pointer-events-none text-center xl:text-left">
-            <h3 className="text-3xl md:text-5xl font-serif text-white mb-3 shadow-black/50 drop-shadow-lg">{activeType.name}</h3>
-            <p className="text-base md:text-lg text-white/80 max-w-md mx-auto xl:mx-0 shadow-black/50 drop-shadow-md">{activeType.desc}</p>
+          {/* Glass Effect Overlay applied globally over the active image */}
+          <div className={`absolute inset-0 transition-all duration-500 pointer-events-none z-20 ${selectedGlassFilter}`} />
+        </div>
+        
+        {/* Description Block */}
+        <div className="p-6 bg-white/5 border-t border-white/10">
+          <h4 className="text-white font-medium text-lg mb-2">
+            {CABIN_TYPES.find(c => c.id === activeCabin)?.name}
+          </h4>
+          <p className="text-white/60 text-sm font-light leading-relaxed">
+            {CABIN_TYPES.find(c => c.id === activeCabin)?.desc}
+          </p>
+        </div>
+      </div>
+
+      {/* RIGHT COLUMN: Form Panel */}
+      <div className="lg:col-span-7 flex flex-col gap-12 bg-white/5 border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-[20px]">
+        
+        {/* Step 1: Shape */}
+        <div>
+          <h3 className="text-xl font-serif text-white mb-6 flex items-center gap-4">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary text-sm font-bold">1</span>
+            Форма кабины
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {CABIN_TYPES.map((cabin) => (
+              <motion.label 
+                key={cabin.id} 
+                className="cursor-pointer group"
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <input 
+                  type="radio" 
+                  name="cabinShape" 
+                  className="hidden" 
+                  checked={activeCabin === cabin.id}
+                  onChange={() => setActiveCabin(cabin.id)}
+                />
+                <div className={`flex flex-col items-center text-center gap-3 p-4 rounded-2xl border transition-all duration-300 ${activeCabin === cabin.id ? 'bg-primary/10 border-primary shadow-[0_0_20px_rgba(59,130,246,0.2)]' : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'}`}>
+                  <span className={`text-sm font-medium ${activeCabin === cabin.id ? 'text-white' : 'text-white/60'}`}>{cabin.name}</span>
+                </div>
+              </motion.label>
+            ))}
           </div>
         </div>
 
-        {/* Right: Selection Panel */}
-        <div className="xl:w-2/5 p-6 xl:p-10 flex flex-col bg-white/[0.02] border-l border-white/5">
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-6">
-              <h4 className="text-sm font-mono text-white/50 uppercase tracking-widest">Выберите конфигурацию</h4>
+        {/* Step 2: Glass Type */}
+        <div>
+          <h3 className="text-xl font-serif text-white mb-6 flex items-center gap-4">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary text-sm font-bold">2</span>
+            Тип стекла
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {GLASS_TYPES.map((glass) => (
+              <motion.label 
+                key={glass.id} 
+                className="cursor-pointer group"
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <input 
+                  type="radio" 
+                  name="glassType" 
+                  className="hidden" 
+                  checked={activeGlass === glass.id}
+                  onChange={() => setActiveGlass(glass.id)}
+                />
+                <div className={`flex items-center gap-3 p-4 rounded-2xl border transition-all duration-300 ${activeGlass === glass.id ? 'bg-primary/10 border-primary shadow-[0_0_20px_rgba(59,130,246,0.2)]' : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'}`}>
+                  <div className={`w-6 h-6 rounded-md border border-white/20 ${glass.color}`} />
+                  <span className={`text-sm font-medium ${activeGlass === glass.id ? 'text-white' : 'text-white/60'}`}>{glass.name}</span>
+                </div>
+              </motion.label>
+            ))}
+          </div>
+        </div>
+
+        {/* Step 3: Hardware Color */}
+        <div>
+          <h3 className="text-xl font-serif text-white mb-6 flex items-center gap-4">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary text-sm font-bold">3</span>
+            Цвет фурнитуры
+          </h3>
+          <div className="flex gap-6">
+            {HARDWARE_COLORS.map((hw) => (
+              <motion.label 
+                key={hw.id} 
+                className="cursor-pointer group flex flex-col items-center gap-2"
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <input 
+                  type="radio" 
+                  name="hardware" 
+                  className="hidden" 
+                  checked={activeHardware === hw.id}
+                  onChange={() => setActiveHardware(hw.id)}
+                />
+                <div className={`w-12 h-12 rounded-full border-2 transition-all duration-300 flex items-center justify-center ${hw.color} ${activeHardware === hw.id ? 'border-primary ring-4 ring-primary/20 scale-110' : 'border-transparent hover:scale-105'}`}>
+                  {activeHardware === hw.id && <Check className="w-6 h-6 text-white drop-shadow-md" />}
+                </div>
+                <span className={`text-xs font-medium transition-colors ${activeHardware === hw.id ? 'text-white' : 'text-white/50 group-hover:text-white/80'}`}>{hw.name}</span>
+              </motion.label>
+            ))}
+          </div>
+        </div>
+
+        {/* Step 4: Dimensions & Gaps */}
+        <div>
+          <h3 className="text-xl font-serif text-white mb-6 flex items-center gap-4">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary text-sm font-bold">4</span>
+            Габариты и ТЗ
+          </h3>
+          
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div>
+              <label className="block text-sm text-white/60 mb-2">Ширина (мм)</label>
+              <input type="number" placeholder="Например: 900" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-colors" />
             </div>
-            
+            <div>
+              <label className="block text-sm text-white/60 mb-2">Высота (мм)</label>
+              <input type="number" placeholder="Например: 2000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-colors" />
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <p className="text-sm text-white/80 mb-4">Как считаем технологические вырезы и зазоры?</p>
             <div className="flex flex-col gap-3">
-              {CABIN_TYPES.map((type, index) => (
-                <TiltCard key={type.id} className="block">
-                  <button
-                    onClick={() => swiperInstance?.slideToLoop(index)}
-                    className={`flex items-center justify-between p-5 w-full rounded-2xl border transition-all duration-300 ${
-                      activeIndex === index
-                        ? 'bg-primary/10 border-primary text-white shadow-[0_0_30px_rgba(var(--primary),0.15)] scale-[1.02]'
-                        : 'bg-white/[0.03] border-white/5 text-white/60 hover:bg-white/[0.08] hover:text-white hover:border-white/20'
-                    }`}
-                  >
-                    <span className="font-medium text-lg">{type.name}</span>
-                    <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-all ${
-                      activeIndex === index ? 'border-primary bg-primary text-white' : 'border-white/20 text-transparent'
-                    }`}>
-                      {activeIndex === index && <Check size={14} />}
-                    </div>
-                  </button>
-                </TiltCard>
-              ))}
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input type="radio" checked={gapMode === 'links'} onChange={() => setGapMode('links')} className="w-5 h-5 accent-primary" />
+                <span className="text-white/80 text-sm">Я прикреплю ссылки на фурнитуру, рассчитайте зазоры сами</span>
+              </label>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input type="radio" checked={gapMode === 'exact'} onChange={() => setGapMode('exact')} className="w-5 h-5 accent-primary" />
+                <span className="text-white/80 text-sm">Я знаю точные размеры зазоров</span>
+              </label>
             </div>
           </div>
 
-          <div className="mt-auto pt-6 border-t border-white/10">
-            <div className="mb-6">
-              <h4 className="text-sm font-mono text-white/50 uppercase tracking-widest mb-4">Уровень сложности</h4>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setProjectTier('basic')}
-                  className={`flex-1 p-3 rounded-xl border text-left transition-all ${
-                    projectTier === 'basic' 
-                      ? 'bg-white/10 border-white/30 text-white' 
-                      : 'bg-white/[0.02] border-white/5 text-white/50 hover:bg-white/[0.05]'
-                  }`}
-                >
-                  <div className="font-medium">Базовый</div>
-                  <div className="text-xs mt-1">1 500 ₽</div>
-                </button>
-                <button
-                  onClick={() => setProjectTier('complex')}
-                  className={`flex-1 p-3 rounded-xl border text-left transition-all ${
-                    projectTier === 'complex' 
-                      ? 'bg-primary/20 border-primary text-white' 
-                      : 'bg-white/[0.02] border-white/5 text-white/50 hover:bg-white/[0.05]'
-                  }`}
-                >
-                  <div className="font-medium">Сложный</div>
-                  <div className="text-xs mt-1 text-primary">3 000 ₽</div>
-                </button>
+          {/* Conditional Visibility */}
+          <div className="transition-all duration-300">
+            {gapMode === 'links' ? (
+              <div className="animate-in slide-in-from-top-4 fade-in duration-300">
+                <textarea 
+                  placeholder="Вставьте ссылки на петли, коннекторы и ручки. Инженер сам скачает их схемы и заложит правильные вырезы..."
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors min-h-[120px] resize-none"
+                />
               </div>
-            </div>
-
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 mb-6 shadow-inner w-full">
-              <Check className="w-5 h-5 text-primary" />
-              <span className="text-base font-medium text-white/90">
-                Ориентир. цена стекла: {activeType.price}
-              </span>
-            </div>
-            
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="w-full group bg-white text-black p-5 rounded-2xl font-bold flex items-center justify-between transition-all hover:scale-[1.02] shadow-[0_0_40px_-10px_rgba(255,255,255,0.4)]"
-            >
-              <span className="text-xl">Заполнить ТЗ для чертежа</span>
-              <div className="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
-                <ArrowRight size={20} />
+            ) : (
+              <div className="flex gap-4 animate-in slide-in-from-top-4 fade-in duration-300">
+                <div className="flex-1">
+                  <label className="block text-xs text-white/60 mb-2">Зазор под дверь (мм)</label>
+                  <input type="number" placeholder="Например: 8" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-colors" />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs text-white/60 mb-2">Зазор по стенам (мм)</label>
+                  <input type="number" placeholder="Например: 3" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-colors" />
+                </div>
               </div>
-            </button>
-            <p className="text-center text-sm text-white/40 mt-5 font-mono">
-              Чертёж {projectTier === 'basic' ? '1 500 ₽' : '3 000 ₽'} • Готовность {projectTier === 'basic' ? '24 часа' : '48 часов'}
-            </p>
+            )}
           </div>
+        </div>
+
+        {/* Step 5: Contacts */}
+        <div className="border-t border-white/10 pt-10">
+          <h3 className="text-xl font-serif text-white mb-6 flex items-center gap-4">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary text-sm font-bold">5</span>
+            Контакты и Оплата
+          </h3>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <input type="text" placeholder="Ваше Имя" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-primary transition-colors" />
+            <input type="text" placeholder="Телефон (WhatsApp/Telegram)" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-primary transition-colors" />
+          </div>
+
+          <AnimatedButton 
+            className="w-full py-5 text-lg"
+            variant="primary"
+            shape="rounded"
+            onClick={() => {/* will trigger modal */}}
+          >
+            Оплатить 2 000 ₽ и отправить ТЗ
+          </AnimatedButton>
         </div>
 
       </div>
 
-      <ApplicationBlankModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        initialType={activeType.name}
-        projectTier={projectTier}
-      />
     </div>
   );
 }

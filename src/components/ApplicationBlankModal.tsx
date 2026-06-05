@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Check, Send, X } from 'lucide-react';
 import Image from 'next/image';
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 
 const formSchema = z.object({
   cabinType: z.string().min(1, "Выберите тип конструкции"),
@@ -92,9 +93,9 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
               Инженер свяжется с вами в ближайшее время для уточнения деталей.
             </p>
 
-            <button onClick={onClose} className="inline-flex items-center gap-3 rounded-full bg-primary px-10 py-5 text-sm font-bold text-white shadow-[0_0_40px_-10px_rgba(var(--primary),0.5)] transition-all hover:scale-105 hover:bg-primary/90 relative z-10">
+            <AnimatedButton onClick={onClose} variant="primary" shape="oval" className="px-10 py-5 text-sm shadow-[0_0_40px_-10px_rgba(var(--primary),0.5)] z-10">
               Закрыть
-            </button>
+            </AnimatedButton>
           </div>
         ) : (
           <div className="relative">
@@ -218,10 +219,12 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                   </section>
 
                   <div className="mt-12 pt-8 border-t border-white/10">
-                    <button 
+                    <AnimatedButton 
                       type="submit" 
                       disabled={loading}
-                      className="w-full group bg-primary hover:bg-primary/90 text-white p-5 rounded-xl font-bold flex items-center justify-center gap-3 transition-all disabled:opacity-50"
+                      variant="primary"
+                      shape="rounded"
+                      className="w-full py-5 text-base mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {loading ? 'Обработка...' : (
                         <>
@@ -229,7 +232,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                           <Send size={18} className="group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
-                    </button>
+                    </AnimatedButton>
                     <p className="text-center text-xs text-white/30 font-mono mt-4">
                       Оплата производится только после согласования деталей проекта инженером.
                     </p>
