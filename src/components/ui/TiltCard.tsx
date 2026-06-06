@@ -37,18 +37,10 @@ export function TiltCard({ children, className }: { children: React.ReactNode, c
   };
 
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      className={cn("relative transition-colors", className)}
+    <div
+      className={cn("relative transition-colors duration-500", className)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

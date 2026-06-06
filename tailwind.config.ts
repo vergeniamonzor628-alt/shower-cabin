@@ -1,4 +1,16 @@
 import type { Config } from "tailwindcss";
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+  addBase({
+    ":root": newVars,
+  });
+}
+
 
 const config: Config = {
   content: [
@@ -44,11 +56,15 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-mono)"],
-        serif: ["var(--font-serif)"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+        serif: ["var(--font-sans)", "sans-serif"],
       },
       keyframes: {
+        "aurora": {
+          from: { backgroundPosition: "50% 50%, 50% 50%" },
+          to: { backgroundPosition: "350% 50%, 350% 50%" },
+        },
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -59,6 +75,7 @@ const config: Config = {
         },
       },
       animation: {
+        "aurora": "aurora 60s linear infinite",
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "fade-in-up-delay-1": "fade-in-up 0.8s ease-out 0.2s forwards",
         "fade-in-up-delay-2": "fade-in-up 0.8s ease-out 0.4s forwards",
@@ -66,6 +83,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [addVariablesForColors],
 };
 export default config;

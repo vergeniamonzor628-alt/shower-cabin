@@ -21,9 +21,10 @@ export function AnimatedButton({
   const baseStyles = "relative inline-flex items-center justify-center gap-3 font-bold transition-colors overflow-hidden group";
   
   const variants = {
-    primary: "bg-primary text-white shadow-lg hover:shadow-xl hover:bg-primary/90",
+    primary: "bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-1 shadow-md hover:shadow-xl transition-all duration-300",
     secondary: "bg-white/5 text-white hover:bg-white/10 border border-white/10",
     outline: "border border-primary/50 text-primary hover:bg-primary/5",
+    ghost: "text-white/70 hover:text-white hover:bg-white/10 transition-colors"
   };
   
   const shapes = {

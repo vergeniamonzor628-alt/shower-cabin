@@ -23,11 +23,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const CABIN_TYPES = [
-  { id: 'corner', name: 'Угловая', img: '/premium_corner_shower_1780571932250.png' },
-  { id: 'niche', name: 'В нишу', img: '/premium_niche_shower_1780571944244.png' },
-  { id: 'walk_in', name: 'Walk-in', img: '/premium_walkin_shower_1780571966263.png' },
-  { id: 'u_shape', name: 'П-образная', img: '/premium_ushape_shower_1780571955023.png' },
-  { id: 'bath', name: 'На ванну', img: '/premium_bath_screen_1780572000188.png' }
+  { id: 'corner', name: 'Угловая', img: '/images/corner_shower_render.png' },
+  { id: 'niche', name: 'В нишу', img: '/images/niche_shower_render.png' },
+  { id: 'walk_in', name: 'Walk-in', img: '/images/walkin_shower_render.png' },
+  { id: 'bath', name: 'На ванну', img: '/images/bath_screen_render.png' }
 ];
 
 interface ApplicationBlankModalProps {
@@ -71,13 +70,13 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-5xl bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl my-auto shadow-black/50">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-white/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-5xl bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-slate-200/500 shadow-2xl my-auto shadow-black/50">
         
         {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 z-50 text-white/50 hover:text-white bg-black/20 hover:bg-white/10 p-2 rounded-full backdrop-blur-md transition-all"
+          className="absolute top-6 right-6 z-50 text-slate-500 hover:text-slate-900 bg-slate-900/10 hover:bg-white/80 p-2 rounded-full backdrop-blur-md transition-all"
         >
           <X size={24} />
         </button>
@@ -88,8 +87,8 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
             <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-primary/20 text-primary border border-primary/30 relative z-10">
               <Check size={48} />
             </div>
-            <h2 className="mb-4 text-3xl md:text-4xl font-serif font-medium text-white relative z-10">Техническое задание принято</h2>
-            <p className="mb-10 text-white/60 font-light max-w-md mx-auto relative z-10">
+            <h2 className="mb-4 text-3xl md:text-4xl font-serif font-medium text-slate-900 relative z-10">Техническое задание принято</h2>
+            <p className="mb-10 text-slate-600 font-light max-w-md mx-auto relative z-10">
               Инженер свяжется с вами в ближайшее время для уточнения деталей.
             </p>
 
@@ -103,12 +102,12 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
             
             {/* Blueprint Header */}
-            <div className="border-b border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 md:p-8 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="border-b border-slate-200/500 bg-white/[0.02] backdrop-blur-sm p-6 md:p-8 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="pr-12">
                 <div className="text-primary font-mono text-xs tracking-widest mb-2 uppercase">Specification Form</div>
-                <h2 className="text-3xl md:text-4xl font-serif text-white leading-none">Бланк Заявки на Чертеж</h2>
+                <h2 className="text-3xl md:text-4xl font-serif text-slate-900 leading-none">Бланк Заявки на Чертеж</h2>
               </div>
-              <div className="text-left md:text-right text-white/40 font-mono text-xs uppercase space-y-1">
+              <div className="text-left md:text-right text-slate-500 font-mono text-xs uppercase space-y-1">
                 <div>Тариф: <span className="text-primary">{projectTier === 'complex' ? 'Сложный (3 000 ₽)' : 'Базовый (1 500 ₽)'}</span></div>
                 <div>Document ID: SHWR-{(Math.random()*10000).toFixed(0).padStart(4, '0')}</div>
                 <div>Date: {new Date().toLocaleDateString('ru-RU')}</div>
@@ -126,8 +125,8 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                   <section>
                     <div className="flex items-center gap-4 mb-6">
                       <span className="text-primary font-mono text-sm">01.</span>
-                      <h3 className="text-xl font-serif text-white">Тип конструкции</h3>
-                      <div className="h-[1px] flex-grow bg-white/10"></div>
+                      <h3 className="text-xl font-serif text-slate-900">Тип конструкции</h3>
+                      <div className="h-[1px] flex-grow bg-white/80"></div>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                       {CABIN_TYPES.map(type => (
@@ -137,13 +136,13 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                           className={`cursor-pointer border transition-all ${
                             selectedCabin === type.name 
                               ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(var(--primary),0.2)]' 
-                              : 'border-white/10 bg-black/50 hover:border-white/30'
+                              : 'border-slate-200/500 bg-white/60 hover:border-white/30'
                           } rounded-xl p-3 flex flex-col items-center justify-center text-center gap-3`}
                         >
                           <div className="relative w-16 h-16 md:w-10 md:h-10 overflow-hidden rounded-lg opacity-80 mix-blend-screen">
                             <Image src={type.img} alt={type.name} fill className="object-cover" />
                           </div>
-                          <span className={`text-[10px] uppercase font-mono ${selectedCabin === type.name ? 'text-primary' : 'text-white/60'}`}>{type.name}</span>
+                          <span className={`text-[10px] uppercase font-mono ${selectedCabin === type.name ? 'text-primary' : 'text-slate-600'}`}>{type.name}</span>
                         </div>
                       ))}
                     </div>
@@ -154,22 +153,22 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                   <section>
                     <div className="flex items-center gap-4 mb-6">
                       <span className="text-primary font-mono text-sm">02.</span>
-                      <h3 className="text-xl font-serif text-white">Габариты (мм)</h3>
-                      <div className="h-[1px] flex-grow bg-white/10"></div>
+                      <h3 className="text-xl font-serif text-slate-900">Габариты (мм)</h3>
+                      <div className="h-[1px] flex-grow bg-white/80"></div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="relative">
-                        <input {...register("width")} type="text" id="width" className="peer w-full bg-transparent border-b-2 border-white/20 px-0 py-2 text-white font-mono focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Ширина" />
-                        <label htmlFor="width" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Ширина проема</label>
+                        <input {...register("width")} type="text" id="width" className="peer w-full bg-transparent border-b-2 border-slate-300 px-0 py-2 text-slate-900 font-mono focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Ширина" />
+                        <label htmlFor="width" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Ширина проема</label>
                       </div>
                       <div className="relative">
-                        <input {...register("depth")} type="text" id="depth" className="peer w-full bg-transparent border-b-2 border-white/20 px-0 py-2 text-white font-mono focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Глубина" />
-                        <label htmlFor="depth" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Глубина (если есть)</label>
+                        <input {...register("depth")} type="text" id="depth" className="peer w-full bg-transparent border-b-2 border-slate-300 px-0 py-2 text-slate-900 font-mono focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Глубина" />
+                        <label htmlFor="depth" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Глубина (если есть)</label>
                       </div>
                       <div className="relative">
-                        <input {...register("height")} type="text" id="height" className="peer w-full bg-transparent border-b-2 border-white/20 px-0 py-2 text-white font-mono focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Высота" />
-                        <label htmlFor="height" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Высота по стеклу</label>
+                        <input {...register("height")} type="text" id="height" className="peer w-full bg-transparent border-b-2 border-slate-300 px-0 py-2 text-slate-900 font-mono focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Высота" />
+                        <label htmlFor="height" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Высота по стеклу</label>
                       </div>
                     </div>
                   </section>
@@ -178,47 +177,47 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                   <section>
                     <div className="flex items-center gap-4 mb-6">
                       <span className="text-primary font-mono text-sm">03.</span>
-                      <h3 className="text-xl font-serif text-white">Детали и Фурнитура</h3>
-                      <div className="h-[1px] flex-grow bg-white/10"></div>
+                      <h3 className="text-xl font-serif text-slate-900">Детали и Фурнитура</h3>
+                      <div className="h-[1px] flex-grow bg-white/80"></div>
                     </div>
                     
                     <div className="space-y-6">
                       <div className="relative">
-                        <textarea {...register("hardware")} id="hardware" rows={2} className="peer w-full bg-transparent border-b-2 border-white/20 px-0 py-2 text-white font-mono text-sm focus:outline-none focus:border-primary transition-colors resize-none placeholder-transparent" placeholder="Ссылки на фурнитуру"></textarea>
-                        <label htmlFor="hardware" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Ссылки на петли/ручки (инженер учтет вырезы)</label>
+                        <textarea {...register("hardware")} id="hardware" rows={2} className="peer w-full bg-transparent border-b-2 border-slate-300 px-0 py-2 text-slate-900 font-mono text-sm focus:outline-none focus:border-primary transition-colors resize-none placeholder-transparent" placeholder="Ссылки на фурнитуру"></textarea>
+                        <label htmlFor="hardware" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Ссылки на петли/ручки (инженер учтет вырезы)</label>
                       </div>
                       <div className="relative">
-                        <textarea {...register("customDescription")} id="customDescription" rows={3} className="peer w-full bg-transparent border-b-2 border-white/20 px-0 py-2 text-white font-mono text-sm focus:outline-none focus:border-primary transition-colors resize-none placeholder-transparent" placeholder="Особенности"></textarea>
-                        <label htmlFor="customDescription" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Особенности (скосы, бортик и т.д.)</label>
+                        <textarea {...register("customDescription")} id="customDescription" rows={3} className="peer w-full bg-transparent border-b-2 border-slate-300 px-0 py-2 text-slate-900 font-mono text-sm focus:outline-none focus:border-primary transition-colors resize-none placeholder-transparent" placeholder="Особенности"></textarea>
+                        <label htmlFor="customDescription" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Особенности (скосы, бортик и т.д.)</label>
                       </div>
                     </div>
                   </section>
                 </div>
 
                 {/* Right Column: Contacts & Submit */}
-                <div className="lg:col-span-5 bg-white/[0.03] border border-white/10 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+                <div className="lg:col-span-5 bg-white/[0.03] border border-slate-200/500 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
                   <section>
                     <div className="flex items-center gap-3 mb-8">
                       <span className="text-primary font-mono text-sm">04.</span>
-                      <h3 className="text-xl font-serif text-white">Контакты заказчика</h3>
+                      <h3 className="text-xl font-serif text-slate-900">Контакты заказчика</h3>
                     </div>
                     
                     <div className="space-y-8">
                       <div className="relative">
-                        <input {...register("name")} type="text" id="name" className={`peer w-full bg-transparent border-b-2 ${errors.name ? 'border-red-500' : 'border-white/20'} px-0 py-2 text-white text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent`} placeholder="Имя" />
-                        <label htmlFor="name" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Имя</label>
+                        <input {...register("name")} type="text" id="name" className={`peer w-full bg-transparent border-b-2 ${errors.name ? 'border-red-500' : 'border-slate-300'} px-0 py-2 text-slate-900 text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent`} placeholder="Имя" />
+                        <label htmlFor="name" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Имя</label>
                         {errors.name && <span className="absolute right-0 top-2 text-red-500 text-xs">{errors.name.message}</span>}
                       </div>
                       
                       <div className="relative">
-                        <input {...register("phone")} type="tel" id="phone" className={`peer w-full bg-transparent border-b-2 ${errors.phone ? 'border-red-500' : 'border-white/20'} px-0 py-2 text-white text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent`} placeholder="Телефон" />
-                        <label htmlFor="phone" className="absolute left-0 -top-4 text-xs font-mono text-white/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Телефон</label>
+                        <input {...register("phone")} type="tel" id="phone" className={`peer w-full bg-transparent border-b-2 ${errors.phone ? 'border-red-500' : 'border-slate-300'} px-0 py-2 text-slate-900 text-lg focus:outline-none focus:border-primary transition-colors placeholder-transparent`} placeholder="Телефон" />
+                        <label htmlFor="phone" className="absolute left-0 -top-4 text-xs font-mono text-slate-500 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary">Телефон</label>
                         {errors.phone && <span className="absolute right-0 top-2 text-red-500 text-xs">{errors.phone.message}</span>}
                       </div>
                     </div>
                   </section>
 
-                  <div className="mt-12 pt-8 border-t border-white/10">
+                  <div className="mt-12 pt-8 border-t border-slate-200/500">
                     <AnimatedButton 
                       type="submit" 
                       disabled={loading}
@@ -233,7 +232,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                         </>
                       )}
                     </AnimatedButton>
-                    <p className="text-center text-xs text-white/30 font-mono mt-4">
+                    <p className="text-center text-xs text-slate-400 font-mono mt-4">
                       Оплата производится только после согласования деталей проекта инженером.
                     </p>
                   </div>
