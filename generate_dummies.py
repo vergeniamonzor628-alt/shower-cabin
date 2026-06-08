@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw
 base_dir = "public/images"
 os.makedirs(base_dir, exist_ok=True)
 
-cabins = ["corner", "niche", "bath"]
+cabins = ["corner", "niche", "bath", "walkin"]
 door_types = ["stationary", "sliding", "folding", "swing"]
 positions = ["left", "right"]
 

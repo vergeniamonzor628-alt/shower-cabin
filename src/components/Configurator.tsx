@@ -40,7 +40,7 @@ export default function Configurator() {
   const currentDoorType = activeTypeInfo.allowedDoors.includes(doorType) ? doorType : activeTypeInfo.allowedDoors[0];
 
   const getBaseImage = () => {
-    return `/images/${activeCabin}_render_v2.png`;
+    return activeTypeInfo.img;
   };
 
   const getOverlayImage = () => {
