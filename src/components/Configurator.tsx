@@ -39,8 +39,20 @@ export default function Configurator() {
   const activeTypeInfo = CABIN_TYPES.find(c => c.id === activeCabin)!;
   const currentDoorType = activeTypeInfo.allowedDoors.includes(doorType) ? doorType : activeTypeInfo.allowedDoors[0];
 
-  const getCurrentImage = () => {
-    return activeTypeInfo.img;
+  const getBaseImage = () => {
+    return `/images/${activeCabin}_render_v2.png`;
+  };
+
+  const getOverlayImage = () => {
+    if (currentDoorType === 'stationary') {
+      return `/images/${activeCabin}_stationary_overlay.png`;
+    }
+
+    if (currentDoorType === 'swing') {
+      return `/images/${activeCabin}_swing_${hingePos}_${doorPos}_overlay.png`;
+    }
+    
+    return `/images/${activeCabin}_${currentDoorType}_${doorPos}_overlay.png`;
   };
 
   const nextStep = () => {
@@ -58,14 +70,25 @@ export default function Configurator() {
       <div className="lg:col-span-5 sticky top-20 lg:top-32 w-full rounded-2xl lg:rounded-[2rem] overflow-hidden border border-[#e2e0db] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] bg-white z-40">
         <div className="relative w-full aspect-[16/9] sm:aspect-[4/3] lg:aspect-[4/5] overflow-hidden bg-zinc-900">
           <div className="absolute inset-0 transition-opacity duration-500 ease-in-out opacity-100 z-10">
+            {/* Base Image (Static) */}
             <Image 
-              src={getCurrentImage()} 
+              src={getBaseImage()} 
+              alt="Фон ванной" 
+              fill
+              unoptimized
+              priority 
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center z-0"
+            />
+            {/* Overlay Image (Dynamic doors on transparent background) */}
+            <Image 
+              src={getOverlayImage()} 
               alt="Душевая кабина" 
               fill
               unoptimized
               priority 
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center"
+              className="object-cover object-center z-10 transition-opacity duration-300"
             />
             {/* Blueprint HUD Overlay */}
             <div className="absolute bottom-4 right-4 w-[140px] h-[140px] sm:w-[220px] sm:h-[220px] z-20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] rounded-xl">
