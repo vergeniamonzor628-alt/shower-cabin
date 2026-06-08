@@ -34,9 +34,14 @@ interface ApplicationBlankModalProps {
   onClose: () => void;
   initialType?: string;
   projectTier?: 'basic' | 'complex';
+  doorConfig?: {
+    doorType: string;
+    doorPos: string;
+    hingePos?: string;
+  };
 }
 
-export default function ApplicationBlankModal({ isOpen, onClose, initialType = "Угловая", projectTier = 'basic' }: ApplicationBlankModalProps) {
+export default function ApplicationBlankModal({ isOpen, onClose, initialType = "Угловая", projectTier = 'basic', doorConfig }: ApplicationBlankModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -128,7 +133,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                       <h3 className="text-xl font-serif text-slate-900">Тип конструкции</h3>
                       <div className="h-[1px] flex-grow bg-white/80"></div>
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
                       {CABIN_TYPES.map(type => (
                         <div 
                           key={type.id}
@@ -147,6 +152,27 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                       ))}
                     </div>
                     {errors.cabinType && <span className="text-red-400 text-xs mt-2 block">{errors.cabinType.message}</span>}
+
+                    {doorConfig && (
+                      <div className="bg-white/40 border border-slate-200/500 rounded-xl p-4 flex flex-wrap gap-x-8 gap-y-4">
+                        <div>
+                          <span className="text-[10px] uppercase tracking-wider text-slate-500 font-mono block mb-1">Механизм</span>
+                          <span className="text-sm text-slate-900 font-medium">{doorConfig.doorType}</span>
+                        </div>
+                        {doorConfig.doorType !== 'Глухое стекло' && (
+                          <div>
+                            <span className="text-[10px] uppercase tracking-wider text-slate-500 font-mono block mb-1">Дверь</span>
+                            <span className="text-sm text-slate-900 font-medium">{doorConfig.doorPos}</span>
+                          </div>
+                        )}
+                        {doorConfig.hingePos && (
+                          <div>
+                            <span className="text-[10px] uppercase tracking-wider text-slate-500 font-mono block mb-1">Петли</span>
+                            <span className="text-sm text-slate-900 font-medium">{doorConfig.hingePos}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </section>
 
                   {/* Section 2: Dimensions */}

@@ -15,91 +15,84 @@ export default function Home() {
       {/* ============================================ */}
       {/* HEADER                                       */}
       {/* ============================================ */}
-      <header className="absolute top-0 w-full z-50 border-b border-[#e2e0db] bg-white/30 backdrop-blur-md">
+      <header className="absolute top-0 w-full z-50 border-b border-white/10 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-slate-50 font-sans font-bold tracking-tight text-lg">
+            <div className="w-8 h-8 bg-white/10 border border-white/20 rounded-full flex items-center justify-center text-slate-50 font-sans font-bold tracking-tight text-lg">
               D
             </div>
             <div>
               <span className="font-sans font-semibold tracking-tight text-xl text-slate-50 tracking-wide">Dwgglass</span>
-              <span className="hidden lg:inline text-[10px] text-slate-400 ml-3 uppercase tracking-[0.15em]">Онлайн-чертежи стекла</span>
+              <span className="hidden lg:inline text-[10px] text-slate-300 ml-3 uppercase tracking-[0.15em] font-medium">Онлайн-чертежи стекла</span>
             </div>
           </div>
           
-          <div className="hidden lg:flex items-center gap-12 text-[11px] font-semibold text-slate-50/70 uppercase tracking-[0.2em]">
+          <div className="hidden lg:flex items-center gap-12 text-[11px] font-semibold text-slate-300 uppercase tracking-[0.2em]">
             <a href="#how-it-works" className="hover:text-slate-50 transition-colors">Как это работает</a>
             <a href="#configurator" className="hover:text-slate-50 transition-colors">Конфигуратор</a>
-            <a href="#comparison" className="hover:text-slate-50 transition-colors">Сравнение</a>
+            <a href="#comparison-proof" className="hover:text-slate-50 transition-colors">Сравнение</a>
             <a href="#faq" className="hover:text-slate-50 transition-colors">FAQ</a>
           </div>
 
-          <AnimatedButton href="#configurator" variant="primary" shape="rounded" className="px-6 py-2.5 text-sm">
+          <AnimatedButton href="#configurator" variant="primary" shape="rounded" className="px-5 py-2.5 text-sm whitespace-nowrap bg-white text-black hover:bg-slate-200">
             Рассчитать проект
           </AnimatedButton>
         </div>
       </header>
 
       {/* ============================================ */}
-      {/* БЛОК 1. HERO SECTION                         */}
+      {/* БЛОК 1. HERO SECTION (B2C Premium Layout)    */}
       {/* ============================================ */}
-      <section className="relative min-h-[95vh] flex flex-col items-center justify-center overflow-hidden border-b border-border/20">
+      <section className="relative min-h-[100svh] pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden border-b border-white/10">
         
-        {/* Animated Video Background - No blur on the video! */}
-        <div className="absolute inset-0 z-0 overflow-hidden bg-transparent">
+        {/* Animated Video Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-black">
           <SmoothVideoLoop 
             src="/hero_video.mp4" 
-            className="absolute inset-0 w-full h-full object-contain rounded-xl scale-[1.05]" 
+            className="absolute inset-0 w-full h-full object-cover scale-[1.05] opacity-80" 
             fadeDurationMs={3000} 
           />
-          {/* Gradient overlay to make text readable but keep video clear */}
-          <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
-          
-          {/* Soft background light */}
+          {/* Gradient overlay to ensure perfect text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 pointer-events-none"></div>
+          {/* Radial vignette for cinematic feel */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] pointer-events-none"></div>
         </div>
 
-        <div className="mx-auto max-w-5xl px-6 relative z-10 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 mt-20">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 flex flex-col items-center">
           
-          <h1 className="text-6xl sm:text-7xl md:text-8xl font-sans font-medium tracking-tighter text-white leading-[1.0] mb-6 drop-shadow-none">
-            Стеклянная душевая без переплат стекольным компаниям. <br className="hidden md:block"/>
-            <span className="font-light text-white/80">Платите только за заводское стекло.</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/80 text-[10px] font-medium uppercase tracking-[0.2em] mb-8 backdrop-blur-md">
+            Точный проект за 24 часа
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-sans font-light tracking-tight text-white leading-[1.1] mb-6 max-w-4xl drop-shadow-lg">
+            Стеклянная душевая <br className="hidden sm:block"/> <span className="font-medium">без переплат.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 font-light leading-relaxed drop-shadow-none">
-            Сделаем точный инженерный чертёж под вашу ванную за 24 часа. Закажите закаленное стекло напрямую у производителя и сэкономьте до 45 000 ₽.
+          <p className="text-lg md:text-xl text-white/80 mb-12 font-light leading-relaxed max-w-2xl drop-shadow-md">
+            Сделаем инженерный чертёж. Вы закажете стекло напрямую у завода-производителя и <span className="text-white font-medium">сэкономите до 45 000 ₽</span>.
           </p>
 
-          <div className="flex flex-col items-center gap-10">
-            <AnimatedButton href="#configurator" variant="primary" shape="oval" className="px-10 py-5 text-lg shadow-none">
-              Собрать свою душевую
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </AnimatedButton>
-            
-            {/* Плашки преимуществ */}
-            <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-6 text-sm text-left mx-auto">
-              <div className="flex flex-col items-center text-center max-w-[200px]">
-                <div className="w-16 h-16 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 text-white shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] hover:scale-110 transition-transform duration-300">
-                  <Check className="w-8 h-8" strokeWidth={1.5} />
-                </div>
-                <span className="font-medium text-white mb-2">Точность до 1 мм</span>
-                <span className="text-white/70 text-xs leading-relaxed">допуски по стандартам CAD.</span>
-              </div>
-              <div className="flex flex-col items-center text-center max-w-[200px]">
-                <div className="w-16 h-16 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 text-white shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] hover:scale-110 transition-transform duration-300">
-                  <Check className="w-8 h-8" strokeWidth={1.5} />
-                </div>
-                <span className="font-medium text-white mb-2">Готовый PDF</span>
-                <span className="text-white/70 text-xs leading-relaxed">примет в работу любой завод в РФ.</span>
-              </div>
-              <div className="flex flex-col items-center text-center max-w-[200px]">
-                <div className="w-16 h-16 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 text-white shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] hover:scale-110 transition-transform duration-300">
-                  <Check className="w-8 h-8" strokeWidth={1.5} />
-                </div>
-                <span className="font-medium text-white mb-2">Гарантия</span>
-                <span className="text-white/70 text-xs leading-relaxed">компенсируем убытки при ошибке в проекте.</span>
-              </div>
+          <AnimatedButton href="#configurator" variant="primary" shape="oval" className="px-10 py-5 text-lg md:text-xl mb-12 shadow-[0_0_40px_rgba(37,99,235,0.3)] hover:shadow-[0_0_60px_rgba(37,99,235,0.5)] transition-all">
+            Собрать свою душевую
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </AnimatedButton>
+          
+          {/* Compact Glassmorphism Badges for Mobile */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 w-full max-w-3xl">
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 shadow-lg">
+              <Check className="w-4 h-4 text-white" strokeWidth={2.5} />
+              <span className="text-sm text-white font-medium tracking-wide">Точность 1 мм</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 shadow-lg">
+              <Check className="w-4 h-4 text-white" strokeWidth={2.5} />
+              <span className="text-sm text-white font-medium tracking-wide">Ваш дизайн</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 shadow-lg">
+              <Check className="w-4 h-4 text-white" strokeWidth={2.5} />
+              <span className="text-sm text-white font-medium tracking-wide">100% Гарантия</span>
             </div>
           </div>
+
         </div>
       </section>
 
