@@ -53,9 +53,9 @@ export default function Home() {
             fadeDurationMs={3000} 
           />
           {/* Frosted glass overlay (lighter, blurred) */}
-          <div className="absolute inset-0 bg-slate-800/30 backdrop-blur-[16px] pointer-events-none"></div>
+          <div className="absolute inset-0 bg-[#1C2B39]/40 backdrop-blur-[4px] pointer-events-none transition-all duration-1000"></div>
           {/* Subtle edge darkening for text readability */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(28,43,57,0.4)_100%)] pointer-events-none"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(28,43,57,0.8)_100%)] pointer-events-none"></div>
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 flex flex-col items-center">
