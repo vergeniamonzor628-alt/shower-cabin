@@ -76,7 +76,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-white/60 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-5xl bg-[#0a0a0a] rounded-[2rem] overflow-hidden border border-slate-200/500 shadow-2xl my-auto shadow-black/50">
+      <div className="relative w-full max-w-5xl bg-[#0a0a0a] rounded-none overflow-hidden border border-slate-200/500 shadow-2xl my-auto shadow-black/50">
         
         {/* Close button */}
         <button 
@@ -142,9 +142,9 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                             selectedCabin === type.name 
                               ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(var(--primary),0.2)]' 
                               : 'border-slate-200/500 bg-white/60 hover:border-white/30'
-                          } rounded-xl p-3 flex flex-col items-center justify-center text-center gap-3`}
+                          } rounded-none p-3 flex flex-col items-center justify-center text-center gap-3`}
                         >
-                          <div className="relative w-16 h-16 md:w-10 md:h-10 overflow-hidden rounded-lg opacity-80 mix-blend-screen">
+                          <div className="relative w-16 h-16 md:w-10 md:h-10 overflow-hidden rounded-none opacity-80 mix-blend-screen">
                             <Image src={type.img} alt={type.name} fill className="object-cover" />
                           </div>
                           <span className={`text-[10px] uppercase font-mono ${selectedCabin === type.name ? 'text-primary' : 'text-slate-600'}`}>{type.name}</span>
@@ -154,7 +154,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                     {errors.cabinType && <span className="text-red-400 text-xs mt-2 block">{errors.cabinType.message}</span>}
 
                     {doorConfig && (
-                      <div className="bg-white/40 border border-slate-200/500 rounded-xl p-4 flex flex-wrap gap-x-8 gap-y-4">
+                      <div className="bg-white/40 border border-slate-200/500 rounded-none p-4 flex flex-wrap gap-x-8 gap-y-4">
                         <div>
                           <span className="text-[10px] uppercase tracking-wider text-slate-500 font-mono block mb-1">Механизм</span>
                           <span className="text-sm text-slate-900 font-medium">{doorConfig.doorType}</span>
@@ -221,7 +221,7 @@ export default function ApplicationBlankModal({ isOpen, onClose, initialType = "
                 </div>
 
                 {/* Right Column: Contacts & Submit */}
-                <div className="lg:col-span-5 bg-white/[0.03] border border-slate-200/500 p-6 md:p-8 rounded-2xl flex flex-col justify-between">
+                <div className="lg:col-span-5 bg-white/[0.03] border border-slate-200/500 p-6 md:p-8 rounded-none flex flex-col justify-between">
                   <section>
                     <div className="flex items-center gap-3 mb-8">
                       <span className="text-primary font-mono text-sm">04.</span>

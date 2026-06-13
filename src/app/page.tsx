@@ -110,9 +110,9 @@ export default function Home() {
             {/* БЫЛО */}
             {/* БЫЛО */}
             <RevealOnScroll delay={0.1}>
-              <div className="bg-transparent border border-white/10 rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
+              <div className="bg-transparent border border-white/10 rounded-none p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
                 <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/50 uppercase mb-8">Эскиз</h3>
-                <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-xl border border-white/5">
+                <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-none border border-white/5">
                   <Image 
                     src="/images/sketch_concept.png" 
                     alt="Эскиз от руки" 
@@ -128,9 +128,9 @@ export default function Home() {
 
             {/* СТАЛО */}
             <RevealOnScroll delay={0.2}>
-              <div className="bg-transparent border border-white/10 rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
+              <div className="bg-transparent border border-white/10 rounded-none p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
                 <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/90 uppercase mb-8">Проект</h3>
-                <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)]">
+                <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-none border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)]">
                   <Image 
                     src="/images/cad_concept.png" 
                     alt="CAD чертеж" 
@@ -162,7 +162,7 @@ export default function Home() {
             
             {/* Шаг 1 */}
             <RevealOnScroll delay={0.1}>
-              <div className="group h-full bg-white/10 border border-white/40 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <div className="group h-full bg-white/10 border border-white/40 rounded-none p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>
                 </div>
@@ -170,15 +170,15 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Вам понадобится только обычная рулетка. Измеряете ширину и высоту будущей кабины по нашей инструкции.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-[1.5rem] shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/sketch_shower_bad_v2.png" alt="Замеры" fill className="object-contain rounded-xl" />
+                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src="/images/sketch_shower_bad_v2.png" alt="Замеры" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
 
             {/* Шаг 2 */}
             <RevealOnScroll delay={0.2}>
-              <div className="group h-full bg-white/10 border border-white/40 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <div className="group h-full bg-white/10 border border-white/40 rounded-none p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                 </div>
@@ -186,15 +186,15 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Прикрепите ссылки на петли и ручки с маркетплейсов — инженер сам рассчитает нужные вырезы.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-[1.5rem] shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/workspace_2_new_1780447634535.png" alt="Фурнитура" fill className="object-contain rounded-xl" />
+                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src="/images/workspace_2_new_1780447634535.png" alt="Фурнитура" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
 
             {/* Шаг 3 */}
             <RevealOnScroll delay={0.3}>
-              <div className="group h-full bg-white/10 border border-white/40 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <div className="group h-full bg-white/10 border border-white/40 rounded-none p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/><path d="m11.4 14.4-4.8 4.8"/></svg>
                 </div>
@@ -202,15 +202,15 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Переводим данные в профессиональный проект. Закладываем все зазоры и допуски для производства. Ровно за 24 часа.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-[1.5rem] shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/cad_shower_good_v2.png" alt="Чертеж" fill className="object-contain rounded-xl" />
+                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src="/images/cad_shower_good_v2.png" alt="Чертеж" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
 
             {/* Шаг 4 */}
             <RevealOnScroll delay={0.4}>
-              <div className="group h-full bg-white/10 border border-white/40 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <div className="group h-full bg-white/10 border border-white/40 rounded-none p-8 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden relative backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-none"></div>
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300 relative z-10">
                   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
@@ -219,8 +219,8 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Вы отправляете готовый PDF-файл на ближайший стекольный завод и забираете стекло по себестоимости.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-[1.5rem] shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/niche_shower_render_v2.png" alt="Готовая душевая" fill className="object-contain rounded-xl" />
+                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src="/images/niche_shower_render_v2.png" alt="Готовая душевая" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
@@ -256,7 +256,7 @@ export default function Home() {
             
             {/* Card 1 */}
             <RevealOnScroll delay={0.1}>
-              <div className="bg-white/10 border border-white/40 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+              <div className="bg-white/10 border border-white/40 rounded-none p-8 backdrop-blur-md relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
                 <h3 className="text-2xl font-sans font-medium tracking-tight text-slate-50 mb-2">Угловая кабина</h3>
                 <p className="text-slate-400 text-sm font-light mb-8">Стекло 8мм · 900×900</p>
                 
@@ -280,7 +280,7 @@ export default function Home() {
 
             {/* Card 2 */}
             <RevealOnScroll delay={0.2}>
-              <div className="bg-white/10 border border-white/40 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+              <div className="bg-white/10 border border-white/40 rounded-none p-8 backdrop-blur-md relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
                 <h3 className="text-2xl font-sans font-medium tracking-tight text-slate-50 mb-2">Дверь в нишу</h3>
                 <p className="text-slate-400 text-sm font-light mb-8">Стекло 8мм · 800×2000</p>
                 
@@ -317,7 +317,7 @@ export default function Home() {
 
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <RevealOnScroll delay={0.1} className="group bg-white/10 border border-white/40 rounded-3xl p-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <RevealOnScroll delay={0.1} className="group bg-white/10 border border-white/40 rounded-none p-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <ShieldCheck size={28} strokeWidth={1.5} />
                 </div>
@@ -327,7 +327,7 @@ export default function Home() {
                 </div>
               </RevealOnScroll>
               
-              <RevealOnScroll delay={0.2} className="group bg-white/10 border border-white/40 rounded-3xl p-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <RevealOnScroll delay={0.2} className="group bg-white/10 border border-white/40 rounded-none p-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <PencilRuler size={28} strokeWidth={1.5} />
                 </div>
@@ -337,7 +337,7 @@ export default function Home() {
                 </div>
               </RevealOnScroll>
               
-              <RevealOnScroll delay={0.3} className="group bg-white/10 border border-white/40 rounded-3xl p-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
+              <RevealOnScroll delay={0.3} className="group bg-white/10 border border-white/40 rounded-none p-8 flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-500 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:bg-white/20">
                 <div className="w-16 h-16 rounded-full border border-primary/30 bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
                   <Clock size={28} strokeWidth={1.5} />
                 </div>
@@ -362,7 +362,7 @@ export default function Home() {
           
           <div className="space-y-4">
             <RevealOnScroll delay={0.1}>
-              <details className="group bg-white/10 border border-white/40 rounded-3xl p-6 hover:bg-white/20 transition-colors cursor-pointer marker:content-[''] backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+              <details className="group bg-white/10 border border-white/40 rounded-none p-6 hover:bg-white/20 transition-colors cursor-pointer marker:content-[''] backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
                 <summary className="flex items-center justify-between text-lg font-medium text-slate-50 outline-none">
                   Что, если я измерю неправильно?
                   <svg className="w-5 h-5 text-slate-400 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -374,7 +374,7 @@ export default function Home() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.2}>
-              <details className="group bg-white/10 border border-white/40 rounded-3xl p-6 hover:bg-white/20 transition-colors cursor-pointer marker:content-[''] backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+              <details className="group bg-white/10 border border-white/40 rounded-none p-6 hover:bg-white/20 transition-colors cursor-pointer marker:content-[''] backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
                 <summary className="flex items-center justify-between text-lg font-medium text-slate-50 outline-none">
                   Где мне заказать само стекло?
                   <svg className="w-5 h-5 text-slate-400 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -386,7 +386,7 @@ export default function Home() {
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.3}>
-              <details className="group bg-white/10 border border-white/40 rounded-3xl p-6 hover:bg-white/20 transition-colors cursor-pointer marker:content-[''] backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
+              <details className="group bg-white/10 border border-white/40 rounded-none p-6 hover:bg-white/20 transition-colors cursor-pointer marker:content-[''] backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
                 <summary className="flex items-center justify-between text-lg font-medium text-slate-50 outline-none">
                   А что делать с фурнитурой? Где брать петли и ручки?
                   <svg className="w-5 h-5 text-slate-400 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>

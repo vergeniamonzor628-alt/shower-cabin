@@ -29,7 +29,7 @@ export function AnimatedButton({
   
   const shapes = {
     oval: "rounded-full px-10 py-5 text-lg",
-    rounded: "rounded-xl px-6 py-3 text-base",
+    rounded: "rounded-none px-6 py-3 text-base",
   };
 
   const combinedClassName = cn(baseStyles, variants[variant], shapes[shape], className);

@@ -220,7 +220,7 @@ export default function BlueprintOverlay({ activeCabin, doorType, doorPos, hinge
   };
 
   return (
-    <div className="w-full h-full bg-slate-900/80 backdrop-blur-md rounded-xl p-4 border border-slate-700 relative overflow-hidden flex items-center justify-center">
+    <div className="w-full h-full bg-slate-900/80 backdrop-blur-md rounded-none p-4 border border-slate-700 relative overflow-hidden flex items-center justify-center">
       
       {/* Title */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
