@@ -9,10 +9,10 @@ import { TiltCard } from './ui/TiltCard';
 import ApplicationBlankModal from './ApplicationBlankModal';
 
 const CABIN_TYPES = [
-  { id: 'corner', name: 'Угловая', img: '/images/corner_shower_render_v2.png', allowedDoors: ['swing', 'sliding', 'folding'], desc: 'Классическое решение для экономии пространства. Идеально подходит для небольших ванных комнат, устанавливается в угол помещения.', price: '~15 000 ₽ (за стекло)' },
-  { id: 'niche', name: 'В нишу', img: '/images/niche_shower_render_v2.png', allowedDoors: ['stationary', 'swing', 'sliding', 'folding'], desc: 'Душевая дверь, которая устанавливается между тремя стенами. Максимально практично и надежно.', price: '~12 000 ₽ (за стекло)' },
-  { id: 'walkin', name: 'Свободный вход (Walk-in)', img: '/images/walkin_shower_render_v2.png', allowedDoors: ['stationary'], desc: 'Одно неподвижное стекло без дверей. Минималистичный дизайн, визуально расширяющий пространство.', price: '~10 000 ₽ (за стекло)' },
-  { id: 'bath', name: 'Шторка на ванну', img: '/images/bath_screen_render_v2.png', allowedDoors: ['stationary', 'swing', 'sliding', 'folding'], desc: 'Стеклянная перегородка на борт ванны. Защищает от брызг и выглядит намного эстетичнее тканевых штор.', price: '~8 000 ₽ (за стекло)' },
+  { id: 'corner', name: 'Угловая', img: '/images/cad_corner.png', allowedDoors: ['swing', 'sliding', 'folding'], desc: 'Классическое решение для экономии пространства. Идеально подходит для небольших ванных комнат, устанавливается в угол помещения.', price: '~15 000 ₽ (за стекло)' },
+  { id: 'niche', name: 'В нишу', img: '/images/cad_niche.png', allowedDoors: ['stationary', 'swing', 'sliding', 'folding'], desc: 'Душевая дверь, которая устанавливается между тремя стенами. Максимально практично и надежно.', price: '~12 000 ₽ (за стекло)' },
+  { id: 'walkin', name: 'Свободный вход (Walk-in)', img: '/images/cad_walkin.png', allowedDoors: ['stationary'], desc: 'Одно неподвижное стекло без дверей. Минималистичный дизайн, визуально расширяющий пространство.', price: '~10 000 ₽ (за стекло)' },
+  { id: 'bath', name: 'Шторка на ванну', img: '/images/cad_bath_screen.png', allowedDoors: ['stationary', 'swing', 'sliding', 'folding'], desc: 'Стеклянная перегородка на борт ванны. Защищает от брызг и выглядит намного эстетичнее тканевых штор.', price: '~8 000 ₽ (за стекло)' },
 ];
 
 const DOOR_LABELS: Record<string, string> = {
@@ -43,17 +43,6 @@ export default function Configurator() {
     return activeTypeInfo.img;
   };
 
-  const getOverlayImage = () => {
-    if (currentDoorType === 'stationary') {
-      return `/images/${activeCabin}_stationary_overlay.png`;
-    }
-
-    if (currentDoorType === 'swing') {
-      return `/images/${activeCabin}_swing_${hingePos}_${doorPos}_overlay.png`;
-    }
-    
-    return `/images/${activeCabin}_${currentDoorType}_${doorPos}_overlay.png`;
-  };
 
   const nextStep = () => {
     if (currentStep < totalSteps) setCurrentStep(s => s + 1);
@@ -79,16 +68,6 @@ export default function Configurator() {
               priority 
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover object-center z-0"
-            />
-            {/* Overlay Image (Dynamic doors on transparent background) */}
-            <Image 
-              src={getOverlayImage()} 
-              alt="Душевая кабина" 
-              fill
-              unoptimized
-              priority 
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center z-10 transition-opacity duration-300"
             />
             {/* Blueprint HUD Overlay */}
             <div className="absolute bottom-4 right-4 w-[140px] h-[140px] sm:w-[220px] sm:h-[220px] z-20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] rounded-none">

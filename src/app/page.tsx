@@ -114,7 +114,7 @@ export default function Home() {
                 <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/50 lowercase mb-8">эскиз</h3>
                 <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-none border border-white/5">
                   <Image 
-                    src="/images/sketch_concept.png" 
+                    src="/images/sketch_wide.png" 
                     alt="Эскиз от руки" 
                     fill 
                     className="object-cover opacity-80 mix-blend-lighten" 
@@ -132,7 +132,7 @@ export default function Home() {
                 <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/90 lowercase mb-8">проект</h3>
                 <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-none border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)]">
                   <Image 
-                    src="/images/cad_concept.png" 
+                    src="/images/cad_wide.png" 
                     alt="CAD чертеж" 
                     fill 
                     className="object-cover opacity-90 mix-blend-lighten" 
@@ -170,8 +170,8 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Вам понадобится только обычная рулетка. Измеряете ширину и высоту будущей кабины по нашей инструкции.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/sketch_shower_bad_v2.png" alt="Замеры" fill className="object-contain rounded-none" />
+                <div className="mt-auto relative w-full rounded-none aspect-video group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden border border-white/10">
+                  <Image src="/images/step_measurements.png" alt="Замеры" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
@@ -186,8 +186,8 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Прикрепите ссылки на петли и ручки с маркетплейсов — инженер сам рассчитает нужные вырезы.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/workspace_2_new_1780447634535.png" alt="Фурнитура" fill className="object-contain rounded-none" />
+                <div className="mt-auto relative w-full rounded-none aspect-video group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden border border-white/10">
+                  <Image src="/images/step_hardware.png" alt="Фурнитура" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
@@ -202,8 +202,8 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Переводим данные в профессиональный проект. Закладываем все зазоры и допуски для производства. Ровно за 24 часа.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/cad_shower_good_v2.png" alt="Чертеж" fill className="object-contain rounded-none" />
+                <div className="mt-auto relative w-full rounded-none aspect-video group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden border border-white/10">
+                  <Image src="/images/step_blueprint.png" alt="Чертеж" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>
@@ -219,8 +219,8 @@ export default function Home() {
                 <p className="text-slate-300 leading-relaxed font-light mb-6 relative z-10">
                   Вы отправляете готовый PDF-файл на ближайший стекольный завод и забираете стекло по себестоимости.
                 </p>
-                <div className="mt-auto relative w-full bg-white p-2 md:p-4 rounded-none shadow-xl aspect-video group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/niche_shower_render_v2.png" alt="Готовая душевая" fill className="object-contain rounded-none" />
+                <div className="mt-auto relative w-full rounded-none aspect-video group-hover:scale-[1.02] transition-transform duration-500 overflow-hidden border border-white/10">
+                  <Image src="/images/cad_niche.png" alt="Готовая душевая" fill className="object-contain rounded-none" />
                 </div>
               </div>
             </RevealOnScroll>

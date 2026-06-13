@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${inter.variable}`}>
-      <body className="bg-background text-foreground antialiased selection:bg-primary/30 tracking-tight">
+      <body className="bg-background text-foreground antialiased selection:bg-primary/30 tracking-tight lowercase">
         {children}
       </body>
     </html>
