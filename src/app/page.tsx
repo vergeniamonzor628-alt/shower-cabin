@@ -46,16 +46,16 @@ export default function Home() {
       <section className="relative min-h-[100svh] pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden border-b border-white/10">
         
         {/* Animated Video Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#1C2B39]">
           <SmoothVideoLoop 
             src="/hero_video.mp4" 
-            className="absolute inset-0 w-full h-full object-cover scale-[1.05] opacity-80" 
+            className="absolute inset-0 w-full h-full object-cover scale-[1.05] opacity-90" 
             fadeDurationMs={3000} 
           />
-          {/* Gradient overlay to ensure perfect text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 pointer-events-none"></div>
-          {/* Radial vignette for cinematic feel */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] pointer-events-none"></div>
+          {/* Frosted glass overlay (lighter, blurred) */}
+          <div className="absolute inset-0 bg-slate-800/30 backdrop-blur-[16px] pointer-events-none"></div>
+          {/* Subtle edge darkening for text readability */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(28,43,57,0.4)_100%)] pointer-events-none"></div>
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 flex flex-col items-center">
