@@ -108,39 +108,38 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {/* БЫЛО */}
+            {/* БЫЛО */}
             <RevealOnScroll delay={0.1}>
-              <div className="bg-white/10 border border-white/40 rounded-3xl p-6 lg:p-8 backdrop-blur-md relative overflow-hidden flex flex-col h-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
-                <div className="absolute top-0 right-0 bg-red-500/10 text-red-400 px-6 py-2 rounded-bl-3xl font-medium text-sm border-b border-l border-red-500/20">Как не надо</div>
-                <h3 className="text-2xl font-sans font-medium tracking-tight text-slate-50 mt-4 mb-6">Эскиз «на коленке»</h3>
-                <div className="relative w-full bg-white p-4 rounded-2xl shadow-xl aspect-video mb-8 grayscale-[50%] opacity-90">
+              <div className="bg-transparent border border-white/10 rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
+                <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/50 uppercase mb-8">Эскиз</h3>
+                <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-xl border border-white/5">
                   <Image 
-                    src="/images/sketch_shower_bad_v2.png" 
+                    src="/images/sketch_concept.png" 
                     alt="Эскиз от руки" 
                     fill 
-                    className="object-contain rounded-xl" 
+                    className="object-cover opacity-80 mix-blend-lighten" 
                   />
                 </div>
-                <p className="text-slate-300 font-light leading-relaxed mt-auto">
-                  С таким эскизом завод откажет в производстве или снимет с себя ответственность за ошибки. Никто не будет гадать, где сверлить отверстия.
+                <p className="text-slate-400 font-light leading-relaxed mt-auto text-sm md:text-base">
+                  Приблизительные размеры и формы. Завод откажет в производстве или снимет с себя ответственность за любые технические нестыковки.
                 </p>
               </div>
             </RevealOnScroll>
 
             {/* СТАЛО */}
             <RevealOnScroll delay={0.2}>
-              <div className="bg-gradient-to-b from-white/20 to-white/5 border border-white/40 rounded-3xl p-6 lg:p-8 backdrop-blur-md relative overflow-hidden flex flex-col h-full shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]">
-                <div className="absolute top-0 right-0 bg-primary text-slate-50 px-6 py-2 rounded-bl-3xl font-medium text-sm shadow-none">CAD-чертеж</div>
-                <h3 className="text-2xl font-sans font-medium tracking-tight text-slate-50 mt-4 mb-6">Наш инженерный проект</h3>
-                <div className="relative w-full bg-white p-4 rounded-2xl shadow-xl aspect-video mb-8">
+              <div className="bg-transparent border border-white/10 rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
+                <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/90 uppercase mb-8">Проект</h3>
+                <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-xl border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)]">
                   <Image 
-                    src="/images/cad_shower_good_v2.png" 
+                    src="/images/cad_concept.png" 
                     alt="CAD чертеж" 
                     fill 
-                    className="object-contain rounded-xl" 
+                    className="object-cover opacity-90 mix-blend-lighten" 
                   />
                 </div>
-                <p className="text-slate-300 font-light leading-relaxed mt-auto">
-                  Гарантирует, что стекло идеально встанет в вашу ванную, а выбранная фурнитура закрепится без люфтов. Завод примет в работу без вопросов.
+                <p className="text-slate-300 font-light leading-relaxed mt-auto text-sm md:text-base">
+                  Точный инженерный расчет зазоров и фурнитуры. Гарантирует, что стекло идеально встанет в ванную комнату. Завод принимает в работу мгновенно.
                 </p>
               </div>
             </RevealOnScroll>

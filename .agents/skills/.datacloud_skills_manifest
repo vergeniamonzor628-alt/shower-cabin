@@ -1,5 +1,5 @@
 {
-  "bundleChecksum": "b3e19d2dd6effa45b6f029bc3ac8265756b7fc3b1f869815ab7a163bf714d340",
+  "bundleChecksum": "d67600bb852cf0cf0feb4506a89e0eb9e539ce7fffc76f1ce7a5ad985227facb",
   "skills": {
     "accidental-data-loss-prevention": {
       "status": "installed",
@@ -45,10 +45,6 @@
       "status": "installed",
       "checksum": "2de5324a6d3ada4ac18599c2d664e5518b1cd208945522890c5f884e1cfc3261"
     },
-    "gcp-dataflow": {
-      "status": "installed",
-      "checksum": "bfafe4b704d7bf436764881473d8cb60f44472ce3755469f40ad9a777eb392e1"
-    },
     "gcp-pipeline-orchestration": {
       "status": "installed",
       "checksum": "66973c7b348db05b2593db9fb00a9c126c36b70d4ccd045fed5a166e58a444d4"
@@ -76,6 +72,10 @@
     "skill-repair": {
       "status": "installed",
       "checksum": "276efcab0cdeb25cb412644bcf0fd5fb827f4873b44a6ba24f4e49e035d25c3e"
+    },
+    "gcp-dataflow": {
+      "status": "installed",
+      "checksum": "3b3dacbc66a9d4482ab6113c92947fb1c628396466c0f2cd728f0d99331021ac"
     }
   }
 }
