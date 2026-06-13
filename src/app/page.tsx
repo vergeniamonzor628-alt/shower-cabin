@@ -111,7 +111,7 @@ export default function Home() {
             {/* БЫЛО */}
             <RevealOnScroll delay={0.1}>
               <div className="bg-transparent border border-white/10 rounded-none p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
-                <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/50 uppercase mb-8">Эскиз</h3>
+                <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/50 lowercase mb-8">эскиз</h3>
                 <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-none border border-white/5">
                   <Image 
                     src="/images/sketch_concept.png" 
@@ -120,8 +120,8 @@ export default function Home() {
                     className="object-cover opacity-80 mix-blend-lighten" 
                   />
                 </div>
-                <p className="text-slate-400 font-light leading-relaxed mt-auto text-sm md:text-base">
-                  Приблизительные размеры и формы. Завод откажет в производстве или снимет с себя ответственность за любые технические нестыковки.
+                <p className="text-slate-400 font-light leading-relaxed mt-auto text-sm md:text-base lowercase">
+                  приблизительные размеры и формы. завод откажет в производстве или снимет с себя ответственность за любые технические нестыковки.
                 </p>
               </div>
             </RevealOnScroll>
@@ -129,7 +129,7 @@ export default function Home() {
             {/* СТАЛО */}
             <RevealOnScroll delay={0.2}>
               <div className="bg-transparent border border-white/10 rounded-none p-6 lg:p-8 relative overflow-hidden flex flex-col h-full hover:border-white/30 transition-colors duration-500">
-                <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/90 uppercase mb-8">Проект</h3>
+                <h3 className="text-xl md:text-2xl font-sans font-light tracking-widest text-white/90 lowercase mb-8">проект</h3>
                 <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden rounded-none border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)]">
                   <Image 
                     src="/images/cad_concept.png" 
@@ -138,8 +138,8 @@ export default function Home() {
                     className="object-cover opacity-90 mix-blend-lighten" 
                   />
                 </div>
-                <p className="text-slate-300 font-light leading-relaxed mt-auto text-sm md:text-base">
-                  Точный инженерный расчет зазоров и фурнитуры. Гарантирует, что стекло идеально встанет в ванную комнату. Завод принимает в работу мгновенно.
+                <p className="text-slate-300 font-light leading-relaxed mt-auto text-sm md:text-base lowercase">
+                  точный инженерный расчет зазоров и фурнитуры. гарантирует, что стекло идеально встанет в ванную комнату. завод принимает в работу мгновенно.
                 </p>
               </div>
             </RevealOnScroll>
