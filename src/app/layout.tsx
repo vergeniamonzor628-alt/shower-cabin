@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Oswald, Manrope } from "next/font/google";
 import "./globals.css";
+
+const oswald = Oswald({
+  variable: "--font-heading",
+  subsets: ["cyrillic", "latin"],
+});
 
 const manrope = Manrope({
   variable: "--font-sans",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["cyrillic", "latin"],
 });
 
 export const metadata: Metadata = {
-  title: "dwgglass - стеклянные душевые без переплат",
-  description: "закажите стеклянную душевую по своим размерам. точный проект за 24 часа. гарантия лучшей цены.",
+  title: "DWGGLASS - СТЕКЛЯННЫЕ ДУШЕВЫЕ БЕЗ ПЕРЕПЛАТ",
+  description: "ЗАКАЖИТЕ СТЕКЛЯННУЮ ДУШЕВУЮ ПО СВОИМ РАЗМЕРАМ. ТОЧНЫЙ ПРОЕКТ ЗА 24 ЧАСА. ГАРАНТИЯ ЛУЧШЕЙ ЦЕНЫ.",
   openGraph: {
-    title: "dwgglass - стеклянные душевые без переплат",
-    description: "закажите стеклянную душевую по своим размерам. точный проект за 24 часа.",
+    title: "DWGGLASS - СТЕКЛЯННЫЕ ДУШЕВЫЕ БЕЗ ПЕРЕПЛАТ",
+    description: "ЗАКАЖИТЕ СТЕКЛЯННУЮ ДУШЕВУЮ ПО СВОИМ РАЗМЕРАМ. ТОЧНЫЙ ПРОЕКТ ЗА 24 ЧАСА.",
     type: "website",
     locale: "ru_RU",
-    siteName: "dwgglass",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "dwgglass - стеклянные душевые без переплат",
-    description: "закажите стеклянную душевую по своим размерам. точный проект за 24 часа.",
+    siteName: "DWGGLASS",
   },
   keywords: ["душевые кабины", "стеклянные перегородки", "душевые на заказ", "dwgglass"],
   robots: "index, follow",
@@ -32,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${manrope.variable}`}>
-      <body className="bg-background text-foreground antialiased selection:bg-primary/30 tracking-tight">
+    <html lang="ru" className={`${manrope.variable} ${oswald.variable}`}>
+      <body className="bg-background text-foreground antialiased selection:bg-primary/30 tracking-tight uppercase font-sans">
         {children}
       </body>
     </html>

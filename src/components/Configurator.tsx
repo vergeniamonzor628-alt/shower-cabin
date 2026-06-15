@@ -309,28 +309,47 @@ export default function Configurator() {
                 className="flex flex-col h-full justify-between"
               >
                 <div>
-                  <h3 className="text-lg sm:text-2xl font-sans font-medium tracking-tight text-[#2d2c2b] mb-4 sm:mb-6">
-                    Оформление заказа
+                  <h3 className="text-lg sm:text-2xl font-sans font-medium tracking-tight text-slate-900 mb-4 sm:mb-6 uppercase">
+                    оформление заказа
                   </h3>
                   <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Ваше Имя</label>
-                      <input type="text" placeholder="Иван Иванов" className="w-full bg-white border-2 border-[#e2e0db] rounded-none sm:rounded-none px-3 sm:px-4 py-2 sm:py-3 text-[#2d2c2b] placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-sm" />
+                      <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2 uppercase">ваше имя</label>
+                      <input type="text" placeholder="Иван Иванов" className="w-full bg-transparent border-b-2 border-slate-200 rounded-none px-0 py-2 sm:py-3 text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-slate-900 transition-all text-sm uppercase" />
                     </div>
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Телефон (WhatsApp/Telegram)</label>
-                      <input type="tel" placeholder="+7 (999) 000-00-00" className="w-full bg-white border-2 border-[#e2e0db] rounded-none sm:rounded-none px-3 sm:px-4 py-2 sm:py-3 text-[#2d2c2b] placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-sm" />
+                      <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2 uppercase">телефон (whatsapp/telegram)</label>
+                      <input type="tel" placeholder="+7 (999) 000-00-00" className="w-full bg-transparent border-b-2 border-slate-200 rounded-none px-0 py-2 sm:py-3 text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-slate-900 transition-all text-sm uppercase" />
+                    </div>
+                  </div>
+
+                  <div className="mb-6 sm:mb-8">
+                    <p className="text-xs sm:text-sm font-medium text-slate-700 mb-3 sm:mb-4 uppercase">тип чертежа</p>
+                    <div className="flex flex-col gap-3 sm:gap-4">
+                      <label className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-none border border-slate-300 cursor-pointer transition-all hover:border-slate-500">
+                        <input type="radio" name="project_type" defaultChecked className="mt-1 w-3.5 h-3.5 sm:w-4 sm:h-4 accent-slate-900" />
+                        <div>
+                          <span className="text-slate-900 text-xs sm:text-sm font-bold block mb-0.5 sm:mb-1 uppercase tracking-wider">обычный чертеж - 2000 ₽</span>
+                          <span className="text-slate-500 text-[10px] sm:text-xs leading-snug uppercase">для типовых решений</span>
+                        </div>
+                      </label>
+                      <label className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-none border border-slate-300 cursor-pointer transition-all hover:border-slate-500">
+                        <input type="radio" name="project_type" className="mt-1 w-3.5 h-3.5 sm:w-4 sm:h-4 accent-slate-900" />
+                        <div>
+                          <span className="text-slate-900 text-xs sm:text-sm font-bold block mb-0.5 sm:mb-1 uppercase tracking-wider">индивидуальные замеры - 4000 ₽</span>
+                          <span className="text-slate-500 text-[10px] sm:text-xs uppercase">расширенный проект под сложную геометрию</span>
+                        </div>
+                      </label>
                     </div>
                   </div>
                 </div>
 
                 <AnimatedButton 
-                  className="w-full py-4 sm:py-5 text-base sm:text-lg shadow-lg shadow-primary/25"
-                  variant="primary"
+                  className="w-full py-4 sm:py-5 text-base sm:text-lg border border-slate-900 bg-slate-900 text-white hover:bg-black hover:text-white transition-all uppercase tracking-widest font-medium"
                   shape="rounded"
                   onClick={() => setIsModalOpen(true)}
                 >
-                  Оплатить 2 000 ₽
+                  оплатить
                 </AnimatedButton>
               </motion.div>
             )}

@@ -22,21 +22,21 @@ export default function StickyCTA() {
           : "translate-y-full opacity-0 pointer-events-none"
       }`}
     >
-      <div className="bg-background/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-8px_40px_rgba(0,0,0,0.4)]">
+      <div className="bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 shadow-[0_-8px_40px_rgba(0,0,0,0.4)]">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <div className="hidden sm:flex flex-col">
-            <span className="text-white/90 text-sm font-medium">
-              Чертеж стекла — <span className="text-primary font-bold">1 500 ₽</span>
+            <span className="text-white/90 text-sm font-medium uppercase tracking-wider">
+              чертеж стекла: <span className="text-white font-bold ml-1">от 2 000 ₽</span> <span className="text-white/40 font-normal ml-2">| инд. замеры: 4 000 ₽</span>
             </span>
-            <span className="text-white/40 text-xs">
-              Готово за 24 часа · Гарантия точности
+            <span className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">
+              готово за 24 часа · гарантия точности
             </span>
           </div>
           <a
             href="#configurator"
-            className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all flex items-center gap-2 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.5)] sm:ml-auto animate-pulse-subtle"
+            className="bg-white hover:bg-slate-200 text-slate-900 px-8 py-3 rounded-none font-bold text-sm transition-all flex items-center gap-2 shadow-lg sm:ml-auto uppercase tracking-widest"
           >
-            Заказать сейчас
+            рассчитать проект
             <svg
               width="16"
               height="16"
